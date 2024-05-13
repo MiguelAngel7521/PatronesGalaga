@@ -11,6 +11,7 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+//#include "Bomba.h"
 
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
 const FName AAdapterPatern1Pawn::MoveRightBinding("MoveRight");
@@ -148,5 +149,79 @@ void AAdapterPatern1Pawn::SetBounceBall(AActor* _Adaptador)
 			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, FString::Printf(TEXT("No se pudo instanciar")));
 		}
 		return;
+}
+
+void AAdapterPatern1Pawn::SpawnBomba()
+{
+	//if (bBombaSpawned == false) {
+	//	if (GetWorld())
+	//	{
+	//		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Bomba Spawned"));
+	//		FVector SpawnLocation = GetActorLocation();
+	//		FRotator SpawnRotation = GetActorRotation();
+
+	//		// Utiliza la variable BombaClass para instanciar el objeto ABomba
+	//		ABomba* NuevaBomba = GetWorld()->SpawnActor<ABomba>(BombaClass, SpawnLocation, SpawnRotation);
+	//		// Spawnea un nuevo actor Bomba en la ubicación del actor actual
+
+	//		if (NuevaBomba)
+	//		{
+	//			NuevaBomba->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
+	//			bBombaSpawned = true;
+	//		}
+	//		else
+	//		{
+	//			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Bomba not Spawned"));
+	//		}
+	//	}
+	//}
+}
+
+void AAdapterPatern1Pawn::RecibirDanio(int32 CantidadDanio)
+{
+	ReducirEnergia(CantidadDanio);
+
+	// Si la energía del jugador llega a 0, reducir una vida y reiniciar la energía
+	if (EnergiaJugador <= 0)
+	{
+		VidasJugador--;
+		EnergiaJugador = 10; // Reiniciar la energía
+
+		// Verificar si el jugador ha perdido todas sus vidas
+		if (VidasJugador <= 0)
+		{
+			// Aquí puedes manejar la lógica para el fin del juego
+			UE_LOG(LogTemp, Warning, TEXT("Juego Terminado"));
+		}
+	}
+}
+
+void AAdapterPatern1Pawn::ReducirEnergia(int32 Cantidad)
+{
+	EnergiaJugador -= Cantidad;
+
+	// Asegurarse de que la energía no baje de 0
+	EnergiaJugador = FMath::Max(0, EnergiaJugador);
+}
+
+
+
+void AAdapterPatern1Pawn::recibirImpacto()
+{
+	ContImpacto++;
+	if (ContImpacto == 3)
+	{
+		ContImpacto = 0;
+		ReducirVida();
+	}
+}
+
+void AAdapterPatern1Pawn::Energia()
+{
+	EnergiaJugador++;
+	if (EnergiaJugador > 10)
+	{
+		EnergiaJugador = 10;
+	}
 }
 

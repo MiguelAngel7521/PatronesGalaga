@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{81193E5A-B5E6-47B9-A812-95311C5A74AC}</UniqueIdentifier>
+      <UniqueIdentifier>{358BE8ED-F0F1-4785-9D70-018020296F37}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\AdapterPatern1Editor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{7518D107-DF09-4186-A668-94EF9EEF19DF}</UniqueIdentifier>
+      <UniqueIdentifier>{D47EA612-1551-4B41-A1CE-4C7828A3CD09}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{0F1F613D-9B20-4ADE-B7D5-4644F36104DF}</UniqueIdentifier>
+      <UniqueIdentifier>{A0B5A8BF-2AD0-46B1-A4E6-1D31CE06094A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -41,6 +43,9 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\AdapterPatern1.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.rar">
+      <Filter>Source\AdapterPatern1</Filter>
+    </None>
     <ClCompile Include="..\..\Source\AdapterPatern1\AdapterPatern1GameMode.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
@@ -71,10 +76,100 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\BallAdapter.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\ComponenteArmas.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\ComponenteArmas.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\ComponenteEscudo.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\ComponenteEscudo.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\ConstruirNaveEnemiga.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\ConstruirNaveEnemiga.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\DirectorBuilder.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\DirectorBuilder.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\IBounceBall.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\IBounceBall.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\IngenieroEspecialista1.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\IngenieroEspecialista1.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\IngenieroEspecialista2.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\IngenieroEspecialista2.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\IngenieroEspecialista3.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\IngenieroEspecialista3.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\IngenieroGeneral.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\IngenieroGeneral.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemiga.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemiga.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemigaBuilder.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaBuilder.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemigaCaza.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaCaza.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemigaEspia.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaEspia.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemigaNodriza.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaNodriza.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\NaveEnemigaTransporte.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaTransporte.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\ProjectileEnemigo.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\ProjectileEnemigo.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
   </ItemGroup>

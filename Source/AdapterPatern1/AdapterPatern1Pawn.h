@@ -76,8 +76,62 @@ public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 public:
+	//Patron Adapter
 	void Lanzar() override;
 	class IIBounceBall* BounceBall;
 	void SetBounceBall(AActor* _Adaptador);
+
+
+	void SpawnBomba();
+	// Variables para las vidas y la energía del jugador
+	int32 VidasJugador = 3;
+	int32 EnergiaJugador = 10;
+
+	// Funciones para manejar el daño del enemigo y la energía del jugador
+	void RecibirDanio(int32 CantidadDanio);
+	void ReducirEnergia(int32 Cantidad);
+
+
+
+private:
+	// Manejador de temporizador para la vida útil de la bomba
+	FTimerHandle ManejadorTemporizador_DestruirBomba;
+	bool bBombaSpawned;
+	TSubclassOf<class ABomba> BombaClass;
+
+
+protected:
+	int ContImpacto;
+public:
+	void recibirImpacto();
+
+	int VidasRestantes = 3;
+
+	int GetVidasRestantes() const { return VidasRestantes; }
+	void AumentarVida()
+	{
+		if (VidasRestantes > 0)
+			VidasRestantes++;
+	}
+	// Función para reducir una vida del pawn
+	void ReducirVida()
+	{
+		if (VidasRestantes > 0)
+			VidasRestantes--;
+	}
+	void AumentarEnergia()
+	{
+		if (EnergiaJugador < 10)
+			EnergiaJugador++;
+	}
+	void AumentarVelocidad()
+	{
+		MoveSpeed += 300;
+	}
+
+	FVector posicionInicial;
+	void Energia();
+	FTimerHandle TimerHandle_Energia;
+
 };
 
