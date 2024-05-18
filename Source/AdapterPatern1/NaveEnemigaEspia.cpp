@@ -45,3 +45,8 @@ void ANaveEnemigaEspia::RecopilarInformacion()
 void ANaveEnemigaEspia::InterceptarComunicaciones()
 {
 }
+
+void ANaveEnemigaEspia::DestruirNaveEnemiga()
+{
+	Destroy();
+}

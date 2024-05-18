@@ -49,5 +49,7 @@ protected:
 
     void InterceptarComunicaciones();
 
+    void DestruirNaveEnemiga() override;
+
 
 };

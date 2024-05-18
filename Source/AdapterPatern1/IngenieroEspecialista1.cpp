@@ -31,7 +31,7 @@ void AIngenieroEspecialista1::Tick(float DeltaTime)
 void AIngenieroEspecialista1::SetNuevaNave(int a)
 {
 	ConstruirNave->BuildNuevaNave(a);
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Nave Nodriza Implementada"));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Nave Enemiga Implementada"));
 }
 
 void AIngenieroEspecialista1::SetComponentesArmas(int d)

@@ -3,11 +3,13 @@
 
 #include "NaveEnemigaCaza.h"
 #include "ProjectileEnemigo.h"
+#include "Puntaje.h"
 
 void ANaveEnemigaCaza::BeginPlay()
 {
 	Super::BeginPlay();
 
+ 
 
 	FireCooldown = 0.f;
 }
@@ -153,10 +155,18 @@ void ANaveEnemigaCaza::FireProjectile()
         // Configura la posición y dirección del proyectil
         FVector SpawnLocation = GetActorLocation();
         SpawnLocation.X += 200;
+        
 
         Projectile->SetActorLocationAndRotation(SpawnLocation, SpawnRotation);
 
         // Dispara el proyectil
         Projectile->Fire();
     }
+}
+
+void ANaveEnemigaCaza::DestruirNaveEnemiga()
+{
+    APuntaje* puntaje = Cast<APuntaje>(GetWorld()->GetFirstPlayerController()->GetPawn());
+    puntaje->CalcularPuntaje(50.0f);
+    Destroy();
 }

@@ -11,6 +11,7 @@
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundBase.h"
+#include "CapsulasFacade.h"
 //#include "Bomba.h"
 
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
@@ -213,6 +214,7 @@ void AAdapterPatern1Pawn::recibirImpacto()
 	{
 		ContImpacto = 0;
 		ReducirVida();
+		ReducirEnergia();
 	}
 }
 

@@ -28,6 +28,11 @@ void ANaveEnemigaNodriza::Mover(float DeltaTime)
 	SetActorLocation(NuevaPosicion);
 }
 
+void ANaveEnemigaNodriza::DestruirNaveEnemiga()
+{
+	Destroy();
+}
+
 void ANaveEnemigaNodriza::DesplegarNavesPequenas()
 {
 }

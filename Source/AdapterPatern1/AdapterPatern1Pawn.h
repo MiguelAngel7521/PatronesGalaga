@@ -85,7 +85,7 @@ public:
 	void SpawnBomba();
 	// Variables para las vidas y la energía del jugador
 	int32 VidasJugador = 3;
-	int32 EnergiaJugador = 10;
+	int32 EnergiaJugador = 200;
 
 	// Funciones para manejar el daño del enemigo y la energía del jugador
 	void RecibirDanio(int32 CantidadDanio);
@@ -102,12 +102,16 @@ private:
 
 protected:
 	int ContImpacto;
+	
 public:
 	void recibirImpacto();
 
 	int VidasRestantes = 3;
+	float EnergiaRestante = 200.0f;
+	
 
 	int GetVidasRestantes() const { return VidasRestantes; }
+	float GetEnergiaRestante() const { return EnergiaRestante; }
 	void AumentarVida()
 	{
 		if (VidasRestantes > 0)
@@ -121,12 +125,20 @@ public:
 	}
 	void AumentarEnergia()
 	{
-		if (EnergiaJugador < 10)
-			EnergiaJugador++;
+		if (EnergiaRestante > 0)
+			EnergiaRestante = EnergiaRestante +20;
+	}
+
+	void ReducirEnergia()
+	{
+		if (EnergiaRestante > 0)
+			EnergiaRestante--;
+		if(EnergiaRestante < 10)
+			MoveSpeed = -500;
 	}
 	void AumentarVelocidad()
 	{
-		MoveSpeed += 300;
+		MoveSpeed += 600;
 	}
 
 	FVector posicionInicial;

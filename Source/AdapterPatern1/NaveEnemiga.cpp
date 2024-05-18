@@ -3,6 +3,7 @@
 
 #include "NaveEnemiga.h"
 #include "ProjectileEnemigo.h"
+#include "Puntaje.h"
 
 // Sets default values
 ANaveEnemiga::ANaveEnemiga()
@@ -71,5 +72,12 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	//SetActorLocation(NewLocation);
 
 	//MovimientoNavesComponent->TickComponent(DeltaTime, ELevelTick::LEVELTICK_TimeOnly, nullptr); 
+}
+
+void ANaveEnemiga::DestruirNaveEnemiga()
+{
+APuntaje* puntaje = Cast<APuntaje>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	puntaje->CalcularPuntaje(50);
+	Destroy();
 }
 

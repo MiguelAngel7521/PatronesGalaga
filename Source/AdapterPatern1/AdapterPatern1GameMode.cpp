@@ -10,6 +10,8 @@
 #include "IngenieroEspecialista3.h"
 #include "DirectorBuilder.h"
 #include "ConstruirNaveEnemiga.h"
+//Patron Facade
+#include "CapsulasFacade.h"
 
 AAdapterPatern1GameMode::AAdapterPatern1GameMode()
 {
@@ -21,22 +23,14 @@ AAdapterPatern1GameMode::AAdapterPatern1GameMode()
 void AAdapterPatern1GameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//Patron Adapter
 	Jugador = GetWorld()->SpawnActor<AAdapterPatern1Pawn>(AAdapterPatern1Pawn::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
 	Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	Adapter = GetWorld()->SpawnActor<ABallAdapter>(ABallAdapter::StaticClass(),FVector(0,0,0),FRotator::ZeroRotator);
 	Jugador->SetBounceBall(Adapter);
     Jugador->Lanzar();
 
-
-	FVector PosCaza = FVector(-600.0f, -600.0f, 250.0f);
-	FVector PosTransporte = FVector(-400.0f, -600.0f, 250.0f);
-	FVector PosDestructor = FVector(-200.0f, -600.0f, 250.0f);
-
-	FVector ubicacionInicioNavesEnemigasCaza = FVector(0.0f, -500.0f, 200.0f);
-	FRotator rotacionInicioNavesEnemigasCaza = FRotator(0.0f, 180.0f, 0.0f);
-
-	FVector ubicacionInicioNavesEnemigasTransporte = FVector(300.0f, -500.0f, 200.0f);
-	FRotator rotacionInicioNavesEnemigasTransporte = FRotator(0.0f, 180.0f, 0.0f);
 
 	//Patron Builder
 
@@ -64,33 +58,19 @@ void AAdapterPatern1GameMode::BeginPlay()
 	AConstruirNaveEnemiga* NaveEnemiga3 = Director->ObtenerNave();
 
 
+	//Patron Facade de capsulas
+
+	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
+	Facade->NivelFacil();
+
+
 
 	UWorld* const World = GetWorld();
 
 	if (World != nullptr)
 	{
 
-		/*ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 600.0f, 0.0f);
-		ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
-
-
-		ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);*/
-
-
-
-		//for (int i = 0; i < 5; i++)
-		//{
-		//	ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
-		//	ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
-		//	
-		//}
-
-			/*	for (int i = 0; i < 5; i++)
-				{
-					ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
-					ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
-
-				}*/
+		
 	}
 }
 

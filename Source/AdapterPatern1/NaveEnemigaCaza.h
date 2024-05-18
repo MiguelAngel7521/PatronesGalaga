@@ -45,6 +45,7 @@ public:
 	void DispararMisiles();
 	virtual void mover(float DeltaTime);
 	virtual void FireProjectile() override;
+    void DestruirNaveEnemiga() override;
 
 public:
 

@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{358BE8ED-F0F1-4785-9D70-018020296F37}</UniqueIdentifier>
+      <UniqueIdentifier>{490BB20F-BDD7-43F1-8154-984233C4C221}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{D47EA612-1551-4B41-A1CE-4C7828A3CD09}</UniqueIdentifier>
+      <UniqueIdentifier>{67570EC1-F17D-4389-9C26-074E1CC9F072}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{A0B5A8BF-2AD0-46B1-A4E6-1D31CE06094A}</UniqueIdentifier>
+      <UniqueIdentifier>{441CFAB8-A6C2-498E-9830-F13566823F96}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -74,6 +74,42 @@
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\BallAdapter.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\Capsula.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\Capsula.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\CapsulaEnergia.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\CapsulaEnergia.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\CapsulasFacade.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\CapsulasFacade.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\CapsulasTipoFacade.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\CapsulasTipoFacade.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\CapsulaVelocidad.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\CapsulaVelocidad.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\CapsulaVida.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\CapsulaVida.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\ComponenteArmas.cpp">
@@ -166,10 +202,22 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\NaveEnemigaTransporte.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\Nivel.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\Nivel.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\ProjectileEnemigo.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\ProjectileEnemigo.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\Puntaje.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\Puntaje.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
   </ItemGroup>

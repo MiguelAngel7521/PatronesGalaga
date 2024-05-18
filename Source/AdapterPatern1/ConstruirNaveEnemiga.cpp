@@ -39,8 +39,8 @@ void AConstruirNaveEnemiga::Tick(float DeltaTime)
 
 void AConstruirNaveEnemiga::BuildNuevaNave(int z)
 {
-	FVector PosicionNave = FVector(0.0f, 0.0f, 350.0f);
-	FRotator RotacionNave = FRotator(100.0f, 0.0f, 0.0f);
+	FVector PosicionNave = FVector(90.0f, 0.0f, 250.0f);
+	FRotator RotacionNave = FRotator(0.0f, 180.0f, 0.0f);
 
 	NaveEnemiga = GetWorld()->SpawnActor<ANaveEnemigaCaza>(ANaveEnemigaCaza::StaticClass());
 	NaveEnemiga->SetActorLocation(PosicionNave);
@@ -49,10 +49,10 @@ void AConstruirNaveEnemiga::BuildNuevaNave(int z)
 
 void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 {
-	FVector PosArmas = FVector(-25.0f, -90.0f, 350.0f);
+	FVector PosArmas = FVector(-25.0f, -90.0f, 250.0f);
 	FRotator RotArmas = FRotator(100.0f, 0.0f, 0.0f);
 
-	FVector PosArmas1 = FVector(-25.0f, 440.0f, 350.0f);
+	FVector PosArmas1 = FVector(-25.0f, 440.0f, 250.0f);
 	FRotator RotArmas1 = FRotator(100.0f, 0.0f, 0.0f);
 	switch (w)
 	{
@@ -92,9 +92,9 @@ void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 
 void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
 {
-	FVector PosEscudo = FVector(-150.0f, 0.0f, 350.0f);
-
-	FVector PosEscudo1 = FVector(-150.0f, -700.0f, 350.0f);
+	FVector PosEscudo = FVector(-150.0f, 0.0f, 250.0f);
+	FRotator RotEscudo = FRotator(0.0f, 90.0f, 0.0f);
+	FVector PosEscudo1 = FVector(-150.0f, -700.0f, 250.0f);
 
 	switch (x)
 	{
@@ -103,6 +103,7 @@ void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
 		Escudo = GetWorld()->SpawnActor<AComponenteEscudo>(AComponenteEscudo::StaticClass());
 		/*FVector PosEscudo = FVector(-150.0f, 0.0f, 350.0f);*/
 		Escudo->SetActorLocation(PosEscudo);
+		Escudo->SetActorRotation(RotEscudo);
 
 		break;
 	case 2:
@@ -112,6 +113,7 @@ void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
 			Escudo = GetWorld()->SpawnActor<AComponenteEscudo>(AComponenteEscudo::StaticClass());
 			/*FVector PosEscudo1 = FVector(-150.0f, 700.0f, 350.0f);*/
 			Escudo->SetActorLocation(PosEscudo1);
+			Escudo->SetActorRotation(RotEscudo);
 			PosEscudo1.Y = PosEscudo1.Y + 200.0f;
 		}
 
@@ -128,9 +130,9 @@ void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 {
 	J = v;
 
-	FVector PosProyectil = FVector(-200.0f, -90.0f, 350.0f);
-
-	FVector PosProyectil1 = FVector(-200.0f, 440.0f, 350.0f);
+	FVector PosProyectil = FVector(-200.0f, 430.0f, 300.0f);
+	FRotator RotProyectil = FRotator(0.0f, 180.0f, 0.0f);
+	FVector PosProyectil1 = FVector(-200.0f, 430.0f, 300.0f);
 
 	switch (v)
 	{
@@ -142,6 +144,7 @@ void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 		{
 			Proyectil = GetWorld()->SpawnActor<AProjectileEnemigo>(AProjectileEnemigo::StaticClass());
 			Proyectil->SetActorLocation(PosProyectil);
+			Proyectil->SetActorRotation(RotProyectil);
 			PosProyectil.Y = PosProyectil.Y + 200.0f;
 		}
 
@@ -157,6 +160,7 @@ void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 		{
 			Proyectil = GetWorld()->SpawnActor<AProjectileEnemigo>(AProjectileEnemigo::StaticClass());
 			Proyectil->SetActorLocation(PosProyectil1);
+			Proyectil->SetActorRotation(RotProyectil);
 			if (i == 1)
 			{
 				PosProyectil1.Y = PosProyectil1.Y + 220.0f;

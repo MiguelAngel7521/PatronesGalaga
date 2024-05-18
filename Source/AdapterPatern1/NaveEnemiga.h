@@ -100,5 +100,7 @@ public:
 
 	// Variable que almacena el valor de puntuación de la nave enemiga
 
+	virtual void DestruirNaveEnemiga();
+
 
 };

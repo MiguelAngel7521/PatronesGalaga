@@ -1,5 +1,4 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -15,6 +14,10 @@ public:
 	AAdapterPatern1GameMode();
 protected:
 	virtual void BeginPlay() override;
+	//Patron Facade
+	UPROPERTY(VisibleAnywhere, Category = "Game mode")
+	class ACapsulasFacade* Facade;
+
 
 public:
 	UPROPERTY(VisibleAnywhere, Category = "Game Mode")
@@ -71,6 +74,7 @@ private:
 	//UPROPERTY(VisibleAnywhere, Category = "GameModeBase")
 	//ADirectorPaquetesEnergia* Director;
 };
+
 
 
 
