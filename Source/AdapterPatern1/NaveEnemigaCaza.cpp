@@ -4,7 +4,11 @@
 #include "NaveEnemigaCaza.h"
 #include "ProjectileEnemigo.h"
 #include "Puntaje.h"
+#include "AdapterPatern1Projectile.h"
 
+#include "SistemaPuntuacionComponente.h"
+
+USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
 void ANaveEnemigaCaza::BeginPlay()
 {
 	Super::BeginPlay();
@@ -22,24 +26,33 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
     static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NaveEnemiga.NaveEnemiga'"));
 	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
     mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
+    mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
+    mallaNaveEnemiga->OnComponentHit.AddDynamic(this, &ANaveEnemigaCaza::OnHit);
 	HiperVelocidad = 1500;
 	NumeroMisiles = 10;
 	RayosLaserActivos = false;
 	DanoRayoLaser = 10;
 	TiempoEntreRayosLaser = 1;
+
+    //Creacion del Componente de Puntaje
+    if (SharedSistemaPuntuacionComponente == nullptr)
+    {
+        SharedSistemaPuntuacionComponente = CreateDefaultSubobject<USistemaPuntuacionComponente>(TEXT("SistemaPuntuacionComponente"));
+        UE_LOG(LogTemp, Warning, TEXT("Creando el componente de puntaje"));
+    }
+    nombre = "NaveEnemigaCaza";
 }
 
 void ANaveEnemigaCaza::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-    /* Angulo += Speed * DeltaTime;
-     float PosicionX = GetActorLocation().X + Radio * FMath::Cos(Angulo);
-     float PosicionY = GetActorLocation().Y + Radio * FMath::Sin(Angulo);
-     FVector NuevaPosicion = FVector(PosicionX, PosicionY, GetActorLocation().Z);
-     SetActorLocation(NuevaPosicion);*/
+    Angulo += Speed * DeltaTime;
 
-     // Actualizar el ProjectileMovement 
+    float NuevaY = GetActorLocation().Y + Radio * FMath::Sin(Angulo) * DeltaTime;
+
+    FVector NewLocation = FVector(GetActorLocation().X, NuevaY, GetActorLocation().Z);
+    SetActorLocation(NewLocation);
 
     TiempoTranscurrido++;
     if (TiempoTranscurrido > 500)
@@ -154,7 +167,7 @@ void ANaveEnemigaCaza::FireProjectile()
 
         // Configura la posición y dirección del proyectil
         FVector SpawnLocation = GetActorLocation();
-        SpawnLocation.X += 200;
+        SpawnLocation.X -= 10;
         
 
         Projectile->SetActorLocationAndRotation(SpawnLocation, SpawnRotation);
@@ -164,9 +177,30 @@ void ANaveEnemigaCaza::FireProjectile()
     }
 }
 
-void ANaveEnemigaCaza::DestruirNaveEnemiga()
+
+void ANaveEnemigaCaza::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-    APuntaje* puntaje = Cast<APuntaje>(GetWorld()->GetFirstPlayerController()->GetPawn());
-    puntaje->CalcularPuntaje(50.0f);
-    Destroy();
+    if (OtherActor && OtherActor->IsA(AAdapterPatern1Projectile::StaticClass()))
+    {
+        AAdapterPatern1Projectile* Projectile = Cast<AAdapterPatern1Projectile>(OtherActor);
+        if (Projectile)
+        {
+            // Destruye el proyectil
+            Projectile->Destroy();
+
+            Destroy();
+
+            if (SharedSistemaPuntuacionComponente)
+            {
+                SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
+            }
+        }
+       
+    }
 }
+
+

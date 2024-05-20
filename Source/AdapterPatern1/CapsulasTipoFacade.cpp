@@ -5,7 +5,16 @@
 #include "CapsulaEnergia.h"
 #include "CapsulaVida.h"
 #include "CapsulaVelocidad.h"
-
+#include "NaveEnemigaCaza.h"
+#include "NaveEnemigaTransporte.h"
+#include "NaveEnemigaEspia.h"
+#include "NaveEnemigaNodriza.h"
+#include "IngenieroEspecialista1.h"
+#include "IngenieroEspecialista2.h"
+#include "IngenieroEspecialista3.h"
+#include "DirectorBuilder.h"
+#include "ConstruirNaveEnemiga.h"
+ 
 // Sets default values
 ACapsulasTipoFacade::ACapsulasTipoFacade()
 {
@@ -23,7 +32,7 @@ void ACapsulasTipoFacade::BeginPlay()
 
 void ACapsulasTipoFacade::CrearCapsulaDeVida()
 {
-	FVector PosicionCapsulaVida = FVector(500.0f, 0.0f, 250.0f);
+	FVector PosicionCapsulaVida = FVector(-990.0f, -160.0f, 250.0f);
 	FRotator RotacionCapsulaVida = FRotator(0.0f, 0.0f, 0.0f);
 
 	CapsulaDeVida = GetWorld()->SpawnActor<ACapsulaVida>(ACapsulaVida::StaticClass());
@@ -35,7 +44,7 @@ void ACapsulasTipoFacade::CrearCapsulaDeVida()
 
 void ACapsulasTipoFacade::CrearCapsulaDeEnergia()
 {
-	FVector PosicionCapsulaEnergia = FVector(700.0f, 0.0f, 250.0f);
+	FVector PosicionCapsulaEnergia = FVector(-990.0f, -260.0f, 250.0f);
 	FRotator RotacionCapsulaEnergia = FRotator(0.0f, 0.0f, 0.0f);
 
 	CapsulaDeEnergia = GetWorld()->SpawnActor<ACapsulaEnergia>(ACapsulaEnergia::StaticClass());
@@ -47,7 +56,7 @@ void ACapsulasTipoFacade::CrearCapsulaDeEnergia()
 
 void ACapsulasTipoFacade::CrearCapsulaDeVelocidad()
 {
-	FVector PosicionCapsulaVelocidad = FVector(900.0f, 0.0f, 250.0f);
+	FVector PosicionCapsulaVelocidad = FVector(-990.0f, -360.0f, 250.0f);
 	FRotator RotacionCapsulaVelocidad = FRotator(0.0f, 0.0f, 0.0f);
 
 	CapsulaDeVelocidad = GetWorld()->SpawnActor<ACapsulaVelocidad>(ACapsulaVelocidad::StaticClass());
@@ -59,6 +68,129 @@ void ACapsulasTipoFacade::CrearCapsulaDeVelocidad()
 
 void ACapsulasTipoFacade::BloquearCapsula()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Sin Capsulas")));
+}
+
+void ACapsulasTipoFacade::CrearEscuadronEnemigos1()
+{
+
+	FVector ubicacionInicioNavesEnemigasCaza = FVector(0.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasCaza = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasTransporte = FVector(300.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasTransporte = FRotator(0.0f, 180.0f, 0.0f);
+
+
+	UWorld* const World = GetWorld();
+	if (World != nullptr)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+
+		}
+
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+
+		}
+
+	}
+	
+}
+
+void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
+{
+	FVector ubicacionInicioNavesEnemigasCaza = FVector(0.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasCaza = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasTransporte = FVector(300.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasTransporte = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasEspia = FVector(600.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasEspia = FRotator(0.0f, 180.0f, 0.0f);
+
+
+	UWorld* const World = GetWorld();
+	if (World != nullptr)
+	{
+		for (int i = 0; i < 8; i++)
+		{
+			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+
+		}
+
+		for (int i = 0; i < 8; i++)
+		{
+			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			ubicacionInicioNavesEnemigasEspia = ubicacionInicioNavesEnemigasEspia + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaEspia* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaEspia>(ubicacionInicioNavesEnemigasEspia, rotacionInicioNavesEnemigasEspia);
+		}
+
+	}
+
+}
+
+void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
+{
+	FVector ubicacionInicioNavesEnemigasCaza = FVector(0.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasCaza = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasTransporte = FVector(-300.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasTransporte = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasEspia = FVector(-600.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasEspia = FRotator(0.0f, 180.0f, 0.0f);
+
+	FVector ubicacionInicioNavesEnemigasNodriza = FVector(-900.0f, -500.0f, 200.0f);
+	FRotator rotacionInicioNavesEnemigasNodriza = FRotator(0.0f, 180.0f, 0.0f);
+
+
+	UWorld* const World = GetWorld();
+	if (World != nullptr)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+
+		}
+
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasEspia = ubicacionInicioNavesEnemigasEspia + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaEspia* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaEspia>(ubicacionInicioNavesEnemigasEspia, rotacionInicioNavesEnemigasEspia);
+		}
+		for (int i = 0; i < 5; i++)
+		{
+			ubicacionInicioNavesEnemigasNodriza = ubicacionInicioNavesEnemigasNodriza + FVector(0.0f, 200.0f, 0.0f);
+			ANaveEnemigaNodriza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaNodriza>(ubicacionInicioNavesEnemigasNodriza, rotacionInicioNavesEnemigasNodriza);
+		}
+
+	}
+
+	Ingeniero = GetWorld()->SpawnActor<AIngenieroEspecialista1>(AIngenieroEspecialista1::StaticClass());
+	Director = GetWorld()->SpawnActor<ADirectorBuilder>(ADirectorBuilder::StaticClass());
+
+	Director->OrdenarIngeniero(Ingeniero);
+	Director->ConstruirNaveEscudo();
+
+	AConstruirNaveEnemiga* NaveEnemiga = Director->ObtenerNave();
 }
 
 void ACapsulasTipoFacade::RecibirOrden(const TArray<FString>& _Orden)
@@ -78,7 +210,6 @@ void ACapsulasTipoFacade::CrearOrden(const FString& _Orden)
 	else if (_Orden.Equals("Energia"))
 	{
 		CrearCapsulaDeEnergia();
-		CrearCapsulaDeEnergia();
 	}
 	else if (_Orden.Equals("Velocidad"))
 	{
@@ -87,6 +218,18 @@ void ACapsulasTipoFacade::CrearOrden(const FString& _Orden)
 	else if (_Orden.Equals("SinCapsulas"))
 	{
 		BloquearCapsula();
+	}
+	else if (_Orden.Equals("Escuadron1"))
+	{
+		CrearEscuadronEnemigos1();
+	}
+	else if (_Orden.Equals("Escuadron2"))
+	{
+		CrearEscuadronEnemigos2();
+	}
+	else if (_Orden.Equals("Escuadron3"))
+	{
+		CrearEscuadronEnemigos3();
 	}
 }
 

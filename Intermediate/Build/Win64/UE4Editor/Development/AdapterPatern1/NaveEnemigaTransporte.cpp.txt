@@ -1,5 +1,0 @@
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Development\AdapterPatern1\Definitions.AdapterPatern1.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaTransporte.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemiga.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemiga.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaTransporte.generated.h

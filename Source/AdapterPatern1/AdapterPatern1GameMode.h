@@ -33,8 +33,6 @@ public:
 
 	void ActualizarPosicionesNavesEnemigas();
 	void MostrarPosicionesNavesEnemigas();
-	void EliminarNavesEnemigas();
-	void CrearNavesEnemigas();
 	void DetenerProceso();
 
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NavesEnemigas")

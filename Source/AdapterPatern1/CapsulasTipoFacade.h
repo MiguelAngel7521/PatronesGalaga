@@ -20,6 +20,8 @@ public:
 	class ACapsulaEnergia* CapsulaDeEnergia;
 	class ACapsulaVelocidad* CapsulaDeVelocidad;
 
+	
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -30,11 +32,21 @@ protected:
 	void CrearCapsulaDeVelocidad(); //Velocidad
 	void BloquearCapsula(); //Bloquear
 
+	void CrearEscuadronEnemigos1(); //Escuadron1
+	void CrearEscuadronEnemigos2(); //Escuadron2
+	void CrearEscuadronEnemigos3(); //Escuadron3
+
 public:
 	void RecibirOrden(const TArray<FString>& _Orden);
 	void CrearOrden(const FString& _Orden);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+public:
+	//Patron Builder
+	class AIngenieroEspecialista1* Ingeniero;
+	class AIngenieroEspecialista2* Ingeniero2;
+	class AIngenieroEspecialista3* Ingeniero3;
+	class ADirectorBuilder* Director;
 
 };

@@ -5,8 +5,15 @@
 
 ANaveEnemigaNodriza::ANaveEnemigaNodriza()
 {
-	//static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_WideCapsule.Shape_WideCapsule'"));
-	//mallaNaveEnemiga->SetStaticMesh(Mesh.Object);
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
+	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
+	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
+	mallaNaveEnemiga->OnComponentHit.AddDynamic(this, &ANaveEnemigaNodriza::OnHit);
+
+
+
 	Escudos = 100;
 	AtaqueFinal = 100;
 	tripulacion = 100;
@@ -28,10 +35,7 @@ void ANaveEnemigaNodriza::Mover(float DeltaTime)
 	SetActorLocation(NuevaPosicion);
 }
 
-void ANaveEnemigaNodriza::DestruirNaveEnemiga()
-{
-	Destroy();
-}
+
 
 void ANaveEnemigaNodriza::DesplegarNavesPequenas()
 {

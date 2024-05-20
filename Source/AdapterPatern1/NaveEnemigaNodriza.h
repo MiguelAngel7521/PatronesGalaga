@@ -33,7 +33,7 @@ protected:
 
     virtual void Mover(float DeltaTime);
 
-    void DestruirNaveEnemiga() override;
+
 
 
     void DesplegarNavesPequenas();

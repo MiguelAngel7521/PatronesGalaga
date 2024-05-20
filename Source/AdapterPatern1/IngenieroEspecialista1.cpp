@@ -31,25 +31,26 @@ void AIngenieroEspecialista1::Tick(float DeltaTime)
 void AIngenieroEspecialista1::SetNuevaNave(int a)
 {
 	ConstruirNave->BuildNuevaNave(a);
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Nave Enemiga Implementada"));
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue, TEXT("Nave Enemiga Implementada"));
 }
 
 void AIngenieroEspecialista1::SetComponentesArmas(int d)
 {
+
 	ConstruirNave->BuildComponentesArmas(d);
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Armas Implementadas"));
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue, TEXT("Armas Implementadas"));
 }
 
 void AIngenieroEspecialista1::SetComponentesEscudos(int b)
 {
 	ConstruirNave->BuildComponentesEscudos(b);
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Escudos Implementados"));
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue, TEXT("Escudos Implementados"));
 }
 
 void AIngenieroEspecialista1::SetComponentesProjectile(int c)
 {
 	ConstruirNave->BuildComponentesProjectile(c);
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("Proyectiles Implementados"));
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Blue, TEXT("Proyectiles Implementados"));
 }
 
 AConstruirNaveEnemiga* AIngenieroEspecialista1::GetNaveEnemiga()

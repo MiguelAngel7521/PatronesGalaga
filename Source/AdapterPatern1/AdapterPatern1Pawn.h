@@ -107,11 +107,11 @@ public:
 	void recibirImpacto();
 
 	int VidasRestantes = 3;
-	float EnergiaRestante = 200.0f;
+	int EnergiaRestante = 200.0f;
 	
 
 	int GetVidasRestantes() const { return VidasRestantes; }
-	float GetEnergiaRestante() const { return EnergiaRestante; }
+	int ObtenerEnergiaRestante() const { return EnergiaRestante; }
 	void AumentarVida()
 	{
 		if (VidasRestantes > 0)
@@ -129,16 +129,16 @@ public:
 			EnergiaRestante = EnergiaRestante +20;
 	}
 
-	void ReducirEnergia()
+	void ReducirEnergia1()
 	{
 		if (EnergiaRestante > 0)
-			EnergiaRestante--;
+			EnergiaRestante = EnergiaRestante - 10;
 		if(EnergiaRestante < 10)
-			MoveSpeed = -500;
+			MoveSpeed = -600;
 	}
 	void AumentarVelocidad()
 	{
-		MoveSpeed += 600;
+		MoveSpeed += 800;
 	}
 
 	FVector posicionInicial;

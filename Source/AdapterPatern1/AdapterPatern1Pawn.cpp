@@ -14,6 +14,7 @@
 #include "CapsulasFacade.h"
 //#include "Bomba.h"
 
+
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
 const FName AAdapterPatern1Pawn::MoveRightBinding("MoveRight");
 const FName AAdapterPatern1Pawn::FireForwardBinding("FireForward");
@@ -201,6 +202,7 @@ void AAdapterPatern1Pawn::ReducirEnergia(int32 Cantidad)
 {
 	EnergiaJugador -= Cantidad;
 
+
 	// Asegurarse de que la energía no baje de 0
 	EnergiaJugador = FMath::Max(0, EnergiaJugador);
 }
@@ -214,7 +216,7 @@ void AAdapterPatern1Pawn::recibirImpacto()
 	{
 		ContImpacto = 0;
 		ReducirVida();
-		ReducirEnergia();
+		ReducirEnergia1();
 	}
 }
 

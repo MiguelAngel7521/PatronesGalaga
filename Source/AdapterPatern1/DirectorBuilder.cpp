@@ -20,7 +20,7 @@ void ADirectorBuilder::BeginPlay()
 
 // Called every frame
 void ADirectorBuilder::Tick(float DeltaTime)
-{
+{ 
 	Super::Tick(DeltaTime);
 
 }
@@ -35,21 +35,22 @@ void ADirectorBuilder::ContruirNaveEnemiga()
 	IngenieroACargo->SetNuevaNave(1);
 	IngenieroACargo->SetComponentesArmas(1);
 	IngenieroACargo->SetComponentesEscudos(1);
-	IngenieroACargo->SetComponentesProjectile(1);
+	/*IngenieroACargo->SetComponentesProjectile(1);*/
 
 }
 
 void ADirectorBuilder::ConstruirNaveEscudo()
 {
 	IngenieroACargo->SetNuevaNave(2);
+	IngenieroACargo->SetComponentesArmas(3);
 	IngenieroACargo->SetComponentesEscudos(2);
 }
 
 void ADirectorBuilder::ConstruirNaveBatalla()
 {
-	IngenieroACargo->SetNuevaNave(3);
+	/*IngenieroACargo->SetNuevaNave(3);*/
 	IngenieroACargo->SetComponentesArmas(3);
-	IngenieroACargo->SetComponentesProjectile(3);
+	/*IngenieroACargo->SetComponentesProjectile(3);*/
 }
 
 AConstruirNaveEnemiga* ADirectorBuilder::ObtenerNave()

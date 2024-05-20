@@ -23,7 +23,7 @@ public:
 	class AComponenteArmas* Armas;
 	class AComponenteEscudo* Escudo;
 	class AProjectileEnemigo* Proyectil;
-	class ANaveEnemigaCaza* NaveEnemiga;
+	class ANaveEnemigaCaza* NaveEnemiga; 
 
 protected:
 	// Called when the game starts or when spawned

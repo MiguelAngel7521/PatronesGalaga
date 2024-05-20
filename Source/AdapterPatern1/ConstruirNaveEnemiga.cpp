@@ -15,7 +15,7 @@ AConstruirNaveEnemiga::AConstruirNaveEnemiga()
 
 
 	Tiempo = 0;
-	AcEscudo = 1;
+	AcEscudo = 1; 
 }
 
 // Called when the game starts or when spawned
@@ -39,8 +39,9 @@ void AConstruirNaveEnemiga::Tick(float DeltaTime)
 
 void AConstruirNaveEnemiga::BuildNuevaNave(int z)
 {
-	FVector PosicionNave = FVector(90.0f, 0.0f, 250.0f);
+	FVector PosicionNave = FVector(860.0f, 100.0f, 250.0f);
 	FRotator RotacionNave = FRotator(0.0f, 180.0f, 0.0f);
+
 
 	NaveEnemiga = GetWorld()->SpawnActor<ANaveEnemigaCaza>(ANaveEnemigaCaza::StaticClass());
 	NaveEnemiga->SetActorLocation(PosicionNave);
@@ -49,12 +50,12 @@ void AConstruirNaveEnemiga::BuildNuevaNave(int z)
 
 void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 {
-	FVector PosArmas = FVector(-25.0f, -90.0f, 250.0f);
-	FRotator RotArmas = FRotator(100.0f, 0.0f, 0.0f);
+	FVector PosArmas = FVector(740.0f, -330.0f, 250.0f);
+	FRotator RotArmas = FRotator(0.0f, 180.0f, 0.0f); //100.0f, 0.0f, 0.0f
 
-	FVector PosArmas1 = FVector(-25.0f, 440.0f, 250.0f);
-	FRotator RotArmas1 = FRotator(100.0f, 0.0f, 0.0f);
-	switch (w)
+	FVector PosArmas1 = FVector(740.0f, -330.0f,250.0f);
+	FRotator RotArmas1 = FRotator(0.0f, 180.0f, 0.0f);
+	switch (w) 
 	{
 	case 1:
 		for (int i = 0; i < 2; i++)
@@ -77,11 +78,11 @@ void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 			Armas->SetActorLocation(PosArmas1);
 			if (i == 1)
 			{
-				PosArmas1.Y = PosArmas1.Y + 220.0f;
+				PosArmas1.Y = PosArmas1.Y + 720.0f;
 			}
 			else
 			{
-				PosArmas1.Y = PosArmas1.Y + 110.0f;
+				PosArmas1.Y = PosArmas1.Y + 110.0f; //110
 			}
 			}
 			break;
@@ -92,9 +93,9 @@ void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 
 void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
 {
-	FVector PosEscudo = FVector(-150.0f, 0.0f, 250.0f);
+	FVector PosEscudo = FVector(740.0f, -90.0f, 200.0f);
 	FRotator RotEscudo = FRotator(0.0f, 90.0f, 0.0f);
-	FVector PosEscudo1 = FVector(-150.0f, -700.0f, 250.0f);
+	FVector PosEscudo1 = FVector(740.0f, -90.0f, 200.0f);
 
 	switch (x)
 	{
@@ -128,7 +129,7 @@ void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
 
 void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 {
-	J = v;
+	/*J = v;
 
 	FVector PosProyectil = FVector(-200.0f, 430.0f, 300.0f);
 	FRotator RotProyectil = FRotator(0.0f, 180.0f, 0.0f);
@@ -174,7 +175,7 @@ void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 		break;
 	default:
 		break;
-	}
+	}*/
 }
 
 

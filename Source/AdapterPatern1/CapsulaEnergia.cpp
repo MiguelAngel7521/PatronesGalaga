@@ -21,7 +21,7 @@ void ACapsulaEnergia::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UP
 	if (Pawn)
 	{
 		Pawn->AumentarEnergia();
-		FString Message = FString::Printf(TEXT("Energia Restante: %d "), Pawn->GetEnergiaRestante());
+		FString Message = FString::Printf(TEXT("Energia Restante: %d "), Pawn->ObtenerEnergiaRestante());
 		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Yellow, Message);
 		Destroy();
 	}

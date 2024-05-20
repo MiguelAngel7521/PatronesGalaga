@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "SistemaPuntuacionComponente.h"
 #include "NaveEnemiga.generated.h"
 
 UCLASS()
@@ -77,7 +77,7 @@ public:
 
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	virtual void BeginPlay() override; 
 
 	virtual void FireProjectile();
 	float FireRate;
@@ -100,7 +100,10 @@ public:
 
 	// Variable que almacena el valor de puntuación de la nave enemiga
 
-	virtual void DestruirNaveEnemiga();
+	
+	//Patron Facade
+	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 
 };

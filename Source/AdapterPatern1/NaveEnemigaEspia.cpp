@@ -2,11 +2,18 @@
 
 
 #include "NaveEnemigaEspia.h"
+#include "AdapterPatern1Projectile.h"
 
 ANaveEnemigaEspia::ANaveEnemigaEspia()
 {
-	/*static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Trim.Shape_Trim'"));
-	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);*/
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
+	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
+	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
+	mallaNaveEnemiga->OnComponentHit.AddDynamic(this, &ANaveEnemigaEspia::OnHit);
+
+
 	escudo = 100;
 	Sigilo = 100;
 	consumo_de_energia = 10;
@@ -46,7 +53,28 @@ void ANaveEnemigaEspia::InterceptarComunicaciones()
 {
 }
 
-void ANaveEnemigaEspia::DestruirNaveEnemiga()
-{
-	Destroy();
-}
+//void ANaveEnemigaEspia::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+//{
+//	if (OtherActor && OtherActor->IsA(AAdapterPatern1Projectile::StaticClass()))
+//	{
+//		AAdapterPatern1Projectile* Projectile = Cast<AAdapterPatern1Projectile>(OtherActor);
+//		if (Projectile)
+//		{
+//			// Destruye el proyectil
+//			Projectile->Destroy();
+//
+//			Destroy();
+//
+//			if (SharedSistemaPuntuacionComponente)
+//			{
+//				SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
+//			}
+//			else
+//			{
+//				UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
+//			}
+//		}
+//	}
+//}
+
+

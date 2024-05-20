@@ -25,5 +25,17 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	//Proyectil
+	void FireProjectile();
+	UPROPERTY(EditAnywhere, Category = "Proyectil")
+	TSubclassOf<class AProjectileEnemigo> ProyectilEnemigoClass;
+
+	UPROPERTY(EditAnywhere, Category = "Proyectil")
+	float FireRate;
+
+	float FireCooldown;
+	FTimerHandle FireTimerHandle;
+
 
 };
+ 

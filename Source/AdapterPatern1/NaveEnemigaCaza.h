@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
+#include "SistemaPuntuacionComponente.h"
 #include "NaveEnemigaCaza.generated.h"
 
 /**
@@ -18,7 +19,7 @@ protected:
 	float HiperVelocidad;
 	int NumeroMisiles;
 	bool RayosLaserActivos;
-	float DanoRayoLaser;
+	float DanoRayoLaser; 
 	float TiempoEntreRayosLaser;
 	virtual void BeginPlay() override;
 private:
@@ -31,10 +32,7 @@ private:
 	float tiempoExplosion = 0;
 	float TiempoTranscurrido = 0;
 
-	//AComponenteArmas* ComponenteArmas;
-	//AComponenteEscudo* ComponenteEscudo;
-
-	/*AComponenteEnergia* ComponenteEnergia;*/
+	
 
 public:
 	ANaveEnemigaCaza();
@@ -45,7 +43,7 @@ public:
 	void DispararMisiles();
 	virtual void mover(float DeltaTime);
 	virtual void FireProjectile() override;
-    void DestruirNaveEnemiga() override;
+    
 
 public:
 
@@ -57,7 +55,11 @@ public:
 	float FireRate;
 
 	float FireCooldown;
-	//void SetComponenteArmas(AComponenteArmas* ComponenteArmas);
-	//void SetComponenteEscudo(AComponenteEscudo* ComponenteEscudo);
+	
+
+
+	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
+
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 };

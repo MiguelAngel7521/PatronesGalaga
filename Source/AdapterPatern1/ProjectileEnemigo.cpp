@@ -51,11 +51,11 @@ void AProjectileEnemigo::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
 	{
 
 		Pawn->ReducirVida();
-		Pawn->ReducirEnergia();
+		Pawn->ReducirEnergia1();
 		// Mostrar un mensaje informando al jugador sobre la pérdida de vida
 		FString Message = FString::Printf(TEXT("Vidas restantes: %d "), Pawn->GetVidasRestantes());
 		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Red, Message);
-		FString Message2 = FString::Printf(TEXT("Energia restante: %d "), Pawn->GetEnergiaRestante());
+		FString Message2 = FString::Printf(TEXT("Energia restante: %d "), Pawn->ObtenerEnergiaRestante());
 		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Yellow, Message2);
 		//PawnScore += ScorePorEnemigo;
 

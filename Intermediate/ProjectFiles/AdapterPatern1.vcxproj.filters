@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{490BB20F-BDD7-43F1-8154-984233C4C221}</UniqueIdentifier>
+      <UniqueIdentifier>{DFDBE211-46E2-4981-9743-E0511DBC3F7C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{67570EC1-F17D-4389-9C26-074E1CC9F072}</UniqueIdentifier>
+      <UniqueIdentifier>{8FA8B6A2-1FDA-4816-8C71-6571AC49215C}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{441CFAB8-A6C2-498E-9830-F13566823F96}</UniqueIdentifier>
+      <UniqueIdentifier>{1B3BFC1B-C875-4F0D-AB35-0B3B9E5E47C9}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -136,6 +136,12 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\DirectorBuilder.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\FabricaNaveEnemigas.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\FabricaNaveEnemigas.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\IBounceBall.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
@@ -218,6 +224,12 @@
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\Puntaje.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\SistemaPuntuacionComponente.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\SistemaPuntuacionComponente.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
   </ItemGroup>

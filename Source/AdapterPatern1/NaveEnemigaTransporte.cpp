@@ -30,8 +30,13 @@ void ANaveEnemigaTransporte::ReabastecerNaves()
 
 ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 {
-	/*static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Plane.Shape_Plane'"));
-	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);*/
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
+	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
+	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
+	mallaNaveEnemiga->OnComponentHit.AddDynamic(this, &ANaveEnemigaTransporte::OnHit);
+
 	TiempoDescarga = 10;
 	ArmasDefensivas = 10;
 	CapacidadCarga = 100;
