@@ -52,6 +52,7 @@ void ARadarHDU::DrawRaycastedActors()
 		convertedLocation.Y = tempVector.Y;
 
 		DrawRect(FLinearColor::Red, RadarCenter.X + convertedLocation.X, RadarCenter.Y + convertedLocation.Y, DrawPixelSize, DrawPixelSize);
+		UE_LOG(LogTemp, Warning, TEXT("Dibujando actor en el radar: %s"), *It->GetName());
 	}
 }
 
@@ -127,8 +128,7 @@ void ARadarHDU::DrawHUD()
 	const FVector2D Center(Canvas->ClipX * 0.5f, Canvas->ClipY * 0.5f);
 
 	// offset by half the texture's dimensions so that the center of the texture aligns with the center of the Canvas
-	const FVector2D CrosshairDrawPosition((Center.X),
-		(Center.Y));
+	const FVector2D CrosshairDrawPosition((Center.X),(Center.Y));
 
 	// draw the crosshair
 
@@ -150,4 +150,13 @@ void ARadarHDU::DrawHUD()
 	//Empty the radar actors in case the player moves out of range,
 	//by doing so, we have always a valid display in our radar
 	RadarActors.Empty();
+}
+
+void ARadarHDU::UpdatePosition(AActor* Actor)
+{
+	if (Actor)
+	{
+		RadarActors.AddUnique(Actor);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Actor added to radar"));
+	}
 }

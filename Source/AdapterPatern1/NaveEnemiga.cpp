@@ -7,6 +7,14 @@
 #include "AdapterPatern1Projectile.h"
 //Patron Facde
 #include "SistemaPuntuacionComponente.h" 
+//Patron Observer
+#include "RadarHDU.h"
+#include "IObserverRadar.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+
+
+
 // Sets default values
 USistemaPuntuacionComponente* ANaveEnemiga::SharedSistemaPuntuacionComponente = nullptr;
 ANaveEnemiga::ANaveEnemiga()
@@ -36,6 +44,8 @@ ANaveEnemiga::ANaveEnemiga()
 		UE_LOG(LogTemp, Warning, TEXT("Creando el componente de puntaje"));
 	}
 	nombre = "NaveEnemiga";
+	//Tag
+	Tags.Add(FName("Radar"));
 	
 
 }
@@ -46,6 +56,11 @@ void ANaveEnemiga::BeginPlay()
 	Super::BeginPlay();
 
 	GetWorld()->GetTimerManager().SetTimer(FireTimerHandle, this, &ANaveEnemiga::FireProjectile, FireRate, true);
+	// Suscribir el radar
+	for (TActorIterator<ARadarHDU> It(GetWorld()); It; ++It)
+	{
+		SuscribirRadar(*It);
+	}
 	
 }
 
@@ -82,6 +97,8 @@ void ANaveEnemiga::Tick(float DeltaTime)
 
 	FVector NewLocation = FVector(GetActorLocation().X, NuevaY, GetActorLocation().Z);
 	SetActorLocation(NewLocation);
+	//Notificar ala radar cada segundo
+	NotificarRadar();
 
 
 
@@ -119,6 +136,29 @@ void ANaveEnemiga::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 			{
 				UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
 			}
+		}
+	}
+}
+
+void ANaveEnemiga::SuscribirRadar(AActor* Radar)
+{
+	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+	{
+		Observers.Add(Radar);
+		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+	}
+}
+
+void ANaveEnemiga::NotificarRadar()
+{
+
+	for (AActor* Observer : Observers)
+	{
+		IIObserverRadar* ObserverInterface = Cast<IIObserverRadar>(Observer);
+		if (ObserverInterface)
+		{
+			ObserverInterface->UpdatePosition(this);
+			UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
 		}
 	}
 }

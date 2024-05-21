@@ -5,8 +5,14 @@
 #include "ProjectileEnemigo.h"
 #include "Puntaje.h"
 #include "AdapterPatern1Projectile.h"
-
+//Patron Facade
 #include "SistemaPuntuacionComponente.h"
+//Patron Observer
+#include "RadarHDU.h"
+#include "IObserverRadar.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
 void ANaveEnemigaCaza::BeginPlay()
@@ -14,6 +20,11 @@ void ANaveEnemigaCaza::BeginPlay()
 	Super::BeginPlay();
     //cadencia del projectile
 	FireCooldown = 0.f;
+    // Suscribir el radar
+    for (TActorIterator<ARadarHDU> It(GetWorld()); It; ++It)
+    {
+        SuscribirRadar(*It);
+    }
 }
 
 ANaveEnemigaCaza::ANaveEnemigaCaza()
@@ -39,6 +50,9 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
         UE_LOG(LogTemp, Warning, TEXT("Creando el componente de puntaje"));
     }
     nombre = "NaveEnemigaCaza";
+
+    //Tag
+    Tags.Add(FName("Radar"));
 }
 
 void ANaveEnemigaCaza::Tick(float DeltaTime)
@@ -51,6 +65,8 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
 
     FVector NewLocation = FVector(GetActorLocation().X, NuevaY, GetActorLocation().Z);
     SetActorLocation(NewLocation);
+    //Notificar ala radar cada segundo
+    NotificarRadar();
 
     TiempoTranscurrido++;
     if (TiempoTranscurrido > 500)
@@ -198,6 +214,28 @@ void ANaveEnemigaCaza::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
             }
         }
        
+    }
+}
+
+void ANaveEnemigaCaza::SuscribirRadar(AActor* Radar)
+{
+    if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+    {
+        Observers.Add(Radar);
+        UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+    }
+}
+
+void ANaveEnemigaCaza::NotificarRadar()
+{
+    for (AActor* Observer : Observers)
+    {
+        IIObserverRadar* ObserverInterface = Cast<IIObserverRadar>(Observer);
+        if (ObserverInterface)
+        {
+            ObserverInterface->UpdatePosition(this);
+            UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
+        }
     }
 }
 

@@ -34,6 +34,8 @@ public:
 	ANaveEnemigaTransporte();
 	virtual void Mover(float DeltaTime);
 
+	virtual void BeginPlay() override;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Nave Enemiga Nodriza")
 	float TiempoDescarga;
 
@@ -42,6 +44,13 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Nave Enemiga Nodriza")
 	float CapacidadCarga;
+
+	//Patron Observer
+	void SuscribirRadar(AActor* Radar);
+	void NotificarRadar();
+
+private:
+	TArray<AActor*> Observers;
 
 
 };

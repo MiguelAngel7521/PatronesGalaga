@@ -3,6 +3,11 @@
 
 #include "NaveEnemigaEspia.h"
 #include "AdapterPatern1Projectile.h"
+//Patron Observer
+#include "RadarHDU.h"
+#include "IObserverRadar.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
 
 ANaveEnemigaEspia::ANaveEnemigaEspia()
 {
@@ -18,11 +23,26 @@ ANaveEnemigaEspia::ANaveEnemigaEspia()
 	Sigilo = 100;
 	consumo_de_energia = 10;
 	Armamento = 10;
+
+	// Tag
+	Tags.Add(FName("Radar"));
 }
 
 void ANaveEnemigaEspia::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//Suscribirse a todos los radares
+	for (TActorIterator<ARadarHDU> It(GetWorld()); It; ++It)
+	{
+		SuscribirRadar(*It);
+	}
+}
+
+void ANaveEnemigaEspia::Tick(float DeltaTime)
+{
+	//Notificar ala radar cada segundo
+	NotificarRadar();
 }
 
 void ANaveEnemigaEspia::Mover(float DeltaTime)
@@ -51,6 +71,28 @@ void ANaveEnemigaEspia::RecopilarInformacion()
 
 void ANaveEnemigaEspia::InterceptarComunicaciones()
 {
+}
+
+void ANaveEnemigaEspia::SuscribirRadar(AActor* Radar)
+{
+	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+	{
+		Observers.Add(Radar);
+		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+	}
+}
+
+void ANaveEnemigaEspia::NotificarRadar()
+{
+	for (AActor* Observer : Observers)
+	{
+		IIObserverRadar* ObserverInterface = Cast<IIObserverRadar>(Observer);
+		if (ObserverInterface)
+		{
+			ObserverInterface->UpdatePosition(this);
+			UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
+		}
+	}
 }
 
 //void ANaveEnemigaEspia::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)

@@ -1,16 +1,16 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
+#include "IObserverRadar.h"
 #include "RadarHDU.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ADAPTERPATERN1_API ARadarHDU : public AHUD
+class ADAPTERPATERN1_API ARadarHDU : public AHUD   , public IIObserverRadar
 {
 	GENERATED_BODY()
 protected:
@@ -58,9 +58,17 @@ private:
 	void DrawRadar();
 	void DrawPlayerInRadar();
 	void PerformRadarRaycast();
+
+	TArray<AActor*> RadarActors;
 public:
 	/*Draws the radar on the screen*/
 	virtual void DrawHUD() override;
+
+	/*Called when the radar is updated*/
+	void UpdatePosition(AActor* Actor) override;
+	
+	
+	
 
 
 };

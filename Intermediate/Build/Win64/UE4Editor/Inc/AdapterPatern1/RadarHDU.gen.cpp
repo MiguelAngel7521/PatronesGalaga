@@ -18,6 +18,7 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 	ENGINE_API UClass* Z_Construct_UClass_AHUD();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector2D();
+	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIObserverRadar_NoRegister();
 // End Cross Module References
 	void ARadarHDU::StaticRegisterNativesARadarHDU()
 	{
@@ -61,6 +62,7 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_RadarDistanceScale;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -145,6 +147,9 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARadarHDU_Statics::NewProp_SphereRadius,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarDistanceScale,
 	};
+		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_ARadarHDU_Statics::InterfaceParams[] = {
+			{ Z_Construct_UClass_UIObserverRadar_NoRegister, (int32)VTABLE_OFFSET(ARadarHDU, IIObserverRadar), false },
+		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ARadarHDU_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ARadarHDU>::IsAbstract,
 	};
@@ -155,11 +160,11 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 		DependentSingletons,
 		nullptr,
 		Z_Construct_UClass_ARadarHDU_Statics::PropPointers,
-		nullptr,
+		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::PropPointers),
-		0,
+		UE_ARRAY_COUNT(InterfaceParams),
 		0x009002ACu,
 		METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::Class_MetaDataParams))
 	};
@@ -172,7 +177,7 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ARadarHDU, 2011180657);
+	IMPLEMENT_CLASS(ARadarHDU, 146891292);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ARadarHDU>()
 	{
 		return ARadarHDU::StaticClass();

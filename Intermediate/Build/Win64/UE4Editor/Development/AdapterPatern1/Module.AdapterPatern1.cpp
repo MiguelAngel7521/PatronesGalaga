@@ -21,6 +21,7 @@
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroEspecialista2.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroEspecialista3.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroGeneral.cpp"
+#include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IObserverRadar.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemiga.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaBuilder.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaCaza.cpp"

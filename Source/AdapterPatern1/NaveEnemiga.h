@@ -105,5 +105,12 @@ public:
 	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
+	//Patron Observer
+	void SuscribirRadar(AActor* Radar);
+	void NotificarRadar();
+
+private:
+	TArray<AActor*> Observers;
+
 
 };

@@ -43,6 +43,10 @@ public:
 	void DispararMisiles();
 	virtual void mover(float DeltaTime);
 	virtual void FireProjectile() override;
+
+	//Etiqueta
+	UPROPERTY(EditAnywhere, Category = "Etiquetas")
+	FString EtiquetaPersonalizada = "Radar";
     
 
 public:
@@ -53,13 +57,16 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Proyectil")
 	float FireRate;
-
 	float FireCooldown;
-	
-
-
 	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
 
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	//Patron Observer
+	void SuscribirRadar(AActor* Radar);
+	void NotificarRadar();
+
+private:
+	TArray<AActor*> Observers;
 
 };

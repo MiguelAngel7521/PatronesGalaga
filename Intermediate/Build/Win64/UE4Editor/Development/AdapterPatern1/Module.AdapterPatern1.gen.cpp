@@ -21,6 +21,7 @@
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/IngenieroEspecialista2.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/IngenieroEspecialista3.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/IngenieroGeneral.gen.cpp"
+#include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/IObserverRadar.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/NaveEnemiga.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/NaveEnemigaBuilder.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/NaveEnemigaCaza.gen.cpp"

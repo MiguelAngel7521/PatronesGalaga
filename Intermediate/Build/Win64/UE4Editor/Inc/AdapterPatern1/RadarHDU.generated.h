@@ -22,7 +22,8 @@ private: \
 	friend struct Z_Construct_UClass_ARadarHDU_Statics; \
 public: \
 	DECLARE_CLASS(ARadarHDU, AHUD, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/AdapterPatern1"), NO_API) \
-	DECLARE_SERIALIZER(ARadarHDU)
+	DECLARE_SERIALIZER(ARadarHDU) \
+	virtual UObject* _getUObject() const override { return const_cast<ARadarHDU*>(this); }
 
 
 #define AdapterPatern1_Source_AdapterPatern1_RadarHDU_h_15_INCLASS \
@@ -31,7 +32,8 @@ private: \
 	friend struct Z_Construct_UClass_ARadarHDU_Statics; \
 public: \
 	DECLARE_CLASS(ARadarHDU, AHUD, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/AdapterPatern1"), NO_API) \
-	DECLARE_SERIALIZER(ARadarHDU)
+	DECLARE_SERIALIZER(ARadarHDU) \
+	virtual UObject* _getUObject() const override { return const_cast<ARadarHDU*>(this); }
 
 
 #define AdapterPatern1_Source_AdapterPatern1_RadarHDU_h_15_STANDARD_CONSTRUCTORS \

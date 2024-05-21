@@ -32,6 +32,7 @@ protected:
     virtual void BeginPlay() override;
 
     virtual void Mover(float DeltaTime);
+    virtual void Tick(float DeltaTime) override;
 
 
 
@@ -48,4 +49,11 @@ protected:
     void ReabastecerEnergia();
 
     void DefenderTripulacion();
+
+    //Patron Observer
+    void SuscribirRadar(AActor* Radar);
+    void NotificarRadar();
+
+private:
+    TArray<AActor*> Observers;
 };
