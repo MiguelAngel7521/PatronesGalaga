@@ -30,4 +30,5 @@
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/Nivel.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/ProjectileEnemigo.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/Puntaje.gen.cpp"
+#include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/RadarHDU.gen.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/SistemaPuntuacionComponente.gen.cpp"

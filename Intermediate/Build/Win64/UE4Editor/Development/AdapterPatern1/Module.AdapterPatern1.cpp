@@ -30,4 +30,5 @@
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Nivel.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/ProjectileEnemigo.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Puntaje.cpp"
+#include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/RadarHDU.cpp"
 #include "C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/SistemaPuntuacionComponente.cpp"

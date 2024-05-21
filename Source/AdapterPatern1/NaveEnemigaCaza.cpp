@@ -12,9 +12,7 @@ USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponent
 void ANaveEnemigaCaza::BeginPlay()
 {
 	Super::BeginPlay();
-
- 
-
+    //cadencia del projectile
 	FireCooldown = 0.f;
 }
 
@@ -189,7 +187,7 @@ void ANaveEnemigaCaza::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, U
             Projectile->Destroy();
 
             Destroy();
-
+            
             if (SharedSistemaPuntuacionComponente)
             {
                 SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);

@@ -30,12 +30,12 @@ ANaveEnemiga::ANaveEnemiga()
 	FireRate = 3.0f;//Cadencia Balas
 
 	//Creacion del Componente de Puntaje
-	/*if (SharedSistemaPuntuacionComponente == nullptr)
+	if (SharedSistemaPuntuacionComponente == nullptr)
 	{
 		SharedSistemaPuntuacionComponente = CreateDefaultSubobject<USistemaPuntuacionComponente>(TEXT("SistemaPuntuacionComponente"));
 		UE_LOG(LogTemp, Warning, TEXT("Creando el componente de puntaje"));
 	}
-	nombre = "NaveEnemiga";*/
+	nombre = "NaveEnemiga";
 	
 
 }
@@ -106,8 +106,8 @@ void ANaveEnemiga::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 		AAdapterPatern1Projectile* Projectile = Cast<AAdapterPatern1Projectile>(OtherActor);
 		if (Projectile)
 		{
-			// Destruye el proyectil
-			Projectile->Destroy();
+			//// Destruye el proyectil
+			//Projectile->Destroy();
 
 			Destroy();
 
