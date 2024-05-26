@@ -106,11 +106,21 @@ public:
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	//Patron Observer
-	void SuscribirRadar(AActor* Radar);
+	
 	void NotificarRadar();
 
 private:
 	TArray<AActor*> Observers;
+	//Patron Observer Inge
+	public:
+		void EvitarArma();
+		void DirigirseReabastecimiento();
+		float ObtenerEnergia() const;
+		class ARadarEnemigo* Radar;
+
+private:
+	float Energia;
+	FVector UltimaPosicionArma;
 
 
 };

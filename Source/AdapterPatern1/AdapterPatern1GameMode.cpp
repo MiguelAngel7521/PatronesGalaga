@@ -30,9 +30,9 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Adapter
 	Jugador = GetWorld()->SpawnActor<AAdapterPatern1Pawn>(AAdapterPatern1Pawn::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
 	Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
-	Adapter = GetWorld()->SpawnActor<ABallAdapter>(ABallAdapter::StaticClass(),FVector(0,0,0),FRotator::ZeroRotator);
+	Adapter = GetWorld()->SpawnActor<ABallAdapter>(ABallAdapter::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
 	Jugador->SetBounceBall(Adapter);
-    Jugador->Lanzar();
+	Jugador->Lanzar();
 
 
 	//Patron Builder
@@ -51,7 +51,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	Director->ConstruirNaveEscudo();
 
 	AConstruirNaveEnemiga* NaveEnemiga2 = Director->ObtenerNave();*/
-
+	
 
 	/*Ingeniero3 = GetWorld()->SpawnActor<AIngenieroEspecialista3>(AIngenieroEspecialista3::StaticClass());
 
@@ -64,7 +64,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelDificil();
+	Facade->NivelMedio();
 
 
 	//Patron Factory

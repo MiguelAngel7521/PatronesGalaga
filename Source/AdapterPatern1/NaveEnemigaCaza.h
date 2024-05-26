@@ -1,17 +1,17 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
 #include "SistemaPuntuacionComponente.h"
+#include "ISuscriptor.h"
 #include "NaveEnemigaCaza.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ADAPTERPATERN1_API ANaveEnemigaCaza : public ANaveEnemiga
+class ADAPTERPATERN1_API ANaveEnemigaCaza : public ANaveEnemiga, public IISuscriptor
 {
 	GENERATED_BODY()
 	
@@ -62,11 +62,24 @@ public:
 
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-	//Patron Observer
-	void SuscribirRadar(AActor* Radar);
+	//Patron Observer 
+	void SuscribirRadar(AActor* RadarHDU);
 	void NotificarRadar();
 
 private:
 	TArray<AActor*> Observers;
+
+	//Patron Observer Ingeniero
+public:
+	virtual void Actualizar(const FVector& PosicionArma, const FString& Accion) override;
+	virtual float ObtenerEnergia() const;
+
+private:
+	FVector UltimaPosicionArma;
+	float Energia;
+	bool bReabasteciendo;
+
+	void EvitarArma();
+	void DirigirseReabastecimiento();
 
 };

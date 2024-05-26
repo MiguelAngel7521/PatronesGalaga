@@ -38,15 +38,7 @@ void ANaveEnemigaNodriza::BeginPlay()
 		}
 }
 
-void ANaveEnemigaNodriza::Mover(float DeltaTime)
-{
-	FVector PosicionActual = GetActorLocation();
-	float NuevaX = FMath::RandRange(-1000, 1000) * DeltaTime;
-	float NuevaY = FMath::RandRange(-1000, 1000) * DeltaTime;
-	FVector NuevaPosicion = FVector(PosicionActual.X + NuevaX, PosicionActual.Y + NuevaY, PosicionActual.Z);
-	NuevaPosicion.X = NuevaPosicion.X + 100 * DeltaTime;
-	SetActorLocation(NuevaPosicion);
-}
+
 
 void ANaveEnemigaNodriza::Tick(float DeltaTime)
 {
@@ -76,12 +68,12 @@ void ANaveEnemigaNodriza::DefenderTripulacion()
 {
 }
 
-void ANaveEnemigaNodriza::SuscribirRadar(AActor* Radar)
+void ANaveEnemigaNodriza::SuscribirRadar(AActor* RadarHDU)
 {
-	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+	if (RadarHDU->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
 	{
-		Observers.Add(Radar);
-		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+		Observers.Add(RadarHDU);
+		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *RadarHDU->GetName());
 	}
 }
 

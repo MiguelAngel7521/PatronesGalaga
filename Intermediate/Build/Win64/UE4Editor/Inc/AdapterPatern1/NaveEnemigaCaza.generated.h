@@ -22,7 +22,8 @@ private: \
 	friend struct Z_Construct_UClass_ANaveEnemigaCaza_Statics; \
 public: \
 	DECLARE_CLASS(ANaveEnemigaCaza, ANaveEnemiga, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/AdapterPatern1"), NO_API) \
-	DECLARE_SERIALIZER(ANaveEnemigaCaza)
+	DECLARE_SERIALIZER(ANaveEnemigaCaza) \
+	virtual UObject* _getUObject() const override { return const_cast<ANaveEnemigaCaza*>(this); }
 
 
 #define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_INCLASS \
@@ -31,7 +32,8 @@ private: \
 	friend struct Z_Construct_UClass_ANaveEnemigaCaza_Statics; \
 public: \
 	DECLARE_CLASS(ANaveEnemigaCaza, ANaveEnemiga, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/AdapterPatern1"), NO_API) \
-	DECLARE_SERIALIZER(ANaveEnemigaCaza)
+	DECLARE_SERIALIZER(ANaveEnemigaCaza) \
+	virtual UObject* _getUObject() const override { return const_cast<ANaveEnemigaCaza*>(this); }
 
 
 #define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_STANDARD_CONSTRUCTORS \

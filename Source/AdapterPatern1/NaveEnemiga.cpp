@@ -10,8 +10,10 @@
 //Patron Observer
 #include "RadarHDU.h"
 #include "IObserverRadar.h"
-#include "Engine/World.h"
+#include "Engine/World.h" 
 #include "EngineUtils.h"
+#include "RadarEnemigo.h"
+#include "NaveEnemigaCaza.h"
 
 
 
@@ -46,6 +48,7 @@ ANaveEnemiga::ANaveEnemiga()
 	nombre = "NaveEnemiga";
 	//Tag
 	Tags.Add(FName("Radar"));
+	Energia = 100.0f;
 	
 
 }
@@ -57,10 +60,16 @@ void ANaveEnemiga::BeginPlay()
 
 	GetWorld()->GetTimerManager().SetTimer(FireTimerHandle, this, &ANaveEnemiga::FireProjectile, FireRate, true);
 	// Suscribir el radar
-	for (TActorIterator<ARadarHDU> It(GetWorld()); It; ++It)
+	/*for (TActorIterator<ARadarEnemigo> It(GetWorld()); It; ++It)
 	{
-		SuscribirRadar(*It);
-	}
+		Radar = *It;
+		if (Radar)
+		{
+			Radar->AgregarObservador(this);
+			break;
+		}
+	}*/
+	
 	
 }
 
@@ -83,6 +92,9 @@ void ANaveEnemiga::FireProjectile()
 
 		// Dispara el proyectil
 		Projectile->Fire();
+
+
+		
 	}
 }
 
@@ -100,19 +112,7 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	//Notificar ala radar cada segundo
 	NotificarRadar();
 
-
-
-	//Angulo += Speed * DeltaTime;
-
-	////// Calcula las nuevas posiciones en x y y
-	//float NuevaX = GetActorLocation().X + Radio * FMath::Cos(Angulo) * DeltaTime;
-	//float NuevaY = GetActorLocation().Y + Radio * FMath::Sin(Angulo) * DeltaTime;
-
-	////// Establece la nueva posición
-	//FVector NewLocation = FVector(NuevaX, NuevaY, GetActorLocation().Z);
-	//SetActorLocation(NewLocation);
-
-	//MovimientoNavesComponent->TickComponent(DeltaTime, ELevelTick::LEVELTICK_TimeOnly, nullptr); 
+ 
 }
 
 
@@ -128,38 +128,41 @@ void ANaveEnemiga::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 
 			Destroy();
 
-			if (SharedSistemaPuntuacionComponente)
+			/*if (SharedSistemaPuntuacionComponente)
 			{
 				SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
 			}
 			else
 			{
 				UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
-			}
+			}*/
 		}
 	}
 }
 
-void ANaveEnemiga::SuscribirRadar(AActor* Radar)
-{
-	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
-	{
-		Observers.Add(Radar);
-		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
-	}
-}
+
 
 void ANaveEnemiga::NotificarRadar()
 {
 
-	for (AActor* Observer : Observers)
-	{
-		IIObserverRadar* ObserverInterface = Cast<IIObserverRadar>(Observer);
-		if (ObserverInterface)
-		{
-			ObserverInterface->UpdatePosition(this);
-			UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
-		}
-	}
+	
+}
+
+void ANaveEnemiga::EvitarArma()
+{
+	FVector PosicionActual = GetActorLocation();
+	PosicionActual.Y += 100.0f; // Ajusta la lógica para evitar el arma
+	SetActorLocation(PosicionActual);	
+}
+
+void ANaveEnemiga::DirigirseReabastecimiento()
+{
+	FVector PuntoReabastecimiento(2480.0f, -2620.0f, 250.0f); // Define la ubicación del punto de reabastecimiento
+	SetActorLocation(PuntoReabastecimiento);
+}
+
+float ANaveEnemiga::ObtenerEnergia() const
+{
+	return Energia;
 }
 

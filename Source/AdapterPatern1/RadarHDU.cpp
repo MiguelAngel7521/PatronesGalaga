@@ -157,6 +157,6 @@ void ARadarHDU::UpdatePosition(AActor* Actor)
 	if (Actor)
 	{
 		RadarActors.AddUnique(Actor);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Actor added to radar"));
+		/*GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Actor added to radar"));*/
 	}
 }

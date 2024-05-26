@@ -31,7 +31,6 @@ public:
 protected:
     virtual void BeginPlay() override;
 
-    virtual void Mover(float DeltaTime);
     virtual void Tick(float DeltaTime) override;
 
 

@@ -68,17 +68,17 @@ void ANaveEnemigaTransporte::BeginPlay()
 	//Suscribir al radar
 	for (TActorIterator<ARadarHDU> ActorItr(GetWorld()); ActorItr; ++ActorItr)
 	{
-		ARadarHDU* Radar = *ActorItr;
-		SuscribirRadar(Radar);
+		ARadarHDU* RadarHDU = *ActorItr;
+		SuscribirRadar(RadarHDU);
 	}
 }
 
-void ANaveEnemigaTransporte::SuscribirRadar(AActor* Radar)
+void ANaveEnemigaTransporte::SuscribirRadar(AActor* RadarHDU)
 {
-	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+	if (RadarHDU->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
 	{
-		Observers.Add(Radar);
-		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+		Observers.Add(RadarHDU);
+		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *RadarHDU->GetName());
 	}
 }
 

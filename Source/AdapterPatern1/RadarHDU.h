@@ -59,7 +59,6 @@ private:
 	void DrawPlayerInRadar();
 	void PerformRadarRaycast();
 
-	TArray<AActor*> RadarActors;
 public:
 	/*Draws the radar on the screen*/
 	virtual void DrawHUD() override;

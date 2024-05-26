@@ -73,12 +73,12 @@ void ANaveEnemigaEspia::InterceptarComunicaciones()
 {
 }
 
-void ANaveEnemigaEspia::SuscribirRadar(AActor* Radar)
+void ANaveEnemigaEspia::SuscribirRadar(AActor* RadarHDU)
 {
-	if (Radar->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
+	if (RadarHDU->GetClass()->ImplementsInterface(UIObserverRadar::StaticClass()))
 	{
-		Observers.Add(Radar);
-		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *Radar->GetName());
+		Observers.Add(RadarHDU);
+		UE_LOG(LogTemp, Warning, TEXT("Suscrito al radar: %s"), *RadarHDU->GetName());
 	}
 }
 
