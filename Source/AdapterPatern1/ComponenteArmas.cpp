@@ -45,20 +45,13 @@ void AComponenteArmas::FireProjectile()
         // Calcula la rotación basada en la dirección hacia adelante
 
         //FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
-        
 
         FRotator SpawnRotation = ForwardDirection.Rotation();
         
-       
-        
-
-
         // Configura la posición y dirección del proyectil
         FVector SpawnLocation = GetActorLocation();
         SpawnLocation.X += 200;
  
-
-
         Projectile->SetActorLocationAndRotation(SpawnLocation, SpawnRotation);
 
         // Dispara el proyectil

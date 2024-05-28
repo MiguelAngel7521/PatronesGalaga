@@ -4,6 +4,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "IEstados.h"
+#include "AdapterPatern1Pawn.h"
 #include "Basico.generated.h"
 
 UCLASS()
@@ -18,17 +19,29 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-private:
-	class AAdapterPatern1Pawn* Jugador;
+
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+protected:
+	UPROPERTY(VisibleAnywhere, Category = "Estado Basico")
+	AAdapterPatern1Pawn* Jugador;
 
-	void ConArmas () override;
-	void ConCamuflaje () override;
-	void ConEscudos () override;
-	void Invencible () override;
-	void ConRadar () override;
+public:
+
+	//Establecemos el jugador
+	void EstablecerJugador(class AAdapterPatern1Pawn* _Jugador) override;
+	//Establecemos los diferentes estados
+	void Basico() override;
+	//Visualizamos los estados actuales del jugador
+	FString ObtenerEstado() override;
+
+private:
+	void ConArmamentoAdicional () override {} ;
+	void ConCamuflaje () override {};
+	void ConEscudos () override {};
+	void Invencible () override {};
+	void ConRadar() override {};
 
 };

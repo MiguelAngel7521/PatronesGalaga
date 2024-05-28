@@ -26,13 +26,33 @@ AAdapterPatern1GameMode::AAdapterPatern1GameMode()
 void AAdapterPatern1GameMode::BeginPlay()
 {
 	Super::BeginPlay();
-
 	//Patron Adapter
 	Jugador = GetWorld()->SpawnActor<AAdapterPatern1Pawn>(AAdapterPatern1Pawn::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
 	Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	Adapter = GetWorld()->SpawnActor<ABallAdapter>(ABallAdapter::StaticClass(), FVector(0, 0, 0), FRotator::ZeroRotator);
 	Jugador->SetBounceBall(Adapter);
 	Jugador->Lanzar();
+
+	//Patron State
+
+	//Inicilaiamos el estado basico
+
+	Jugador->InicializarEstadosJugador("Basico");
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("%s"), *Jugador->J_ObtenerEstadoActual()));
+	Jugador->JugadorBasico();
+
+	//Cambiamos el estado a ConEscudos
+	/*if (Jugador->EnergiaRestante < 110) {
+
+		Jugador->InicializarEstadosJugador("ConEscudos");
+		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("%s"), *Jugador->J_ObtenerEstadoActual()));
+		Jugador->JugadorConEscudos();
+	}*/
+
+
+
+
+
 
 
 	//Patron Builder
@@ -64,7 +84,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelMedio();
+	Facade->NivelFacil();
 
 
 	//Patron Factory

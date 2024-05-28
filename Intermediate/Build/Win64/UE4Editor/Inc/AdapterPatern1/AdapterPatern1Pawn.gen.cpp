@@ -18,6 +18,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -41,6 +42,10 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ShipMeshComponent_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ShipMeshComponent;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CamuflajeMesh_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CamuflajeMesh;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraComponent_MetaData[];
 #endif
@@ -94,6 +99,16 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent = { "ShipMeshComponent", nullptr, (EPropertyFlags)0x00400000000b001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, ShipMeshComponent), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Mesh" },
+		{ "Comment", "//Malla 2\n" },
+		{ "ModuleRelativePath", "AdapterPatern1Pawn.h" },
+		{ "ToolTip", "Malla 2" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh = { "CamuflajeMesh", nullptr, (EPropertyFlags)0x0040000000030015, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, CamuflajeMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -154,6 +169,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_FireSound = { "FireSound", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, FireSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_FireSound_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_FireSound_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAdapterPatern1Pawn_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraBoom,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_GunOffset,
@@ -191,7 +207,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAdapterPatern1Pawn, 1324097594);
+	IMPLEMENT_CLASS(AAdapterPatern1Pawn, 2269558781);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AAdapterPatern1Pawn>()
 	{
 		return AAdapterPatern1Pawn::StaticClass();

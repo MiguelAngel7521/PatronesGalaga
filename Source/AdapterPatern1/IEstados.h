@@ -23,9 +23,15 @@ class ADAPTERPATERN1_API IIEstados
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
-	virtual void ConArmas () = 0;	
+	//Establecemos el jugador
+	virtual void EstablecerJugador(class AAdapterPatern1Pawn*  _Jugador) = 0;
+	//Establecemos los diferentes estados
+	virtual void Basico() = 0;
+	virtual void ConArmamentoAdicional() = 0;
 	virtual void ConEscudos () = 0;
 	virtual void Invencible () = 0;
 	virtual void ConCamuflaje () = 0;
 	virtual void ConRadar () = 0;
+	//Visualizamos los estados actuales del jugador
+	virtual FString ObtenerEstado() = 0;
 };

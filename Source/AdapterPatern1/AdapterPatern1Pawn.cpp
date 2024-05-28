@@ -13,6 +13,15 @@
 #include "Sound/SoundBase.h"
 #include "CapsulasFacade.h"
 //#include "Bomba.h"
+//Patron State
+#include "Basico.h"
+#include "EstadoConArmamentoAdicional.h"
+#include "ComponenteEscudo.h"
+#include "EstadoConCamuflaje.h"
+#include "EstadoConEscudo.h"
+#include "EstadoInvencible.h"
+#include "IEstados.h"
+#include "ArmaAmiga.h"
 
 
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
@@ -24,8 +33,10 @@ AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 {	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
-	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
+	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));		
 	RootComponent = ShipMeshComponent;
+	/*CamouflageMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CamuflajeMesh"));*/
+
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
 	
@@ -52,6 +63,14 @@ AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+
+	Escudo = nullptr;
+	// Inicializar con el estado básico
+	Estado = NewObject<ABasico>();
+	Estado->EstablecerJugador(this);
+
+	//Creando la malla dinamica
+	DynamicMaterialInstance = ShipMeshComponent->CreateAndSetMaterialInstanceDynamic(0);
 }
 
 void AAdapterPatern1Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -153,35 +172,10 @@ void AAdapterPatern1Pawn::SetBounceBall(AActor* _Adaptador)
 		return;
 }
 
-void AAdapterPatern1Pawn::SpawnBomba()
-{
-	//if (bBombaSpawned == false) {
-	//	if (GetWorld())
-	//	{
-	//		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Bomba Spawned"));
-	//		FVector SpawnLocation = GetActorLocation();
-	//		FRotator SpawnRotation = GetActorRotation();
-
-	//		// Utiliza la variable BombaClass para instanciar el objeto ABomba
-	//		ABomba* NuevaBomba = GetWorld()->SpawnActor<ABomba>(BombaClass, SpawnLocation, SpawnRotation);
-	//		// Spawnea un nuevo actor Bomba en la ubicación del actor actual
-
-	//		if (NuevaBomba)
-	//		{
-	//			NuevaBomba->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
-	//			bBombaSpawned = true;
-	//		}
-	//		else
-	//		{
-	//			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Bomba not Spawned"));
-	//		}
-	//	}
-	//}
-}
 
 void AAdapterPatern1Pawn::RecibirDanio(int32 CantidadDanio)
 {
-	ReducirEnergia(CantidadDanio);
+	
 
 	// Si la energía del jugador llega a 0, reducir una vida y reiniciar la energía
 	if (EnergiaJugador <= 0)
@@ -196,18 +190,42 @@ void AAdapterPatern1Pawn::RecibirDanio(int32 CantidadDanio)
 			UE_LOG(LogTemp, Warning, TEXT("Juego Terminado"));
 		}
 	}
+	
 }
 
-void AAdapterPatern1Pawn::ReducirEnergia(int32 Cantidad)
+void AAdapterPatern1Pawn::ReducirEnergia1()
 {
-	EnergiaJugador -= Cantidad;
+	if (EnergiaRestante > 0)
+		EnergiaRestante = EnergiaRestante - 10;
+	if (EnergiaRestante < 10)
+		MoveSpeed = -600;
+	
+	if (EnergiaRestante == 50)
+	{
+		InicializarEstadosJugador("ConEscudos");
+		EstadoConEscudos ->ConEscudos();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
+	if (EnergiaRestante == 150)
+	{
+		InicializarEstadosJugador("ConArmamentoAdicional");
+		EstadoConArmamentoAdicional->ConArmamentoAdicional();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
+	if (EnergiaRestante == 170)
+	{
+		InicializarEstadosJugador("ConCamuflaje");
+		EstadoConCamuflaje->ConCamuflaje();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
+	if (EnergiaRestante == 190)
+	{
+		InicializarEstadosJugador("Invensible");
+		EstadoInvensible->Invencible();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
 
-
-	// Asegurarse de que la energía no baje de 0
-	EnergiaJugador = FMath::Max(0, EnergiaJugador);
 }
-
-
 
 void AAdapterPatern1Pawn::recibirImpacto()
 {
@@ -229,3 +247,138 @@ void AAdapterPatern1Pawn::Energia()
 	}
 }
 
+void AAdapterPatern1Pawn::InicializarEstadosJugador(FString _Estados)
+{
+	// Inicializar con el estado básico
+	if (_Estados.Equals("Basico")) {
+		EstadoBasico = GetWorld()->SpawnActor<ABasico>(ABasico::StaticClass());
+		EstadoBasico->EstablecerJugador(this);
+		EstablecerEstados(EstadoBasico);
+	}
+	if (_Estados.Equals("ConArmamentoAdicional")) {
+		EstadoConArmamentoAdicional = GetWorld()->SpawnActor<AEstadoConArmamentoAdicional>(AEstadoConArmamentoAdicional::StaticClass());
+		EstadoConArmamentoAdicional->EstablecerJugador(this);
+		EstablecerEstados(EstadoConArmamentoAdicional);
+	}
+	if (_Estados.Equals("Invensible")) {
+		EstadoInvensible = GetWorld()->SpawnActor<AEstadoInvencible>(AEstadoInvencible::StaticClass());
+		EstadoInvensible->EstablecerJugador(this);
+		EstablecerEstados(EstadoInvensible);
+	}
+	if (_Estados.Equals("ConEscudos")) {
+		EstadoConEscudos = GetWorld()->SpawnActor<AEstadoConEscudo>(AEstadoConEscudo::StaticClass());
+		EstadoConEscudos->EstablecerJugador(this);
+		EstablecerEstados(EstadoConEscudos);
+	}
+	if (_Estados.Equals("ConCamuflaje")) {
+		EstadoConCamuflaje = GetWorld()->SpawnActor<AEstadoConCamuflaje>(AEstadoConCamuflaje::StaticClass());
+		EstadoConCamuflaje->EstablecerJugador(this);
+		EstablecerEstados(EstadoConCamuflaje);
+	}Estado->EstablecerJugador(this);
+}
+
+
+void AAdapterPatern1Pawn::EstablecerEstados(IIEstados* _Estado)
+{
+	Estado = _Estado;
+}
+
+void AAdapterPatern1Pawn::JugadorBasico()
+{
+	Estado->Basico();
+}
+
+void AAdapterPatern1Pawn::JugadorConArmasAdicionales()
+{
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.Owner = this;
+	FVector SpawnLocation = GetActorLocation() + FVector(0.0f, 300.0f, 0.0f);
+	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
+		for (int i = 0; i < 2; i++)
+		{
+			
+			ArmaAmiga = GetWorld()->SpawnActor<AArmaAmiga>(AArmaAmiga::StaticClass(), SpawnLocation, SpawnRotation, SpawnParams);
+			if (ArmaAmiga)
+			{
+				ArmaAmiga->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
+			}
+			SpawnLocation.Y += -500.0f;
+		}
+
+}
+
+void AAdapterPatern1Pawn::JugadorConEscudos()
+{
+	/*Estado->ConEscudos();*/
+	if (!Escudo)
+	{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = this;
+			FVector SpawnLocation = GetActorLocation() + GetActorForwardVector() * 100.0f;
+			SpawnLocation.X += 100.0f;
+			FRotator SpawnRotation = FRotator(0.0f, 90.0f, 0.0f);
+			Escudo = GetWorld()->SpawnActor<AComponenteEscudo>(AComponenteEscudo::StaticClass(), SpawnLocation, SpawnRotation, SpawnParams);
+			if (Escudo)
+			{
+				Escudo->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
+			}
+	}
+}
+
+void AAdapterPatern1Pawn::JugadorInvensible()
+{
+
+	if (DynamicMaterialInstance)
+	{
+		DynamicMaterialInstance->SetVectorParameterValue("BaseColor", FLinearColor::Yellow); // Cambia "BaseColor" al nombre del parámetro correcto en tu material
+	}
+}
+
+void AAdapterPatern1Pawn::JugadorConCamuflaje()
+{
+	
+	
+}
+
+
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstado()
+{
+	return Estado;
+}
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstadoBasico()
+{
+	return EstadoBasico;
+}
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstadoConArmamentoAdicional()
+{
+	return EstadoConArmamentoAdicional;
+}
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstadoConEscudos()
+{
+	return EstadoConEscudos;
+}
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstadoInvensible()
+{
+	return EstadoInvensible;
+}
+
+IIEstados* AAdapterPatern1Pawn::J_ObtenerEstadoConCamuflaje()
+{
+	return EstadoConCamuflaje;
+}
+
+
+FString AAdapterPatern1Pawn::J_ObtenerEstadoActual()
+{
+	if (Estado) {
+		return "El estado actual del jugador es: " + Estado->ObtenerEstado();
+	}
+	else {
+		return "Estado no inicializado";
+	}
+}

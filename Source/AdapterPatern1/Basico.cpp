@@ -26,34 +26,20 @@ void ABasico::Tick(float DeltaTime)
 
 }
 
-void ABasico::ConArmas()
+
+void ABasico::EstablecerJugador(AAdapterPatern1Pawn* _Jugador)
 {
-	//Jugador = Cast <AAdapterPatern1Pawn>(GetWorld()->GetFirstPlayerController()->GetPawn());
-	///*Jugador = GetWorld()->SpawnActor<AAdapterPatern1Pawn>(AAdapterPatern1Pawn::StaticClass());*/
-	//if (Jugador->ObtenerEnergiaRestante() > 0)
-	//{
-	//	//estas en el estado de armas
-	//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("estado Con Armas"));
-	//}
+	Jugador = _Jugador;
 }
 
-void ABasico::ConCamuflaje()
+void ABasico::Basico()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT(" Estado Camuflaje No Activado estas en el estado Basico"));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Magenta, FString::Printf(TEXT("La vida del jugador decremento un 25%%")));
 }
 
-void ABasico::ConEscudos()
-{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Estado ConCamuflaje No Activado estas en el estado Basico"));
-}
 
-void ABasico::Invencible()
+FString ABasico::ObtenerEstado()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Estado Invencible No Activado estas en el estado Basico"));
-}
-
-void ABasico::ConRadar()
-{
-
+	return "Nave jugador En estado Basico";
 }
 

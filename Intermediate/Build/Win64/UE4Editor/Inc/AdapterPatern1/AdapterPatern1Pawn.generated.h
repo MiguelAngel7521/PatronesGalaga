@@ -62,6 +62,7 @@ public: \
 
 #define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_13_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__ShipMeshComponent() { return STRUCT_OFFSET(AAdapterPatern1Pawn, ShipMeshComponent); } \
+	FORCEINLINE static uint32 __PPO__CamuflajeMesh() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CamuflajeMesh); } \
 	FORCEINLINE static uint32 __PPO__CameraComponent() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CameraBoom); }
 

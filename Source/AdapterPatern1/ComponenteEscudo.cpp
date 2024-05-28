@@ -22,7 +22,7 @@ void AComponenteEscudo::BeginPlay()
 	Super::BeginPlay();
 	
 }
-
+ 
 // Called every frame
 void AComponenteEscudo::Tick(float DeltaTime)
 {

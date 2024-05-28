@@ -65,7 +65,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Facade_MetaData[] = {
 		{ "Category", "Game mode" },
-		{ "Comment", "//Patron Facade\n" },
+		{ "Comment", "//Patron Facade \n" },
 		{ "ModuleRelativePath", "AdapterPatern1GameMode.h" },
 		{ "ToolTip", "Patron Facade" },
 	};
@@ -117,7 +117,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAdapterPatern1GameMode, 507387456);
+	IMPLEMENT_CLASS(AAdapterPatern1GameMode, 2445614778);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AAdapterPatern1GameMode>()
 	{
 		return AAdapterPatern1GameMode::StaticClass();

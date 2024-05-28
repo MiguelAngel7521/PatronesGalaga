@@ -14,7 +14,7 @@ public:
 	AAdapterPatern1GameMode();
 protected:
 	virtual void BeginPlay() override;
-	//Patron Facade
+	//Patron Facade 
 	UPROPERTY(VisibleAnywhere, Category = "Game mode")
 	class ACapsulasFacade* Facade;
 
@@ -71,6 +71,9 @@ private:
 
 	//UPROPERTY(VisibleAnywhere, Category = "GameModeBase")
 	//ADirectorPaquetesEnergia* Director;
+
+	//Patron State 
+	
 };
 
 

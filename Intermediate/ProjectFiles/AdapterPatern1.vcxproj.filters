@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{83A9E658-D523-4107-9AB4-D3DE01424C58}</UniqueIdentifier>
+      <UniqueIdentifier>{AEC60CC3-6D9F-4CA5-BD27-7F0EC37DC3D4}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{CDEFA095-2EE5-419E-B643-24344CE707DD}</UniqueIdentifier>
+      <UniqueIdentifier>{5200A95F-961B-4907-8CD8-666E7A6ACC72}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{BC3E9A20-1953-4B02-9BE7-C2B8BC270AD6}</UniqueIdentifier>
+      <UniqueIdentifier>{B95A035E-1158-4EAD-BE55-80CDBC1BD681}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -146,6 +146,30 @@
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\DirectorBuilder.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstadoConArmamentoAdicional.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstadoConArmamentoAdicional.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstadoConCamuflaje.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstadoConCamuflaje.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstadoConEscudo.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstadoConEscudo.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstadoInvencible.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstadoInvencible.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\FabricaNaveEnemigas.cpp">
