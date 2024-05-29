@@ -7,47 +7,47 @@
 #include "AdapterPatern1Pawn.h"
 #include <Kismet/GameplayStatics.h>
 
-FVector2D ARadarHDU::ConvertWorldLocationToLocal(AActor* ActorToPlace)
+FVector2D ARadarHDU::ConvertirUbicacionMundialALocal(AActor* ActorToPlace)
 {
 	APawn* Player = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 	if (Player && ActorToPlace)
 	{
-		//Convert the world location to local, based on the transform of the player
+		//Convierte la ubicación del mundo en local, en función de la transformación de la jugadora
 		FVector ActorsLocal3dVector = Player->GetTransform().InverseTransformPosition(ActorToPlace->GetActorLocation());
 
-		//Rotate the vector by 90 degrees counter-clockwise in order to have a valid rotation in our radar
+		//Girar el vector 90 grados en sentido contrario a las agujas del reloj para tener una rotación válida en nuestro radar
 		ActorsLocal3dVector = FRotator(0.f, -90.f, 0.f).RotateVector(ActorsLocal3dVector);
 
-		//Apply the given distance scale
+		//Aplicar la escala de distancia dada
 		ActorsLocal3dVector /= RadarDistanceScale;
 
-		//Return a 2d vector based on the 3d vector we've created above
+		//Devuelve un vector 2D basado en el vector 3D que hemos creado anteriormente
 		return FVector2D(ActorsLocal3dVector);
 	}
 	return FVector2D(0, 0);
 }
 
-void ARadarHDU::DrawRaycastedActors()
+void ARadarHDU::DibujarRaycastedActors()
 {
-	FVector2D RadarCenter = GetRadarCenterPosition();
+	FVector2D RadarCenter = GetPosicionCentralRadar();
 
 	for (auto It : RadarActors)
 	{
-		FVector2D convertedLocation = ConvertWorldLocationToLocal(It);
+		FVector2D convertedLocation = ConvertirUbicacionMundialALocal(It);
 
-		//We want to clamp the location of our actors in order to make sure
-		//that we display them inside our radar
+		/*Queremos fijar la ubicación de nuestros actores para asegurarnos de que
+		que los exhibimos dentro de nuestro radar
 
-		//To do so, I've created the following temporary vector in order to access
-		//the GetClampedToMaxSize2d function. This functions returns a clamped vector (if needed)
-		//to match our max length
+		Para ello, he creado el siguiente vector temporal con el fin de acceder a
+		la función GetClampedToMaxSize2d.Esta función devuelve un vector fijado(si es necesario)
+		para que coincida con nuestra longitud máxima*/
 		FVector tempVector = FVector(convertedLocation.X, convertedLocation.Y, 0.f);
 
-		//Subtract the pixel size in order to make the radar display more accurate
+		//Reste el tamaño de píxel para que la visualización del radar sea más precisa
 		tempVector = tempVector.GetClampedToMaxSize2D(RadarRadius - DrawPixelSize);
 
-		//Assign the converted X and Y values to the vector we want to display
+		//Asignamos los valores X e Y convertidas al vector que queremos mostrar
 		convertedLocation.X = tempVector.X;
 		convertedLocation.Y = tempVector.Y;
 
@@ -56,15 +56,15 @@ void ARadarHDU::DrawRaycastedActors()
 	}
 }
 
-FVector2D ARadarHDU::GetRadarCenterPosition()
+FVector2D ARadarHDU::GetPosicionCentralRadar()
 {
-	//If the canvas is valid, return the center as a 2d vector
+	//Si el lienzo es válido, devuelve el centro como un vector 2D
 	return (Canvas) ? FVector2D(Canvas->SizeX * RadarStartLocation.X, Canvas->SizeY * RadarStartLocation.Y) : FVector2D(0, 0);
 }
 
-void ARadarHDU::DrawRadar()
+void ARadarHDU::DibujarRadar()
 {
-	FVector2D RadarCenter = GetRadarCenterPosition();
+	FVector2D RadarCenter = GetPosicionCentralRadar();
 
 	for (float i = 0; i < 360; i += DegreeStep)
 	{
@@ -83,15 +83,15 @@ void ARadarHDU::DrawRadar()
 	}
 }
 
-void ARadarHDU::DrawPlayerInRadar()
+void ARadarHDU::DibujarPlayerInRadar()
 {
 
-		FVector2D RadarCenter = GetRadarCenterPosition();
+		FVector2D RadarCenter = GetPosicionCentralRadar();
 		DrawRect(FLinearColor::Blue, RadarCenter.X, RadarCenter.Y, DrawPixelSize, DrawPixelSize);
 	
 }
 
-void ARadarHDU::PerformRadarRaycast()
+void ARadarHDU::RealizarRadarRaycast()
 {
 	APawn* Player = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
@@ -105,14 +105,13 @@ void ARadarHDU::PerformRadarRaycast()
 		CollisionShape.ShapeType = ECollisionShape::Sphere;
 		CollisionShape.SetSphere(SphereRadius);
 
-		//Perform a the necessary sweep for actors.
-		//In case you're wondering how this works, read my raycast tutorial here: http://wp.me/p6hvtS-5F
+		//Realizar un barrido necesario para los actores.
 		GetWorld()->SweepMultiByChannel(HitResults, Player->GetActorLocation(), EndLocation, FQuat::Identity, ECollisionChannel::ECC_WorldDynamic, CollisionShape);
 
 		for (auto It : HitResults)
 		{
 			AActor* CurrentActor = It.GetActor();
-			//In case the actor contains the word "Radar" as a tag, add it to our array
+			//En caso de que el actor contenga la palabra "Radar" como etiqueta, agréguela a nuestra matriz
 			if (CurrentActor && CurrentActor->ActorHasTag("Radar")) RadarActors.Add(CurrentActor);
 		}
 	}
@@ -122,15 +121,15 @@ void ARadarHDU::DrawHUD()
 {
 	Super::DrawHUD();
 
-	// Draw very simple crosshair
+	//  Draw very simple crosshair
 
-	// find center of the Canvas
+	// encontrar el centro del lienzo
 	const FVector2D Center(Canvas->ClipX * 0.5f, Canvas->ClipY * 0.5f);
 
-	// offset by half the texture's dimensions so that the center of the texture aligns with the center of the Canvas
+	// desplazado por la mitad de las dimensiones de la textura para que el centro de la textura se alinee con el centro del lienzo
 	const FVector2D CrosshairDrawPosition((Center.X),(Center.Y));
 
-	// draw the crosshair
+	// Dibuja el punto de mira
 
 	/*FCanvasTileItem TileItem(CrosshairDrawPosition, CrosshairTex->Resource, FLinearColor::White);
 	TileItem.BlendMode = SE_BLEND_Translucent;
@@ -139,16 +138,16 @@ void ARadarHDU::DrawHUD()
 
 	//----------------Radar logic----------------
 
-	DrawRadar();
+	DibujarRadar();
 
-	DrawPlayerInRadar();
+	DibujarPlayerInRadar();
 
-	PerformRadarRaycast();
+	RealizarRadarRaycast();
 
-	DrawRaycastedActors();
+	DibujarRaycastedActors();
 
-	//Empty the radar actors in case the player moves out of range,
-	//by doing so, we have always a valid display in our radar
+	/*Vaciar los actores del radar en caso de que el jugador se mueva fuera del alcance,
+	Al hacerlo, siempre tenemos una pantalla válida en nuestro radar*/
 	RadarActors.Empty();
 }
 

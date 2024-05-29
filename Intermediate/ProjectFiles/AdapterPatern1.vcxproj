@@ -51,7 +51,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{155E3FA3-9060-492D-BC0B-4384DB5AADD2}</ProjectGuid>
+    <ProjectGuid>{BE0B2835-EB1C-4C41-84BC-764D14E3C074}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
     <RootNamespace>AdapterPatern1</RootNamespace>
     <PlatformToolset>v143</PlatformToolset>

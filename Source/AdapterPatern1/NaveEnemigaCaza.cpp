@@ -11,7 +11,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "RadarEnemigo.h"
-
+#include "ArmaAmiga.h"
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
 void ANaveEnemigaCaza::BeginPlay()
@@ -31,6 +31,13 @@ void ANaveEnemigaCaza::BeginPlay()
         RadarEnemigo->AgregarObservador(this);
     }
 
+    FVector PosicionActual12 = GetActorLocation();
+    AArmaAmiga* ArmaAmiga = Cast<AArmaAmiga>(GetWorld()->SpawnActor(AArmaAmiga::StaticClass()));
+    FVector PosicionArma = ArmaAmiga->GetActorLocation();
+    if (PosicionActual12.Y == PosicionArma.Y)
+    {
+        EvitarArma();
+    }
 }
 
 ANaveEnemigaCaza::ANaveEnemigaCaza()
@@ -78,7 +85,6 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
     //Notificar ala radar cada segundo
     NotificarRadar();
     //Observer Inge
-    EvitarArma();
     if (bReabasteciendo)
     {
         DirigirseReabastecimiento();
@@ -87,8 +93,6 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
     {
         bReabasteciendo = true;
     }
-
-
 
     TiempoTranscurrido++;
     if (TiempoTranscurrido > 500)
@@ -104,6 +108,7 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
         TiempoTranscurrido = 0;
     }
 
+
     if (FireCooldown > 0.f)
     {
         FireCooldown -= DeltaTime;
@@ -117,17 +122,14 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
     {
         DirigirseReabastecimiento();
     }
-    else
-    {
-        EvitarArma();
-        // Otras lógicas de movimiento y combate
-    }
-
+       
     // Verificar si la energía es menor a 10 para iniciar el reabastecimiento
     if (Energia < 10.0f && !bReabasteciendo)
     {
         bReabasteciendo = true;
     }
+
+    /*EvitarArma();  */ 
 }
 
 void ANaveEnemigaCaza::ActivarRayoLaser()
@@ -187,7 +189,7 @@ void ANaveEnemigaCaza::FireProjectile()
         Projectile->Fire();
 
         // Disminuir la energía al disparar
-        Energia -= 50.0f;
+        Energia -= 20.0f;
         if (Energia < 0.0f)
         {
             Energia = 0.0f;
@@ -249,9 +251,9 @@ void ANaveEnemigaCaza::NotificarRadar()
     }
 }
 
-void ANaveEnemigaCaza::Actualizar(const FVector& PosicionArma, const FString& Accion)
+void ANaveEnemigaCaza::Actualizar(const FString& Accion)
 {
-    UltimaPosicionArma = PosicionArma;
+    /*UltimaPosicionArma = PosicionArma;*/
 
     if (Accion == "EvitarArma")
     {
@@ -267,6 +269,8 @@ float ANaveEnemigaCaza::ObtenerEnergia() const
 {
     return Energia;
 }
+
+
 
 void ANaveEnemigaCaza::DirigirseReabastecimiento()
 {
@@ -287,18 +291,20 @@ void ANaveEnemigaCaza::DirigirseReabastecimiento()
 
 void ANaveEnemigaCaza::EvitarArma()
 {
+   
     FVector PosicionActual = GetActorLocation();
-    if (PosicionActual.Y == UltimaPosicionArma.Y)
-    {
-        PosicionActual.Y += 100.0f;
-    }
-    //if (FMath::Abs(PosicionActual.Y - UltimaPosicionArma.Y) < +10.0f) // Distancia mínima de seguridad
-    //{
-    //    // Evitar la posición del arma
-    //    FVector NuevaPosicion = PosicionActual;
-    //    NuevaPosicion.Y += (PosicionActual.Y > UltimaPosicionArma.Y) ? 100.0f : -100.0f;
-    //    SetActorLocation(NuevaPosicion);
-    //}
+   /* PosicionActual.Y += 100.0f;*/
+
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Se Notifico Evitar Arma"));
+
+        if (FMath::Abs(PosicionActual.Y - UltimaPosicionArma.Y) < +1000.0f) // Distancia mínima de seguridad
+        {
+            // Evitar la posición del arma
+            FVector NuevaPosicion = PosicionActual;
+            NuevaPosicion.Y += (PosicionActual.Y > UltimaPosicionArma.Y) ? 100.0f : -100.0f;
+            SetActorLocation(NuevaPosicion);
+        }
+    
 }
 
 

@@ -73,6 +73,8 @@ private:
 	//ADirectorPaquetesEnergia* Director;
 
 	//Patron State 
+	UPROPERTY(VisibleAnywhere, Category = "Game mode")
+	class ARadarEnemigo* Radar;
 	
 };
 

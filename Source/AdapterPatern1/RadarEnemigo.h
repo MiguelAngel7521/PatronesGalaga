@@ -12,15 +12,15 @@
 UCLASS()
 class ADAPTERPATERN1_API ARadarEnemigo : public APublisher
 {
-	GENERATED_BODY()
+	GENERATED_BODY() 
 public:
     ARadarEnemigo();
 
     void Actualizar(const FVector& PosicionArma);
     virtual void AgregarObservador(IISuscriptor* Suscriptor) override;
     virtual void EliminarObservador(IISuscriptor* Suscriptor) override;
-    virtual void Notificar(const FVector& PosicionArma, const FString& Accion) override;
-    void VerificarNavesEnemigas();
+    virtual void Notificar(const FString& Accion) override;
+    void VerificarNavesEnemigas(const FVector& PosicionArma);
     FVector UltimaPosicionArma;
 
 private:

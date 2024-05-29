@@ -34,10 +34,14 @@ public:
 
 	float FireCooldown;
 	FTimerHandle FireTimerHandle;
+
+	class ANaveEnemigaCaza* NaveEnemigaCaza;
 private:
 	FVector PosicionActual;
 	class ARadarEnemigo* Radar;
 
 	void NotificarRadar();
+
+	
 
 };

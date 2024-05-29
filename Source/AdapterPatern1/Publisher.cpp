@@ -36,7 +36,7 @@ void APublisher::EliminarObservador(IISuscriptor* Suscriptor)
 
 
 
-void APublisher::Notificar(const FVector& PosicionArma, const FString& Accion)
+void APublisher::Notificar( const FString& Accion)
 {
 }
 

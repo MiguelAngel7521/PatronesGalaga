@@ -15,6 +15,9 @@
 #include "ConstruirNaveEnemiga.h"
 //Patron Facade
 #include "CapsulasFacade.h"
+//Patron Observer
+#include "RadarEnemigo.h"
+#include "ArmaAmiga.h"
 
 AAdapterPatern1GameMode::AAdapterPatern1GameMode()
 {
@@ -50,8 +53,10 @@ void AAdapterPatern1GameMode::BeginPlay()
 	}*/
 
 
-
-
+	//patron Observer
+	Radar = GetWorld()->SpawnActor<ARadarEnemigo>(ARadarEnemigo::StaticClass());
+	/*FVector ubicacionInicioArmaAmiga = FVector(-1000.0f, -500.0f, 200.0f);
+	AArmaAmiga* ArmaAmiga = GetWorld()->SpawnActor<AArmaAmiga>(AArmaAmiga::StaticClass(), ubicacionInicioArmaAmiga, FRotator::ZeroRotator);*/
 
 
 
@@ -84,7 +89,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelFacil();
+	Facade->NivelDificil();
 
 
 	//Patron Factory

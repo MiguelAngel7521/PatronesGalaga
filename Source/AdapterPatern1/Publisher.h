@@ -25,7 +25,7 @@ public:
 public:
 	virtual void AgregarObservador(IISuscriptor* Suscriptor);
 	virtual void EliminarObservador(IISuscriptor* Suscriptor);
-	virtual void Notificar(const FVector& PosicionArma, const FString& Accion);
+	virtual void Notificar( const FString& Accion);
 public:
 	TArray<IISuscriptor*> Suscriptores;
 	FVector UltimaPosicionArma;

@@ -8,6 +8,7 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
+#include "ArmaAmiga.h"
 
 ARadarEnemigo::ARadarEnemigo()
 {
@@ -37,7 +38,7 @@ void ARadarEnemigo::Tick(float DeltaTime)
     }*/
 
     // Verificar si alguna nave enemiga necesita reabastecer
-   VerificarNavesEnemigas();
+   VerificarNavesEnemigas(posicionReabastecimiento);
 }
 
 float ARadarEnemigo::calcularPromedioEnergiaSuscriptores()
@@ -76,34 +77,38 @@ void ARadarEnemigo::EliminarObservador(IISuscriptor* Suscriptor)
     Suscriptores.Remove(Suscriptor);
 }
 
-void ARadarEnemigo::Notificar(const FVector& PosicionArma, const FString& Accion)
+void ARadarEnemigo::Notificar(const FString& Accion)
 {
     for (IISuscriptor* Suscriptor : Suscriptores)
     {
         if (Suscriptor)
         {
-            Suscriptor->Actualizar(PosicionArma,Accion);
+            Suscriptor->Actualizar(Accion);
         }
     }
  }
 
-void ARadarEnemigo::VerificarNavesEnemigas()
+void ARadarEnemigo::VerificarNavesEnemigas(const FVector& PosicionArma)
 {
+    UltimaPosicionArma = PosicionArma;
     for (IISuscriptor* Suscriptor : Suscriptores)
     {
         ANaveEnemigaCaza* NaveEnemiga = Cast<ANaveEnemigaCaza>(Suscriptor);
+        AArmaAmiga* ArmaAmiga = Cast<AArmaAmiga>(Suscriptor);
         if (NaveEnemiga)
         {
             if (NaveEnemiga->ObtenerEnergia() < 10.0f)
             {
-                Notificar(FVector::ZeroVector, "Reabastecer"); // Notificar la acción de reabastecer
+                Notificar( "Reabastecer"); // Notificar la acción de reabastecer
             }
             else
             {
                 FVector PosicionNave = NaveEnemiga->GetActorLocation();
-                if (FMath::Abs(PosicionNave.Y - UltimaPosicionArma.Y) < 100.0f) // Distancia mínima de seguridad en el eje Y
+               /* FVector PosicionArma = ArmaAmiga -> GetActorLocation();*/
+                if (PosicionNave.Y == UltimaPosicionArma.Y) // Distancia mínima de seguridad en el eje Y
                 {
-                    Notificar(FVector::ZeroVector, "Reabastecer"); // Notificar la acción de evitar arma
+                    GEngine -> AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Se Notifico Evitar Arma"));
+                    Notificar("EvitarArma"); // Notificar la acción de evitar arma
                 }
             }
         }

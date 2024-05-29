@@ -22,6 +22,6 @@ class ADAPTERPATERN1_API IISuscriptor
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void Actualizar(const FVector& PosicionArma, const FString& Accion) = 0;
+	virtual void Actualizar( const FString& Accion) = 0;
 	virtual float ObtenerEnergia() const = 0;
 };

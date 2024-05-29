@@ -14,56 +14,56 @@ class ADAPTERPATERN1_API ARadarHDU : public AHUD   , public IIObserverRadar
 {
 	GENERATED_BODY()
 protected:
-	/*The start location of our radar*/
+	/*La ubicación de inicio de nuestro radar*/
 	UPROPERTY(EditAnywhere, Category = Radar)
 	FVector2D RadarStartLocation = FVector2D(0.9f, 0.2f);
 
-	/*The radius of our radar*/
+	/*El radio de nuestro radar*/
 	UPROPERTY(EditAnywhere, Category = Radar)
 	float RadarRadius = 100.f;
 
 	UPROPERTY(EditAnywhere, Category = Radar)
 	float DegreeStep = 0.25f;
 
-	/*The pixel size of the drawable radar actors*/
+	/*El tamaño de píxel de los actores de radar dibujables*/
 	UPROPERTY(EditAnywhere, Category = Radar)
 	float DrawPixelSize = 5.f;
 
-	/*Sphere height and radius for our raycast*/
+	/*Altura y radio de la esfera para nuestro raycast*/
 	UPROPERTY(EditAnywhere, Category = Radar)
 	float SphereHeight = 200.f;
 
 	UPROPERTY(EditAnywhere, Category = Radar)
 	float SphereRadius = 2750.f;
 	
-		/*The distance scale of the radar actors*/
+	/*La escala de distancia de los actores del radar*/
 		UPROPERTY(EditAnywhere, Category = Radar)
 	float RadarDistanceScale = 25.f;
 
-	/*Converts the given actors' location to local (based on our character)*/
-	FVector2D ConvertWorldLocationToLocal(AActor* ActorToPlace);
+	/*Convierte la ubicación de los actores dados en local (basado en nuestro personaje)*/
+	FVector2D ConvertirUbicacionMundialALocal(AActor* ActorToPlace);
 
-	/*Draws the raycasted actors in our radar*/
-	void DrawRaycastedActors();
+	/*Dibuja a los actores raycasteados en nuestro radar*/
+	void DibujarRaycastedActors();
 
 
 
-	/*Holds a reference to every actor we are currently drawing in our radar*/
+	/*Tiene una referencia a cada actora que estamos dibujando actualmente en nuestro radar*/
 	TArray<AActor*> RadarActors;
 private:
-	/*Returns the center of the radar as a 2d vector*/
-	FVector2D GetRadarCenterPosition();
+	/*Devuelve el centro del radar como un vector 2d*/
+	FVector2D GetPosicionCentralRadar();
 
-	/*Draws the radar*/
-	void DrawRadar();
-	void DrawPlayerInRadar();
-	void PerformRadarRaycast();
+	/*Dibuja el radar*/
+	void DibujarRadar();
+	void DibujarPlayerInRadar();
+	void RealizarRadarRaycast();
 
 public:
-	/*Draws the radar on the screen*/
+	/*Dibuja el radar en la pantalla*/
 	virtual void DrawHUD() override;
 
-	/*Called when the radar is updated*/
+	/*Se llama cuando se actualiza el radar*/
 	void UpdatePosition(AActor* Actor) override;
 	
 	

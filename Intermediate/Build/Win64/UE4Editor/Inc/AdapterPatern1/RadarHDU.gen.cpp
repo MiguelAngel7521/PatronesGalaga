@@ -82,18 +82,18 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarStartLocation_MetaData[] = {
 		{ "Category", "Radar" },
-		{ "Comment", "/*The start location of our radar*/" },
+		{ "Comment", "/*La ubicaci?n de inicio de nuestro radar*/" },
 		{ "ModuleRelativePath", "RadarHDU.h" },
-		{ "ToolTip", "The start location of our radar" },
+		{ "ToolTip", "La ubicaci?n de inicio de nuestro radar" },
 	};
 #endif
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarStartLocation = { "RadarStartLocation", nullptr, (EPropertyFlags)0x0020080000000001, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARadarHDU, RadarStartLocation), Z_Construct_UScriptStruct_FVector2D, METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarStartLocation_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarStartLocation_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarRadius_MetaData[] = {
 		{ "Category", "Radar" },
-		{ "Comment", "/*The radius of our radar*/" },
+		{ "Comment", "/*El radio de nuestro radar*/" },
 		{ "ModuleRelativePath", "RadarHDU.h" },
-		{ "ToolTip", "The radius of our radar" },
+		{ "ToolTip", "El radio de nuestro radar" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarRadius = { "RadarRadius", nullptr, (EPropertyFlags)0x0020080000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARadarHDU, RadarRadius), METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarRadius_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarRadius_MetaData)) };
@@ -107,18 +107,18 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARadarHDU_Statics::NewProp_DrawPixelSize_MetaData[] = {
 		{ "Category", "Radar" },
-		{ "Comment", "/*The pixel size of the drawable radar actors*/" },
+		{ "Comment", "/*El tama?o de p?xel de los actores de radar dibujables*/" },
 		{ "ModuleRelativePath", "RadarHDU.h" },
-		{ "ToolTip", "The pixel size of the drawable radar actors" },
+		{ "ToolTip", "El tama?o de p?xel de los actores de radar dibujables" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARadarHDU_Statics::NewProp_DrawPixelSize = { "DrawPixelSize", nullptr, (EPropertyFlags)0x0020080000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARadarHDU, DrawPixelSize), METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::NewProp_DrawPixelSize_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::NewProp_DrawPixelSize_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARadarHDU_Statics::NewProp_SphereHeight_MetaData[] = {
 		{ "Category", "Radar" },
-		{ "Comment", "/*Sphere height and radius for our raycast*/" },
+		{ "Comment", "/*Altura y radio de la esfera para nuestro raycast*/" },
 		{ "ModuleRelativePath", "RadarHDU.h" },
-		{ "ToolTip", "Sphere height and radius for our raycast" },
+		{ "ToolTip", "Altura y radio de la esfera para nuestro raycast" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARadarHDU_Statics::NewProp_SphereHeight = { "SphereHeight", nullptr, (EPropertyFlags)0x0020080000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARadarHDU, SphereHeight), METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::NewProp_SphereHeight_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::NewProp_SphereHeight_MetaData)) };
@@ -132,9 +132,9 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarDistanceScale_MetaData[] = {
 		{ "Category", "Radar" },
-		{ "Comment", "/*The distance scale of the radar actors*/" },
+		{ "Comment", "/*La escala de distancia de los actores del radar*/" },
 		{ "ModuleRelativePath", "RadarHDU.h" },
-		{ "ToolTip", "The distance scale of the radar actors" },
+		{ "ToolTip", "La escala de distancia de los actores del radar" },
 	};
 #endif
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarDistanceScale = { "RadarDistanceScale", nullptr, (EPropertyFlags)0x0020080000000001, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARadarHDU, RadarDistanceScale), METADATA_PARAMS(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarDistanceScale_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARadarHDU_Statics::NewProp_RadarDistanceScale_MetaData)) };
@@ -177,7 +177,7 @@ void EmptyLinkFunctionForGeneratedCodeRadarHDU() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ARadarHDU, 146891292);
+	IMPLEMENT_CLASS(ARadarHDU, 3847884438);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ARadarHDU>()
 	{
 		return ARadarHDU::StaticClass();

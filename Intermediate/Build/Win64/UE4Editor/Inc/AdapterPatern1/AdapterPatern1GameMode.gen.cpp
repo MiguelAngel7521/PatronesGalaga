@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_ACapsulasFacade_NoRegister();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_AAdapterPatern1Pawn_NoRegister();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_ABallAdapter_NoRegister();
+	ADAPTERPATERN1_API UClass* Z_Construct_UClass_ARadarEnemigo_NoRegister();
 // End Cross Module References
 	void AAdapterPatern1GameMode::StaticRegisterNativesAAdapterPatern1GameMode()
 	{
@@ -46,6 +47,10 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Adapter_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Adapter;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Radar_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Radar;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -85,10 +90,20 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Adapter = { "Adapter", nullptr, (EPropertyFlags)0x0010000000020001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1GameMode, Adapter), Z_Construct_UClass_ABallAdapter_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Adapter_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Adapter_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Radar_MetaData[] = {
+		{ "Category", "Game mode" },
+		{ "Comment", "//Patron State \n" },
+		{ "ModuleRelativePath", "AdapterPatern1GameMode.h" },
+		{ "ToolTip", "Patron State" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Radar = { "Radar", nullptr, (EPropertyFlags)0x0040000000020001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1GameMode, Radar), Z_Construct_UClass_ARadarEnemigo_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Radar_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Radar_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAdapterPatern1GameMode_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Facade,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Jugador,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Adapter,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1GameMode_Statics::NewProp_Radar,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AAdapterPatern1GameMode_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AAdapterPatern1GameMode>::IsAbstract,
@@ -117,7 +132,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1GameMode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAdapterPatern1GameMode, 2445614778);
+	IMPLEMENT_CLASS(AAdapterPatern1GameMode, 288009217);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AAdapterPatern1GameMode>()
 	{
 		return AAdapterPatern1GameMode::StaticClass();

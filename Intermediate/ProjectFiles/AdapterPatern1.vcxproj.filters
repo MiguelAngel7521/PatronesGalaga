@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{AEC60CC3-6D9F-4CA5-BD27-7F0EC37DC3D4}</UniqueIdentifier>
+      <UniqueIdentifier>{CE37DFFD-2AD7-4651-A0B9-15E97D70AFBA}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{5200A95F-961B-4907-8CD8-666E7A6ACC72}</UniqueIdentifier>
+      <UniqueIdentifier>{0CD65FCE-D109-485E-A6F6-3FBC547BB03F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{B95A035E-1158-4EAD-BE55-80CDBC1BD681}</UniqueIdentifier>
+      <UniqueIdentifier>{31766911-5CBE-445C-A6C3-8963502E9BF3}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>

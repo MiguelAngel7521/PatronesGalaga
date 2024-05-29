@@ -138,8 +138,13 @@ public:
 	void Energia();
 	FTimerHandle TimerHandle_Energia;
 	//Patron State
-	
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Materials", meta = (AllowPrivateAccess = "true"))
 	UMaterialInstanceDynamic* DynamicMaterialInstance;
+
+	UPROPERTY(EditAnywhere, Category = "Materials")
+	UMaterialInterface* BaseMaterial;
+public:
 
 	//Inicializamos los estados del jugador
 	void InicializarEstadosJugador(FString _Estados);

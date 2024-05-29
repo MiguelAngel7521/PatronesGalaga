@@ -71,10 +71,11 @@ private:
 
 	//Patron Observer Ingeniero
 public:
-	virtual void Actualizar(const FVector& PosicionArma, const FString& Accion) override;
+	virtual void Actualizar(const FString& Accion) override;
 	virtual float ObtenerEnergia() const;
+	/*class AArmaAmiga* ArmaAmiga;*/
 
-private:
+public:
 	FVector UltimaPosicionArma;
 	float Energia;
 	bool bReabasteciendo;

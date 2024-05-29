@@ -2,12 +2,12 @@
 	"Targets": [
 		{
 			"Name": "AdapterPatern1",
-			"Path": "C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1\\Source\\AdapterPatern1.Target.cs",
+			"Path": "C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1 4.27\\Source\\AdapterPatern1.Target.cs",
 			"Type": "Game"
 		},
 		{
 			"Name": "AdapterPatern1Editor",
-			"Path": "C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1\\Source\\AdapterPatern1Editor.Target.cs",
+			"Path": "C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1 4.27\\Source\\AdapterPatern1Editor.Target.cs",
 			"Type": "Editor"
 		}
 	]

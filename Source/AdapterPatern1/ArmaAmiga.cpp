@@ -3,6 +3,7 @@
 
 #include "ArmaAmiga.h"
 #include "RadarEnemigo.h"
+#include "NaveEnemigaCaza.h"
 #include "ProjectileEnemigo.h"
 
 // Sets default values
@@ -46,6 +47,7 @@ void AArmaAmiga::Tick(float DeltaTime)
     {
         PosicionActual = NuevaPosicion;
         NotificarRadar();
+        Radar->VerificarNavesEnemigas(PosicionActual);
     }
 
 }
@@ -82,4 +84,6 @@ void AArmaAmiga::NotificarRadar()
         Radar->Actualizar(PosicionActual);
     }
 }
+
+
 

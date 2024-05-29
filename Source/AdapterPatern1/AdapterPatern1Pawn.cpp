@@ -30,8 +30,15 @@ const FName AAdapterPatern1Pawn::FireForwardBinding("FireForward");
 const FName AAdapterPatern1Pawn::FireRightBinding("FireRight");
 
 AAdapterPatern1Pawn::AAdapterPatern1Pawn()
+
 {	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
+	/*static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/Pawn.Pawn'"));
+
+	if (Material.Succeeded())
+	{
+		BaseMaterial = Material.Object;
+	}*/
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));		
 	RootComponent = ShipMeshComponent;
@@ -69,8 +76,9 @@ AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 	Estado = NewObject<ABasico>();
 	Estado->EstablecerJugador(this);
 
-	//Creando la malla dinamica
-	DynamicMaterialInstance = ShipMeshComponent->CreateAndSetMaterialInstanceDynamic(0);
+	// Create a dynamic material instance
+	/*DynamicMaterialInstance = UMaterialInstanceDynamic::Create(BaseMaterial, this);
+	ShipMeshComponent->SetMaterial(0, DynamicMaterialInstance);*/
 }
 
 void AAdapterPatern1Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -292,7 +300,7 @@ void AAdapterPatern1Pawn::JugadorConArmasAdicionales()
 {
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Owner = this;
-	FVector SpawnLocation = GetActorLocation() + FVector(0.0f, 300.0f, 0.0f);
+	FVector SpawnLocation = GetActorLocation() + FVector(0.0f, 200.0f, 0.0f);
 	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
 		for (int i = 0; i < 2; i++)
 		{
@@ -328,10 +336,10 @@ void AAdapterPatern1Pawn::JugadorConEscudos()
 void AAdapterPatern1Pawn::JugadorInvensible()
 {
 
-	if (DynamicMaterialInstance)
-	{
-		DynamicMaterialInstance->SetVectorParameterValue("BaseColor", FLinearColor::Yellow); // Cambia "BaseColor" al nombre del parámetro correcto en tu material
-	}
+	//if (DynamicMaterialInstance)
+	//{
+	//	DynamicMaterialInstance->SetVectorParameterValue("BaseColor", FLinearColor::Yellow); // Cambia "BaseColor" al nombre del parámetro correcto en tu material
+	//}
 }
 
 void AAdapterPatern1Pawn::JugadorConCamuflaje()
