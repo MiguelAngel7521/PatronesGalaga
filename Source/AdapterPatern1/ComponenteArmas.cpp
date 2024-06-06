@@ -59,3 +59,12 @@ void AComponenteArmas::FireProjectile()
     }
 }
 
+void AComponenteArmas::RecibirDanio()
+{
+    vida--;
+    if (vida <= 0)
+    {
+		Destroy();
+	}
+}
+

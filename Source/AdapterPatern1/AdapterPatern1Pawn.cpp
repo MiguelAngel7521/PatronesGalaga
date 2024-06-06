@@ -22,6 +22,11 @@
 #include "EstadoInvencible.h"
 #include "IEstados.h"
 #include "ArmaAmiga.h"
+//Patron Strategy
+#include "EstrategiaExplosiva.h"
+#include "EstrategiaRecuperacion.h"
+#include "EstrategiaCamaraLenta.h"
+
 
 
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
@@ -79,6 +84,13 @@ AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 	// Create a dynamic material instance
 	/*DynamicMaterialInstance = UMaterialInstanceDynamic::Create(BaseMaterial, this);
 	ShipMeshComponent->SetMaterial(0, DynamicMaterialInstance);*/
+
+	//Patron Strategy
+	bIsEstrategiaCamaraLentaActive = false;
+	bIsEstrategiaRecuperacionActive = false;
+	bIsEstrategiaExplosivaActive = false;
+	
+	
 }
 
 void AAdapterPatern1Pawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -90,6 +102,10 @@ void AAdapterPatern1Pawn::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAxis(MoveRightBinding);
 	PlayerInputComponent->BindAxis(FireForwardBinding);
 	PlayerInputComponent->BindAxis(FireRightBinding);
+	PlayerInputComponent = NewObject<UInputComponent>(this);
+	PlayerInputComponent->BindAction("EstrategiaAtaque1", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey1);
+	PlayerInputComponent->BindAction("EstrategiaAtaque2", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey2);
+	PlayerInputComponent->BindAction("EstrategiaAtaque3", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey3);
 }
 
 void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
@@ -126,38 +142,49 @@ void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
 
 	// Try and fire a shot
 	FireShot(FireDirection);
+
+	if (EstrategiaActual)
+	{
+		EjecutarEstrategia();
+	}
 }
 
 void AAdapterPatern1Pawn::FireShot(FVector FireDirection)
 {
 	// If it's ok to fire again
-	if (bCanFire == true)
+	if (EnergiaRestante > 0)
 	{
-		// If we are pressing fire stick in a direction
-		if (FireDirection.SizeSquared() > 0.0f)
+		if (bCanFire == true)
 		{
-			const FRotator FireRotation = FireDirection.Rotation();
-			// Spawn projectile at an offset from this pawn
-			const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
-
-			UWorld* const World = GetWorld();
-			if (World != nullptr)
+			// If we are pressing fire stick in a direction
+			if (FireDirection.SizeSquared() > 0.0f)
 			{
-				// spawn the projectile
-				World->SpawnActor<AAdapterPatern1Projectile>(SpawnLocation, FireRotation);
+				const FRotator FireRotation = FireDirection.Rotation();
+				// Spawn projectile at an offset from this pawn
+				const FVector SpawnLocation = GetActorLocation() + FireRotation.RotateVector(GunOffset);
+
+				UWorld* const World = GetWorld();
+				if (World != nullptr)
+				{
+					// spawn the projectile
+					World->SpawnActor<AAdapterPatern1Projectile>(SpawnLocation, FireRotation);
+				}
+
+				bCanFire = false;
+				World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AAdapterPatern1Pawn::ShotTimerExpired, FireRate);
+
+				// try and play the sound if specified
+				if (FireSound != nullptr)
+				{
+					UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
+				}
+				EnergiaRestante -= 2;
+				FString Message2 = FString::Printf(TEXT("Energia restante: %d "), ObtenerEnergiaRestante());
+				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, Message2);
+				bCanFire = false;
 			}
-
-			bCanFire = false;
-			World->GetTimerManager().SetTimer(TimerHandle_ShotTimerExpired, this, &AAdapterPatern1Pawn::ShotTimerExpired, FireRate);
-
-			// try and play the sound if specified
-			if (FireSound != nullptr)
-			{
-				UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-			}
-
-			bCanFire = false;
 		}
+
 	}
 }
 
@@ -186,13 +213,13 @@ void AAdapterPatern1Pawn::RecibirDanio(int32 CantidadDanio)
 	
 
 	// Si la energía del jugador llega a 0, reducir una vida y reiniciar la energía
-	if (EnergiaJugador <= 0)
+	if (EnergiaRestante <= -20)
 	{
-		VidasJugador--;
-		EnergiaJugador = 10; // Reiniciar la energía
+		VidasRestantes--;
+		EnergiaRestante = 1000; // Reiniciar la energía
 
 		// Verificar si el jugador ha perdido todas sus vidas
-		if (VidasJugador <= 0)
+		if (VidasRestantes <= 0)
 		{
 			// Aquí puedes manejar la lógica para el fin del juego
 			UE_LOG(LogTemp, Warning, TEXT("Juego Terminado"));
@@ -212,38 +239,75 @@ void AAdapterPatern1Pawn::ReducirEnergia1()
 	{
 		InicializarEstadosJugador("ConEscudos");
 		EstadoConEscudos ->ConEscudos();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
 	}
-	if (EnergiaRestante == 150)
+	if (EnergiaRestante == 100)
 	{
 		InicializarEstadosJugador("ConArmamentoAdicional");
 		EstadoConArmamentoAdicional->ConArmamentoAdicional();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
 	}
-	if (EnergiaRestante == 170)
+	if (EnergiaRestante == 16)
 	{
 		InicializarEstadosJugador("ConCamuflaje");
 		EstadoConCamuflaje->ConCamuflaje();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
 	}
-	if (EnergiaRestante == 190)
+	if (EnergiaRestante == 15)
 	{
 		InicializarEstadosJugador("Invensible");
 		EstadoInvensible->Invencible();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Black, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
 	}
-
+	
+		
 }
 
 void AAdapterPatern1Pawn::recibirImpacto()
 {
-	ContImpacto++;
+	/*ContImpacto++;
 	if (ContImpacto == 3)
 	{
 		ContImpacto = 0;
 		ReducirVida();
 		ReducirEnergia1();
+	}*/
+}
+
+void AAdapterPatern1Pawn::ReducirVida()
+{
+	if (VidasRestantes > 0)
+		VidasRestantes--;
+
+
+	/*if (VidasRestantes == 1) {
+		EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());
+		AlternarEstrategias(EstrategiaCamaraLenta);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta"));
+		EstrategiaCamaraLenta->EjecutarEstrategia();
+
+
 	}
+
+	if (VidasRestantes == 2)
+	{
+
+		EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
+		AlternarEstrategias(EstrategiaRecuperacion);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Recuperacion"));
+		EstrategiaRecuperacion->EjecutarEstrategia();
+
+
+	}
+	if (VidasRestantes == 3)
+	{
+		EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
+		AlternarEstrategias(EstrategiaExplosiva);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Explosiva"));
+		EstrategiaExplosiva->EjecutarEstrategia();
+
+
+	}*/
 }
 
 void AAdapterPatern1Pawn::Energia()
@@ -390,3 +454,83 @@ FString AAdapterPatern1Pawn::J_ObtenerEstadoActual()
 		return "Estado no inicializado";
 	}
 }
+
+
+void AAdapterPatern1Pawn::AlternarEstrategias(AActor* _EstrategiaPawn)
+{
+	EstrategiaActual = Cast<IIEstrategia>(_EstrategiaPawn);
+	if (!EstrategiaActual)
+	{ 
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No se pudo inicializar EstrategiaActual"));
+	}
+}
+
+void AAdapterPatern1Pawn::EjecutarEstrategia()
+{
+	if (EstrategiaActual)
+	{
+		EstrategiaActual->EjecutarEstrategia();
+	}
+}
+
+void AAdapterPatern1Pawn::HandleKey1()
+{
+
+
+	//CONTADOR
+	if (bIsEstrategiaCamaraLentaActive)
+	{
+		// Detener la estrategia si ya está activa
+		if (EstrategiaCamaraLenta)
+		{
+			EstrategiaCamaraLenta->Destroy();
+			EstrategiaCamaraLenta = nullptr;
+
+		}
+		bIsEstrategiaCamaraLentaActive = false;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta Detenida"));
+	}
+	else if (VidasRestantes == 1)
+	{
+		// Activar la estrategia si no está activa
+		EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());
+		if (EstrategiaCamaraLenta)
+		{
+			EstrategiaCamaraLenta->EjecutarEstrategia();
+			bIsEstrategiaCamaraLentaActive = true;
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta Activada"));
+		}
+	}
+
+
+}
+
+void AAdapterPatern1Pawn::HandleKey2()
+{
+
+
+	if (VidasRestantes == 2)
+	{
+
+		EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
+		AlternarEstrategias(EstrategiaRecuperacion);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Recuperacion"));
+		EstrategiaRecuperacion->EjecutarEstrategia();
+	}
+}
+
+void AAdapterPatern1Pawn::HandleKey3()
+{
+	
+	if (VidasRestantes == 3)
+	{
+		EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
+		AlternarEstrategias(EstrategiaExplosiva);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Explosiva"));
+		EstrategiaExplosiva->EjecutarEstrategia();
+
+
+	}
+}
+
+

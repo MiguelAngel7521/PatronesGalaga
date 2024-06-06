@@ -34,7 +34,7 @@ void ABasico::EstablecerJugador(AAdapterPatern1Pawn* _Jugador)
 
 void ABasico::Basico()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Magenta, FString::Printf(TEXT("La vida del jugador decremento un 25%%")));
+	/*GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Magenta, FString::Printf(TEXT("La vida del jugador decremento un 25%%")));*/
 }
 
 

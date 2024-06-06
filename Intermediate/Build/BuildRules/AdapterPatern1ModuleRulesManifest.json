@@ -1,8 +1,8 @@
 {
 	"SourceFiles": [
-		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1 4.27\\Source\\AdapterPatern1\\AdapterPatern1.Build.cs",
-		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1 4.27\\Source\\AdapterPatern1.Target.cs",
-		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1 4.27\\Source\\AdapterPatern1Editor.Target.cs"
+		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1\\Source\\AdapterPatern1\\AdapterPatern1.Build.cs",
+		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1\\Source\\AdapterPatern1.Target.cs",
+		"C:\\Users\\Jorge\\OneDrive\\Documentos\\Unreal Projects\\AdapterPatern1\\Source\\AdapterPatern1Editor.Target.cs"
 	],
 	"EngineVersion": "4.27.2"
 }

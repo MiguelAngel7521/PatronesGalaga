@@ -19,7 +19,6 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaCaza() {}
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_AProjectileEnemigo_NoRegister();
-	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UISuscriptor_NoRegister();
 // End Cross Module References
 	void ANaveEnemigaCaza::StaticRegisterNativesANaveEnemigaCaza()
 	{
@@ -47,7 +46,6 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaCaza() {}
 #endif
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_FireRate;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
-		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
 	};
@@ -90,9 +88,6 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaCaza() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANaveEnemigaCaza_Statics::NewProp_ProyectilEnemigoClass,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANaveEnemigaCaza_Statics::NewProp_FireRate,
 	};
-		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_ANaveEnemigaCaza_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UISuscriptor_NoRegister, (int32)VTABLE_OFFSET(ANaveEnemigaCaza, IISuscriptor), false },
-		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ANaveEnemigaCaza_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ANaveEnemigaCaza>::IsAbstract,
 	};
@@ -103,11 +98,11 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaCaza() {}
 		DependentSingletons,
 		nullptr,
 		Z_Construct_UClass_ANaveEnemigaCaza_Statics::PropPointers,
-		InterfaceParams,
+		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_ANaveEnemigaCaza_Statics::PropPointers),
-		UE_ARRAY_COUNT(InterfaceParams),
+		0,
 		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_ANaveEnemigaCaza_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_ANaveEnemigaCaza_Statics::Class_MetaDataParams))
 	};
@@ -120,7 +115,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaCaza() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANaveEnemigaCaza, 4271549530);
+	IMPLEMENT_CLASS(ANaveEnemigaCaza, 2068711325);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ANaveEnemigaCaza>()
 	{
 		return ANaveEnemigaCaza::StaticClass();

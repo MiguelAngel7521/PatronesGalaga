@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{CE37DFFD-2AD7-4651-A0B9-15E97D70AFBA}</UniqueIdentifier>
+      <UniqueIdentifier>{076BFF9C-5B46-452A-8543-8595B9A48F6F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{0CD65FCE-D109-485E-A6F6-3FBC547BB03F}</UniqueIdentifier>
+      <UniqueIdentifier>{D9222558-E1D4-4CEF-B17F-EA813FDA8A84}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -32,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{31766911-5CBE-445C-A6C3-8963502E9BF3}</UniqueIdentifier>
+      <UniqueIdentifier>{7474A823-7B02-4AEF-9320-65F07CD0268E}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -43,9 +43,6 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\AdapterPatern1.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
-    <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.rar">
-      <Filter>Source\AdapterPatern1</Filter>
-    </None>
     <ClCompile Include="..\..\Source\AdapterPatern1\AdapterPatern1GameMode.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
@@ -172,6 +169,24 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\EstadoInvencible.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstrategiaCamaraLenta.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstrategiaCamaraLenta.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstrategiaExplosiva.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstrategiaExplosiva.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\EstrategiaRecuperacion.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\EstrategiaRecuperacion.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\FabricaNaveEnemigas.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
@@ -188,6 +203,12 @@
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\AdapterPatern1\IEstados.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\IEstrategia.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\IEstrategia.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\IngenieroEspecialista1.cpp">

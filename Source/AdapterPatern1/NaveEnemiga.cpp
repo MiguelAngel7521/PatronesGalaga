@@ -49,6 +49,7 @@ ANaveEnemiga::ANaveEnemiga()
 	//Tag
 	Tags.Add(FName("Radar"));
 	Energia = 100.0f;
+
 	
 
 }
@@ -69,7 +70,14 @@ void ANaveEnemiga::BeginPlay()
 			break;
 		}
 	}*/
-	
+	//Suscribirse al radar Enemigo
+	ARadarEnemigo* RadarEnemigo = Cast<ARadarEnemigo>(GetWorld()->SpawnActor(ARadarEnemigo::StaticClass()));
+	if (RadarEnemigo)
+	{
+		RadarEnemigo->AgregarObservador(this);
+	}
+	Energia = 2000.0f;
+	bReabasteciendo = false;
 	
 }
 
@@ -112,7 +120,25 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	//Notificar ala radar cada segundo
 	NotificarRadar();
 
- 
+	if (bReabasteciendo)
+	{
+		DirigirseReabastecimiento();
+	}
+	if (Energia < 10.0f && !bReabasteciendo)
+	{
+		bReabasteciendo = true;
+	}
+	//Observer
+	if (bReabasteciendo)
+	{
+		DirigirseReabastecimiento();
+	}
+
+	// Verificar si la energía es menor a 10 para iniciar el reabastecimiento
+	if (Energia < 10.0f && !bReabasteciendo)
+	{
+		bReabasteciendo = true;
+	}
 }
 
 
@@ -157,12 +183,43 @@ void ANaveEnemiga::EvitarArma()
 
 void ANaveEnemiga::DirigirseReabastecimiento()
 {
-	FVector PuntoReabastecimiento(2480.0f, -2620.0f, 250.0f); // Define la ubicación del punto de reabastecimiento
-	SetActorLocation(PuntoReabastecimiento);
+	FVector PosicionActual = GetActorLocation();
+	FVector PosicionReabastecimiento = FVector(2480.0f, -2620.0f, 250.0f); // Ajustar la posición de reabastecimiento según sea necesario
+	FVector Direccion = (PosicionReabastecimiento - PosicionActual).GetSafeNormal();
+	FVector NuevaPosicion = PosicionActual + Direccion * 200.0f * GetWorld()->DeltaTimeSeconds; // Ajustar velocidad según sea necesario
+	SetActorLocation(NuevaPosicion);
+
+	// Verificar si ha llegado a la posición de reabastecimiento
+	if (FVector::Dist(PosicionActual, PosicionReabastecimiento) < 100.0f) // Ajustar el umbral según sea necesario
+	{
+		Energia = 100.0f; // Reabastecer energía
+		bReabasteciendo = false;
+	}
+}
+
+void ANaveEnemiga::Actualizar(const FString& Accion)
+{
+	if (Accion == "EvitarArma")
+	{
+		EvitarArma();
+	}
+	else if (Accion == "Reabastecer")
+	{
+		bReabasteciendo = true;
+	}
 }
 
 float ANaveEnemiga::ObtenerEnergia() const
 {
 	return Energia;
+}
+
+void ANaveEnemiga::RecibirDanio()
+{
+	Vida -= 1;
+	if (Vida <= 0)
+	{
+		Destroy();
+	}
 }
 

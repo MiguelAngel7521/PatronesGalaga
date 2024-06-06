@@ -11,7 +11,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "RadarEnemigo.h"
-#include "ArmaAmiga.h"
+
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
 void ANaveEnemigaCaza::BeginPlay()
@@ -31,20 +31,13 @@ void ANaveEnemigaCaza::BeginPlay()
         RadarEnemigo->AgregarObservador(this);
     }
 
-    FVector PosicionActual12 = GetActorLocation();
-    AArmaAmiga* ArmaAmiga = Cast<AArmaAmiga>(GetWorld()->SpawnActor(AArmaAmiga::StaticClass()));
-    FVector PosicionArma = ArmaAmiga->GetActorLocation();
-    if (PosicionActual12.Y == PosicionArma.Y)
-    {
-        EvitarArma();
-    }
 }
 
 ANaveEnemigaCaza::ANaveEnemigaCaza()
 {
     UE_LOG(LogTemp, Warning, TEXT("AProjectileEnemigo BeginPlay or constructor called"));
 
-    static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/Geometry/Meshes/NaveEnemiga.NaveEnemiga'"));
+    static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
     static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NaveEnemiga.NaveEnemiga'"));
     mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
     mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
@@ -67,7 +60,7 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
     //Tag
     Tags.Add(FName("Radar"));
 
-    Energia = 100.0f;
+    Energia = 2000.0f;
     bReabasteciendo = false;
 }
 
@@ -129,7 +122,7 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
         bReabasteciendo = true;
     }
 
-    /*EvitarArma();  */ 
+    FVector PosicionActual12 = GetActorLocation();
 }
 
 void ANaveEnemigaCaza::ActivarRayoLaser()
@@ -293,9 +286,7 @@ void ANaveEnemigaCaza::EvitarArma()
 {
    
     FVector PosicionActual = GetActorLocation();
-   /* PosicionActual.Y += 100.0f;*/
-
-    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Se Notifico Evitar Arma"));
+    PosicionActual.Y += 100.0f;
 
         if (FMath::Abs(PosicionActual.Y - UltimaPosicionArma.Y) < +1000.0f) // Distancia mínima de seguridad
         {

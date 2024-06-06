@@ -25,5 +25,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	int Vida = 3;
+	virtual void RecibirDanio();
 
 };

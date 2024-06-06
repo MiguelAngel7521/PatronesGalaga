@@ -35,6 +35,8 @@ public:
 
 	float FireCooldown;
 	FTimerHandle FireTimerHandle;
+	int vida = 3;
+	void RecibirDanio();
 
 
 };

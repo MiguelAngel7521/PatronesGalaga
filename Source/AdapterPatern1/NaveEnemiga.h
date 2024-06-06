@@ -1,13 +1,14 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "SistemaPuntuacionComponente.h"
+#include "ISuscriptor.h"
 #include "NaveEnemiga.generated.h"
 
 UCLASS()
-class ADAPTERPATERN1_API ANaveEnemiga : public AActor
+class ADAPTERPATERN1_API ANaveEnemiga : public AActor, public IISuscriptor
 {
 	GENERATED_BODY()
 	
@@ -118,9 +119,23 @@ private:
 		float ObtenerEnergia() const;
 		class ARadarEnemigo* Radar;
 
-private:
-	float Energia;
+
+	//Patron Observer Ingeniero
+public:
+	virtual void Actualizar(const FString& Accion) override;
+	class ArmaAmiga* ArmaAmiga;
+
+public:
 	FVector UltimaPosicionArma;
+	float Energia;
+	bool bReabasteciendo;
+
+	//Patron Strategy
+	public:
+
+	int Vida = 3;
+	virtual void RecibirDanio() ;
+
 
 
 };

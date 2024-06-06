@@ -6,8 +6,11 @@
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Engine/StaticMesh.h"
+#include "NaveEnemiga.h"
+#include "ComponenteEscudo.h"
+#include "ComponenteArmas.h"
 
-AAdapterPatern1Projectile::AAdapterPatern1Projectile() 
+AAdapterPatern1Projectile::AAdapterPatern1Projectile()
 {
 	// Static reference to the mesh to use for the projectile
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ProjectileMeshAsset(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
@@ -42,4 +45,21 @@ void AAdapterPatern1Projectile::OnHit(UPrimitiveComponent* HitComp, AActor* Othe
 	}
 
 	Destroy();
+
+	ANaveEnemiga* NaveEnemiga = Cast<ANaveEnemiga>(OtherActor);
+	if (NaveEnemiga != nullptr)
+	{
+		NaveEnemiga->RecibirDanio();
+	}
+	AComponenteEscudo* ComponenteEscudo = Cast<AComponenteEscudo>(OtherActor);
+	if (ComponenteEscudo != nullptr)
+	{
+		ComponenteEscudo->RecibirDanio();
+	}
+	AComponenteArmas* ComponenteArmas = Cast<AComponenteArmas>(OtherActor);
+	if (ComponenteArmas != nullptr)
+	{
+		ComponenteArmas->RecibirDanio();
+	}
+	
 }

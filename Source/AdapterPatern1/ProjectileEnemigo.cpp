@@ -8,7 +8,7 @@
 AProjectileEnemigo::AProjectileEnemigo()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> mallaP(TEXT("/Game/TwinStick/Meshes/TwinStickProjectile.TwinStickProjectile"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> mallaP(TEXT("StaticMesh'/Game/TwinStick/Meshes/ProjectileEnemigo.ProjectileEnemigo'"));
 	mallaProyectil = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));//crea el objeto mallaProyectil
 	mallaProyectil->SetStaticMesh(mallaP.Object);  //asigna la malla al objeto mallaProyectil
 	mallaProyectil->SetupAttachment(RootComponent);//asigna el objeto mallaProyectil al componente raiz
@@ -51,7 +51,7 @@ void AProjectileEnemigo::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
 	{
 
 		Pawn->ReducirVida();
-		Pawn->ReducirEnergia1();
+		/*Pawn->ReducirEnergia1();*/
 		// Mostrar un mensaje informando al jugador sobre la pérdida de vida
 		FString Message = FString::Printf(TEXT("Vidas restantes: %d "), Pawn->GetVidasRestantes());
 		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Red, Message);

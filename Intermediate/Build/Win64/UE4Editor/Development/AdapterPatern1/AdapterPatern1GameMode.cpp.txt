@@ -1,0 +1,62 @@
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Development\AdapterPatern1\Definitions.AdapterPatern1.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1GameMode.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1GameMode.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1Pawn.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IBounceBall.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IBounceBall.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstados.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstados.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategia.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategia.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1Pawn.generated.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet\GameplayStaticsTypes.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\BallAdapter.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\BallAdapter.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\FabricaNaveEnemigas.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\SistemaPuntuacionComponente.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\SistemaPuntuacionComponente.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ISuscriptor.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ISuscriptor.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemiga.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\FabricaNaveEnemigas.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IngenieroEspecialista1.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IngenieroGeneral.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IngenieroGeneral.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IngenieroEspecialista1.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IngenieroEspecialista2.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IngenieroEspecialista2.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IngenieroEspecialista3.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IngenieroEspecialista3.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\DirectorBuilder.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\DirectorBuilder.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ConstruirNaveEnemiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaBuilder.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaBuilder.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ConstruirNaveEnemiga.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\CapsulasFacade.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulasFacade.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\RadarEnemigo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Publisher.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Publisher.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\RadarEnemigo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ArmaAmiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ArmaAmiga.generated.h

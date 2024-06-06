@@ -123,7 +123,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaNodriza() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANaveEnemigaNodriza, 1071215153);
+	IMPLEMENT_CLASS(ANaveEnemigaNodriza, 1366516263);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ANaveEnemigaNodriza>()
 	{
 		return ANaveEnemigaNodriza::StaticClass();

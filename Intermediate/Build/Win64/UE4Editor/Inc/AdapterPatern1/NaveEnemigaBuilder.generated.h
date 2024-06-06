@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ADAPTERPATERN1_NaveEnemigaBuilder_generated_h
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS_NO_PURE_DECLS
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_STANDARD_CONSTRUCTORS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS_NO_PURE_DECLS
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	ADAPTERPATERN1_API UNaveEnemigaBuilder(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNaveEnemigaBuilder) \
@@ -29,7 +29,7 @@ private: \
 public:
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_ENHANCED_CONSTRUCTORS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	ADAPTERPATERN1_API UNaveEnemigaBuilder(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -42,7 +42,7 @@ public: \
 	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNaveEnemigaBuilder)
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
 private: \
 	static void StaticRegisterNativesUNaveEnemigaBuilder(); \
 	friend struct Z_Construct_UClass_UNaveEnemigaBuilder_Statics; \
@@ -51,22 +51,22 @@ public: \
 	DECLARE_SERIALIZER(UNaveEnemigaBuilder)
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_BODY_LEGACY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_BODY_LEGACY \
 		PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_STANDARD_CONSTRUCTORS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_STANDARD_CONSTRUCTORS \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_BODY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_BODY \
 	PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_ENHANCED_CONSTRUCTORS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_GENERATED_UINTERFACE_BODY() \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 protected: \
 	virtual ~INaveEnemigaBuilder() {} \
 public: \
@@ -75,7 +75,7 @@ public: \
 	virtual UObject* _getUObject() const { check(0 && "Missing required implementation."); return nullptr; }
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE \
 protected: \
 	virtual ~INaveEnemigaBuilder() {} \
 public: \
@@ -84,23 +84,23 @@ public: \
 	virtual UObject* _getUObject() const { check(0 && "Missing required implementation."); return nullptr; }
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_10_PROLOG
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_21_GENERATED_BODY_LEGACY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_10_PROLOG
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_21_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_21_GENERATED_BODY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_21_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_SPARSE_DATA \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -108,7 +108,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 template<> ADAPTERPATERN1_API UClass* StaticClass<class UNaveEnemigaBuilder>();
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID AdapterPatern1_4_27_Source_AdapterPatern1_NaveEnemigaBuilder_h
+#define CURRENT_FILE_ID AdapterPatern1_Source_AdapterPatern1_NaveEnemigaBuilder_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

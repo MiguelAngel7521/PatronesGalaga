@@ -5,6 +5,7 @@
 #include "GameFramework/Character.h"
 #include "IBounceBall.h"
 #include "IEstados.h"
+#include "IEstrategia.h"
 #include "AdapterPatern1Pawn.generated.h"
 
 UCLASS(Blueprintable) 
@@ -32,9 +33,9 @@ public:
 	AAdapterPatern1Pawn();
 
 	/** Offset from the ships location to spawn projectiles */
-	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite )
+	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	FVector GunOffset;
-	
+
 	/* How fast the weapon will fire */
 	UPROPERTY(Category = Gameplay, EditAnywhere, BlueprintReadWrite)
 	float FireRate;
@@ -103,13 +104,13 @@ private:
 
 protected:
 	int ContImpacto;
-	
+
 public:
 	void recibirImpacto();
 
-	int VidasRestantes = 3;
+	int VidasRestantes = 5;
 	int EnergiaRestante = 200.0f;
-	
+
 
 	int GetVidasRestantes() const { return VidasRestantes; }
 	int ObtenerEnergiaRestante() const { return EnergiaRestante; }
@@ -119,15 +120,11 @@ public:
 			VidasRestantes++;
 	}
 	// Función para reducir una vida del pawn
-	void ReducirVida()
-	{
-		if (VidasRestantes > 0)
-			VidasRestantes--;
-	}
+	void ReducirVida();
 	void AumentarEnergia()
 	{
 		if (EnergiaRestante > 0)
-			EnergiaRestante = EnergiaRestante +20;
+			EnergiaRestante = EnergiaRestante + 20;
 	}
 	void AumentarVelocidad()
 	{
@@ -157,8 +154,8 @@ public:
 	IIEstados* EstadoInvensible;
 	IIEstados* EstadoConCamuflaje;
 	IIEstados* Estado;
-	 class AComponenteEscudo* Escudo;
-	 class AArmaAmiga* ArmaAmiga;
+	class AComponenteEscudo* Escudo;
+	class AArmaAmiga* ArmaAmiga;
 	//Funciones para cambiar de estado
 	FORCEINLINE void EstablecerEstados(IIEstados* _Estado);
 
@@ -176,5 +173,29 @@ public:
 	FORCEINLINE IIEstados* J_ObtenerEstadoInvensible();
 	FORCEINLINE IIEstados* J_ObtenerEstadoConCamuflaje();
 	FORCEINLINE FString J_ObtenerEstadoActual();
+
+
+	//patron Strategy
+public:
+
+	/*IIEstrategia* EstrategiaExplosiva;*/
+	class AEstrategiaRecuperacion* EstrategiaRecuperacion;
+	class AEstrategiaExplosiva* EstrategiaExplosiva;
+	class AEstrategiaCamaraLenta* EstrategiaCamaraLenta;
+
+
+	IIEstrategia* EstrategiaActual;
+
+	void AlternarEstrategias(AActor* _EstrategiaPawn);
+	void EjecutarEstrategia();
+	//Estrategias con boton 
+public:
+	void HandleKey1();
+	void HandleKey2();
+	void HandleKey3();
+	bool bIsEstrategiaCamaraLentaActive;
+	bool bIsEstrategiaRecuperacionActive;
+	bool bIsEstrategiaExplosivaActive;
+
 };
 

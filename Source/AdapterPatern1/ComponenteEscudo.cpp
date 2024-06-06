@@ -30,3 +30,12 @@ void AComponenteEscudo::Tick(float DeltaTime)
 
 }
 
+void AComponenteEscudo::RecibirDanio()
+{
+		Vida--;
+	if (Vida <= 0)
+		{
+		Destroy();
+	}
+}
+
