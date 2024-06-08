@@ -11,6 +11,9 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "RadarEnemigo.h"
+//Patron Visitor
+#include "INaveEnemigaVisitor.h"
+#include "RecuperacionVisitor.h"
 
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
@@ -30,6 +33,12 @@ void ANaveEnemigaCaza::BeginPlay()
     {
         RadarEnemigo->AgregarObservador(this);
     }
+
+    // Crear una instancia del visitante
+    ARecuperacionVisitor* Visitor = GetWorld()->SpawnActor<ARecuperacionVisitor>();
+
+    // Aplicar el visitante a esta nave enemiga
+    Accept(Visitor);
 
 }
 
@@ -62,6 +71,14 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
 
     Energia = 2000.0f;
     bReabasteciendo = false;
+    // Asignar coordenadas de destino
+    targetLocations.Add(FVector(-300, 3000, 200));    // Coordenada 1
+    targetLocations.Add(FVector(-700, 2000, 200));  // Coordenada 2
+    targetLocations.Add(FVector(-510, 1250, 200));  // Coordenada 3
+    targetLocations.Add(FVector(-700, 80, 200));  // Coordenada 4
+    targetLocations.Add(FVector(-510, -920, 200));  // Coordenada 5
+    targetLocations.Add(FVector(-700, -1960, 200));    // Coordenada 6
+    targetLocations.Add(FVector(-300, -3200, 200));    // Coordenada 7
 }
 
 void ANaveEnemigaCaza::Tick(float DeltaTime)
@@ -123,6 +140,28 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
     }
 
     FVector PosicionActual12 = GetActorLocation();
+    // Calculate the new position based on the current direction and speed
+    FVector newLocation = GetActorLocation();
+    FVector targetLocation = targetLocations[currentTargetIndex];
+    FVector direction = (targetLocation - newLocation).GetSafeNormal();
+    float distance = FVector::Distance(targetLocation, newLocation);
+    newLocation += direction * speed * DeltaTime;
+
+    SetActorLocation(newLocation);
+
+    // Verificar si la nave ha llegado a la ubicación de destino actual
+    if (distance < 10.0f)
+    {
+        // Mover a la siguiente ubicación de destino
+        currentTargetIndex = (currentTargetIndex + 1) % targetLocations.Num();
+    }
+
+
+    //// Crear una instancia del visitante
+    //ARecuperacionVisitor* Visitor = GetWorld()->SpawnActor<ARecuperacionVisitor>();
+
+    //// Aplicar el visitante a esta nave enemiga
+    //Accept(Visitor);
 }
 
 void ANaveEnemigaCaza::ActivarRayoLaser()
@@ -279,6 +318,12 @@ void ANaveEnemigaCaza::DirigirseReabastecimiento()
         Energia = 100.0f; // Reabastecer energía
         bReabasteciendo = false;
     }
+}
+
+void ANaveEnemigaCaza::Accept(class IINaveEnemigaVisitor* Visitor)
+{
+   /* Visitor = Cast<IINaveEnemigaVisitor>(Visitor);*/
+    Visitor->VisitNaveEnemigaCaza(this);
 }
 
 

@@ -18,6 +18,12 @@
 //Patron Observer
 #include "RadarEnemigo.h"
 #include "ArmaAmiga.h"
+//Patron Strategy
+#include "EstrategiaAtaqueFinal.h"
+#include "EstrategiaCamaraLenta.h"
+#include "EstrategiaExplosiva.h"
+#include "EstrategiaRecuperacion.h"
+
 
 AAdapterPatern1GameMode::AAdapterPatern1GameMode()
 {
@@ -43,7 +49,6 @@ void AAdapterPatern1GameMode::BeginPlay()
 	/*GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("%s"), *Jugador->J_ObtenerEstadoActual()));*/
 	Jugador->JugadorBasico();
 
-	
 
 
 	//patron Observer
@@ -82,6 +87,26 @@ void AAdapterPatern1GameMode::BeginPlay()
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
 	Facade->NivelDificil();
+
+	//Patron Strategy
+
+
+	/*EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
+	EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
+	EstrategiaAtaqueFinal = GetWorld()->SpawnActor<AEstrategiaAtaqueFinal>(AEstrategiaAtaqueFinal::StaticClass());
+	EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());*/
+
+	//// Obtener la ubicación y rotación del pawn
+	FVector PawnLocation = Jugador->GetActorLocation();
+	FRotator PawnRotation = Jugador->GetActorRotation();
+
+	
+	AArmaAmiga* ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation + FVector(200, 600, 0), PawnRotation);
+	if (ArmaIzquierda)
+	{
+		// Asociar el arma DN a la nave jugador
+		ArmaIzquierda->AttachToActor(Jugador, FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
 
 
 	//Patron Factory
@@ -139,57 +164,7 @@ void AAdapterPatern1GameMode::Tick(float DeltaTime)
 
 	TimerController += DeltaTime;
 
-	/*if (TimerController >= 5.0f)
-	{
-		Director->ConstruirPaqueteEnergia(Cont);
-		TimerController = 0.0f;
-		Cont++;
-		if (Cont > 3)
-		{
-			Cont = 1;
-		}
-	}*/
+	
 }
 
-void AAdapterPatern1GameMode::ActualizarPosicionesNavesEnemigas()
-{
-	//for (ANaveEnemiga* NaveEnemiga : TANavesEnemigas)
-	//{
-	//	TMPosicionesNavesEnemigas.Add(NaveEnemiga, NaveEnemiga->GetActorLocation());
-	//}
-}
-
-void AAdapterPatern1GameMode::MostrarPosicionesNavesEnemigas()
-{
-	/*for (auto ElementoActual : TMPosicionesNavesEnemigas) {
-		ANaveEnemiga* naveEnemigaActual = ElementoActual.Key;
-		FVector posicionActualNaveEnemiga = ElementoActual.Value;
-		FString mensaje = "La nave " + naveEnemigaActual->GetNombre() + " esta en la posicion> " + posicionActualNaveEnemiga.ToString();
-
-		if (GEngine)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Green, mensaje);
-
-			/*FString mensaje = "Nombre NaveEnemiga: " + Clave->GetNombre() + " Posicion NaveEnemiga: " + Valor.ToString();
-			GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, mensaje);*
-
-		}
-
-		TMPosicionesNavesEnemigas[naveEnemigaActual] = naveEnemigaActual->GetActorLocation();
-	}*/
-}
-
-
-
-
-
-void AAdapterPatern1GameMode::DetenerProceso()
-{
-	/*Detener Todos los timers*/
-
-	//GetWorldTimerManager().ClearTimer(ManejadorEliminarNaves);
-	//GetWorldTimerManager().ClearTimer(ManejadorCrearNaves);
-	//GetWorldTimerManager().ClearTimer(ManejadorMostrarPosiciones);
-	//GetWorldTimerManager().ClearTimer(ManejadorDetenerProceso);
-}
 

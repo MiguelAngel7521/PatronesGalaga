@@ -58,6 +58,15 @@ public:
 private:
     TArray<AActor*> Observers;
 
+    // Lista de coordenadas de destino
+    TArray<FVector> targetLocations;
+
+    // Índice de la ubicación de destino actual
+    int32 currentTargetIndex;
+
+    // Velocidad de movimiento de la nave
+    float speed = 1000.0f;
+
     
 
 };

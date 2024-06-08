@@ -25,18 +25,8 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Game Mode")
 	class ABallAdapter* Adapter;
 public:
-	//TArray<ANaveEnemiga*> TANavesEnemigas;
-	//TArray<ANaveEnemigaCaza*> TANavesEnemigasCaza;
-	//TArray<ANaveEnemigaTransporte*> TANavesEnemigasTransporte;
-	//TArray<ANaveEnemigaEspia*> TANavesEnemigasEspia;
-	//TArray<ANaveEnemigaNodriza*> TANavesEnemigasNodriza;
+	
 
-	void ActualizarPosicionesNavesEnemigas();
-	void MostrarPosicionesNavesEnemigas();
-	void DetenerProceso();
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NavesEnemigas")
-	//TMap<ANaveEnemiga*, FVector> TMPosicionesNavesEnemigas;
 
 
 
@@ -75,6 +65,11 @@ private:
 	//Patron State 
 	UPROPERTY(VisibleAnywhere, Category = "Game mode")
 	class ARadarEnemigo* Radar;
+	//Strategy
+	class AEstrategiaRecuperacion* EstrategiaRecuperacion;
+	class AEstrategiaExplosiva* EstrategiaExplosiva;
+	class AEstrategiaCamaraLenta* EstrategiaCamaraLenta;
+	class AEstrategiaAtaqueFinal* EstrategiaAtaqueFinal;
 	
 };
 

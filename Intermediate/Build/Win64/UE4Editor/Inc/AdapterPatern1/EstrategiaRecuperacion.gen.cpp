@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaRecuperacion() {}
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_AEstrategiaRecuperacion();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
-	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIEstrategia_NoRegister();
+	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIEstrategiasTiempo_NoRegister();
 // End Cross Module References
 	void AEstrategiaRecuperacion::StaticRegisterNativesAEstrategiaRecuperacion()
 	{
@@ -47,7 +47,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaRecuperacion() {}
 	};
 #endif
 		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AEstrategiaRecuperacion_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UIEstrategia_NoRegister, (int32)VTABLE_OFFSET(AEstrategiaRecuperacion, IIEstrategia), false },
+			{ Z_Construct_UClass_UIEstrategiasTiempo_NoRegister, (int32)VTABLE_OFFSET(AEstrategiaRecuperacion, IIEstrategiasTiempo), false },
 		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AEstrategiaRecuperacion_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AEstrategiaRecuperacion>::IsAbstract,
@@ -76,7 +76,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaRecuperacion() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEstrategiaRecuperacion, 2519284459);
+	IMPLEMENT_CLASS(AEstrategiaRecuperacion, 1110024487);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AEstrategiaRecuperacion>()
 	{
 		return AEstrategiaRecuperacion::StaticClass();

@@ -36,10 +36,10 @@ void AEstrategiaExplosiva::Tick(float DeltaTime)
 
 }
 
-void AEstrategiaExplosiva::EjecutarEstrategia()
+void AEstrategiaExplosiva::Disparar()
 {
 	Pawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
-
+	
 
 	FVector FireDirection = Pawn->GetActorForwardVector();
 	// If it's ok to fire again

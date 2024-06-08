@@ -5,6 +5,7 @@
 #include "NaveEnemiga.h"
 #include "SistemaPuntuacionComponente.h"
 #include "ISuscriptor.h"
+#include "INaveEnemigaVisitor.h"
 #include "NaveEnemigaCaza.generated.h"
 
 /**
@@ -14,12 +15,12 @@ UCLASS()
 class ADAPTERPATERN1_API ANaveEnemigaCaza : public ANaveEnemiga/*, public IISuscriptor*/
 {
 	GENERATED_BODY()
-	
+
 protected:
 	float HiperVelocidad;
 	int NumeroMisiles;
 	bool RayosLaserActivos;
-	float DanoRayoLaser; 
+	float DanoRayoLaser;
 	float TiempoEntreRayosLaser;
 	virtual void BeginPlay() override;
 private:
@@ -32,7 +33,7 @@ private:
 	float tiempoExplosion = 0;
 	float TiempoTranscurrido = 0;
 
-	
+
 
 public:
 	ANaveEnemigaCaza();
@@ -47,7 +48,7 @@ public:
 	//Etiqueta
 	UPROPERTY(EditAnywhere, Category = "Etiquetas")
 	FString EtiquetaPersonalizada = "Radar";
-    
+
 
 public:
 
@@ -71,7 +72,7 @@ private:
 
 	//Patron Observer Ingeniero
 public:
-	virtual void Actualizar(const FString& Accion) ;
+	virtual void Actualizar(const FString& Accion);
 	virtual float ObtenerEnergia() const;
 	class ArmaAmiga* ArmaAmiga;
 
@@ -83,4 +84,15 @@ public:
 	void EvitarArma();
 	void DirigirseReabastecimiento();
 
+	// Lista de coordenadas de destino
+	TArray<FVector> targetLocations;
+
+	// Índice de la ubicación de destino actual
+	int32 currentTargetIndex;
+
+	// Velocidad de movimiento de la nave
+	float speed = 1000.0f;
+	//Patron Visitor
+	
+	void Accept(IINaveEnemigaVisitor* Visitor) ;
 };

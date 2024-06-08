@@ -26,11 +26,11 @@
 	void AEstrategiaRecuperacion::Tick(float DeltaTime)
 	{
 		Super::Tick(DeltaTime);
-		EjecutarEstrategia();
+		/*EjecutarTiempo();*/
 
 	}
 
-	void AEstrategiaRecuperacion::EjecutarEstrategia()
+	void AEstrategiaRecuperacion::EjecutarTiempo()
 	{
 		Pawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 		FVector PawnVelocity = Pawn->GetVelocity();

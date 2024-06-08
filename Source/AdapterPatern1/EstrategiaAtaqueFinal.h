@@ -23,7 +23,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void EjecutarEstrategia() override;
+	virtual void Disparar() override;
 	class AAdapterPatern1Pawn* Pawn;
 	//Projectile 
 public:

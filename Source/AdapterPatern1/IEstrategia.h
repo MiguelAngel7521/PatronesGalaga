@@ -22,5 +22,5 @@ class ADAPTERPATERN1_API IIEstrategia
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void EjecutarEstrategia() = 0;
+	virtual void Disparar() = 0;
 };

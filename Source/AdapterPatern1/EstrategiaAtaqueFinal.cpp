@@ -30,7 +30,7 @@ void AEstrategiaAtaqueFinal::Tick(float DeltaTime)
 
 }
 
-void AEstrategiaAtaqueFinal::EjecutarEstrategia()
+void AEstrategiaAtaqueFinal::Disparar()
 {
     Pawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
     if (!Pawn) return; // Ensure we have a valid player pawn

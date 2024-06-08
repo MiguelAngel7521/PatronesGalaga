@@ -3,11 +3,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "IEstrategia.h"
+#include "IEstrategiasTiempo.h"
 #include "EstrategiaRecuperacion.generated.h"
 
 UCLASS()
-class ADAPTERPATERN1_API AEstrategiaRecuperacion : public AActor, public IIEstrategia
+class ADAPTERPATERN1_API AEstrategiaRecuperacion : public AActor, public IIEstrategiasTiempo
 {
 	GENERATED_BODY()
 	
@@ -23,7 +23,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 public:
-		void EjecutarEstrategia() override;
+		void EjecutarTiempo() override;
 		class AAdapterPatern1Pawn* Pawn;
 		float LastRecoveryTime;
 

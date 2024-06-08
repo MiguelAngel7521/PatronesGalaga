@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaCamaraLenta() {}
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_AEstrategiaCamaraLenta();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
-	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIEstrategia_NoRegister();
+	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIEstrategiasTiempo_NoRegister();
 // End Cross Module References
 	void AEstrategiaCamaraLenta::StaticRegisterNativesAEstrategiaCamaraLenta()
 	{
@@ -47,7 +47,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaCamaraLenta() {}
 	};
 #endif
 		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AEstrategiaCamaraLenta_Statics::InterfaceParams[] = {
-			{ Z_Construct_UClass_UIEstrategia_NoRegister, (int32)VTABLE_OFFSET(AEstrategiaCamaraLenta, IIEstrategia), false },
+			{ Z_Construct_UClass_UIEstrategiasTiempo_NoRegister, (int32)VTABLE_OFFSET(AEstrategiaCamaraLenta, IIEstrategiasTiempo), false },
 		};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AEstrategiaCamaraLenta_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AEstrategiaCamaraLenta>::IsAbstract,
@@ -76,7 +76,7 @@ void EmptyLinkFunctionForGeneratedCodeEstrategiaCamaraLenta() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AEstrategiaCamaraLenta, 3406748534);
+	IMPLEMENT_CLASS(AEstrategiaCamaraLenta, 1221551498);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AEstrategiaCamaraLenta>()
 	{
 		return AEstrategiaCamaraLenta::StaticClass();

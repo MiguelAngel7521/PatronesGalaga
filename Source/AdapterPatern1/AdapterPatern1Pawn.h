@@ -6,6 +6,7 @@
 #include "IBounceBall.h"
 #include "IEstados.h"
 #include "IEstrategia.h"
+#include "IEstrategiasTiempo.h"
 #include "AdapterPatern1Pawn.generated.h"
 
 UCLASS(Blueprintable) 
@@ -50,6 +51,7 @@ public:
 
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
+	
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 	// End Actor Interface
 
@@ -88,7 +90,6 @@ public:
 
 	// Variables para las vidas y la energía del jugador
 	int32 VidasJugador = 3;
-	int32 EnergiaJugador = 200;
 
 	// Funciones para manejar el daño del enemigo y la energía del jugador
 	void RecibirDanio(int32 CantidadDanio);
@@ -132,7 +133,6 @@ public:
 	}
 
 	FVector posicionInicial;
-	void Energia();
 	FTimerHandle TimerHandle_Energia;
 	//Patron State
 private:
@@ -182,17 +182,26 @@ public:
 	class AEstrategiaRecuperacion* EstrategiaRecuperacion;
 	class AEstrategiaExplosiva* EstrategiaExplosiva;
 	class AEstrategiaCamaraLenta* EstrategiaCamaraLenta;
+	class AEstrategiaAtaqueFinal* EstrategiaAtaqueFinal;
 
 
-	IIEstrategia* EstrategiaActual;
+	IIEstrategia* EstrategiaAtaque;
+	IIEstrategiasTiempo* EstrategiaTiempo;
 
 	void AlternarEstrategias(AActor* _EstrategiaPawn);
 	void EjecutarEstrategia();
+	void AlternarEstrategiasTiempo(AActor* _EstrategiaPawn);
+	void EjectuarEstrategiaTiempo();
+	void CambiarEstrategia(int32 NumeroEstrategia);
+	void CambiarEstrategia1();
+	void CambiarEstrategia2();
+	void CambiarEstrategia3();
 	//Estrategias con boton 
 public:
-	void HandleKey1();
-	void HandleKey2();
-	void HandleKey3();
+	void EstCamaraLenta();
+	void EstRecuperacion();
+	void EstAtaque1();
+	void EstAtaque2();
 	bool bIsEstrategiaCamaraLentaActive;
 	bool bIsEstrategiaRecuperacionActive;
 	bool bIsEstrategiaExplosivaActive;

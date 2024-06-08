@@ -1,27 +1,23 @@
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Development\AdapterPatern1\Definitions.AdapterPatern1.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/AdapterPatern1.cpp
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1.h
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/ArmaAmiga.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ArmaAmiga.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ArmaAmiga.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\RadarEnemigo.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Publisher.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ISuscriptor.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ISuscriptor.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Publisher.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\RadarEnemigo.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaCaza.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemiga.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\SistemaPuntuacionComponente.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\SistemaPuntuacionComponente.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemiga.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaCaza.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ProjectileEnemigo.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/AdapterPatern1Projectile.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1Projectile.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1Projectile.generated.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/ProjectileMovementComponent.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/MovementComponent.h
 C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\MovementComponent.generated.h
 C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ProjectileMovementComponent.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ProjectileEnemigo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\SistemaPuntuacionComponente.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\SistemaPuntuacionComponente.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ISuscriptor.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ISuscriptor.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemiga.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ComponenteEscudo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ComponenteEscudo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ComponenteArmas.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ComponenteArmas.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Ball.cpp
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Ball.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Ball.generated.h
@@ -50,12 +46,10 @@ C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\Adapter
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IBounceBall.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IBounceBall.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\BallAdapter.generated.h
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Capsula.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Capsula.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Capsula.generated.h
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/CapsulaEnergia.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\CapsulaEnergia.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulaEnergia.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Basico.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Basico.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstados.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstados.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1Pawn.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
@@ -63,11 +57,18 @@ C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Charact
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
 C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstados.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstados.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategia.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategia.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategiasTiempo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategiasTiempo.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1Pawn.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Basico.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Capsula.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Capsula.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Capsula.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/CapsulaEnergia.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\CapsulaEnergia.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulaEnergia.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/CapsulasFacade.cpp
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\CapsulasFacade.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulasFacade.generated.h
@@ -80,6 +81,10 @@ C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\Adapter
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulaVida.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\CapsulaVelocidad.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\CapsulaVelocidad.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaCaza.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\INaveEnemigaVisitor.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\INaveEnemigaVisitor.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaCaza.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaTransporte.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaTransporte.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaEspia.h
@@ -103,10 +108,8 @@ C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\B
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/CapsulaVelocidad.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/CapsulaVida.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/ConstruirNaveEnemiga.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ComponenteArmas.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ComponenteArmas.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ComponenteEscudo.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ComponenteEscudo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ProjectileEnemigo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ProjectileEnemigo.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/DirectorBuilder.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/EstadoConArmamentoAdicional.cpp
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\EstadoConArmamentoAdicional.h
@@ -125,6 +128,8 @@ C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\Adapter
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\FabricaNaveEnemigas.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IBounceBall.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IEstados.cpp
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IEstrategia.cpp
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IEstrategiasTiempo.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroEspecialista1.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroEspecialista2.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/IngenieroEspecialista3.cpp
@@ -133,10 +138,9 @@ C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/Adapter
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IObserverRadar.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IObserverRadar.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/ISuscriptor.cpp
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaBuilder.cpp
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaEspia.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1Projectile.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1Projectile.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemiga.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Puntaje.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Puntaje.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\RadarHDU.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUD.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/HUDHitBox.h
@@ -145,14 +149,20 @@ C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DebugTe
 C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\HUD.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\RadarHDU.generated.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Public\EngineUtils.h
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaNodriza.cpp
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaTransporte.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\RadarEnemigo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Publisher.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Publisher.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\RadarEnemigo.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/NaveEnemigaBuilder.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Nivel.cpp
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/ProjectileEnemigo.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Publisher.cpp
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/Puntaje.cpp
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Puntaje.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Puntaje.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/RadarEnemigo.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ArmaAmiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategiasAtaquesPawn.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategiasAtaquesPawn.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ArmaAmiga.generated.h
 C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Source/AdapterPatern1/RadarHDU.cpp
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\Engine/Canvas.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Public\CanvasItem.h

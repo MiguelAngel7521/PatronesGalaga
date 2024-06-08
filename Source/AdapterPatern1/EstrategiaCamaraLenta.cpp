@@ -27,7 +27,7 @@ void AEstrategiaCamaraLenta::Tick(float DeltaTime)
 
 }
 
-void AEstrategiaCamaraLenta::EjecutarEstrategia()
+void AEstrategiaCamaraLenta::EjecutarTiempo()
 {
 	Pawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	UWorld* World = Pawn->GetWorld();

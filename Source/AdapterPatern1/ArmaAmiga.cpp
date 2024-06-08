@@ -5,17 +5,23 @@
 #include "RadarEnemigo.h"
 #include "NaveEnemigaCaza.h"
 #include "ProjectileEnemigo.h"
+#include "EstrategiaAtaqueSierra.h"
+#include "EstrategiaArmaEscudo.h"
+#include "EstrategiaAtaqueNormal.h"
+#include "Engine/World.h"
+#include "Engine/StaticMesh.h"
+#include "IEstrategiasAtaquesPawn.h"
 
 // Sets default values
 AArmaAmiga::AArmaAmiga()
 {
     // Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
     PrimaryActorTick.bCanEverTick = true;
-    static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/Geometry/Meshes/NaveEnemiga.NaveEnemiga'"));
-    static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialArma(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/BlueMaterial.BlueMaterial'"));
+    static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/Geometry/Meshes/Cube.Cube'"));
+   /* static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialArma(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/BlueMaterial.BlueMaterial'"));*/
 
     MallaArmas = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
-    MallaArmas->SetMaterial(0, MaterialArma.Object);
+    /*MallaArmas->SetMaterial(0, MaterialArma.Object);*/
     MallaArmas->SetStaticMesh(Mesh.Object);
 
     FireRate = 3.0f;//Cadencia Balas
@@ -29,6 +35,11 @@ void AArmaAmiga::BeginPlay()
     Radar = Cast <ARadarEnemigo>(GetWorld()->SpawnActor(ARadarEnemigo::StaticClass()));
     //Spawnea la bala
     GetWorld()->GetTimerManager().SetTimer(FireTimerHandle, this, &AArmaAmiga::FireProjectile, FireRate, true);
+    //Spawneamos las estrategias
+    EstrategiaEscudo = Cast<AEstrategiaArmaEscudo>(GetWorld()->SpawnActor(AEstrategiaArmaEscudo::StaticClass()));
+    EstrategiaSierra = Cast<AEstrategiaAtaqueSierra>(GetWorld()->SpawnActor(AEstrategiaAtaqueSierra::StaticClass()));
+    EstrategiaNormal = Cast<AEstrategiaAtaqueNormal>(GetWorld()->SpawnActor(AEstrategiaAtaqueNormal::StaticClass()));
+    SetEstrategia(EstrategiaNormal);
 
 }
 
@@ -36,6 +47,11 @@ void AArmaAmiga::BeginPlay()
 void AArmaAmiga::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
+    if (Estrategia)
+    {
+        Estrategia->MoverArma(this, DeltaTime);
+        Estrategia->Disparar(this);
+    }
 
 
 
@@ -82,6 +98,41 @@ void AArmaAmiga::NotificarRadar()
     if (Radar)
     {
         Radar->Actualizar(PosicionActual);
+    }
+}
+
+void AArmaAmiga::SetEstrategia(AActor* EstrategiaActual)
+{
+    Estrategia = Cast<IIEstrategiasAtaquesPawn>(EstrategiaActual);
+    if (!Estrategia)
+    {
+        GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("La estrategia no es válida"));
+    }
+}
+
+void AArmaAmiga::CambiarEstrategia(int32 NumeroEstrategia)
+{
+    if (NumeroEstrategia == 1)
+    {
+		SetEstrategia(EstrategiaEscudo);
+	}
+    if (NumeroEstrategia == 2)
+    {
+		SetEstrategia(EstrategiaSierra);
+	}
+    if (NumeroEstrategia == 3)
+    {
+		SetEstrategia(EstrategiaNormal);
+	}
+
+}
+
+void AArmaAmiga::CambiarMalla(UStaticMesh* MallaNueva)
+{
+    if (MallaNueva)
+    {
+        MallaArmas->SetStaticMesh(MallaNueva);
+
     }
 }
 

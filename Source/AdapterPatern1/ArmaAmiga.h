@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "IEstrategiasAtaquesPawn.h"
 #include "ArmaAmiga.generated.h"
 
 UCLASS()
@@ -41,6 +42,24 @@ private:
 	class ARadarEnemigo* Radar;
 
 	void NotificarRadar();
+	//Arma
+	public:
+		void SetEstrategia(AActor* EstrategiaActual);
+
+		void CambiarEstrategia(int32 NumeroEstrategia);
+
+		class AEstrategiaArmaEscudo* EstrategiaEscudo;
+		class AEstrategiaAtaqueSierra* EstrategiaSierra;
+		class AEstrategiaAtaqueNormal* EstrategiaNormal;
+		void CambiarMalla(UStaticMesh* MallaNueva);
+private:
+
+	/* Flag to control firing  */
+	uint32 bCanFire : 1;
+	/** Handle for efficient management of ShotTimerExpired timer */
+	FTimerHandle TimerHandle_ShotTimerExpired;
+
+	IIEstrategiasAtaquesPawn* Estrategia;
 
 	
 

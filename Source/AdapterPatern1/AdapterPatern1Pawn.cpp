@@ -26,6 +26,10 @@
 #include "EstrategiaExplosiva.h"
 #include "EstrategiaRecuperacion.h"
 #include "EstrategiaCamaraLenta.h"
+#include "EstrategiaAtaqueFinal.h"
+#include "IEstrategiasTiempo.h"
+#include "EstrategiaArmaEscudo.h"
+#include "EstrategiaAtaqueSierra.h"
 
 
 
@@ -103,9 +107,13 @@ void AAdapterPatern1Pawn::SetupPlayerInputComponent(class UInputComponent* Playe
 	PlayerInputComponent->BindAxis(FireForwardBinding);
 	PlayerInputComponent->BindAxis(FireRightBinding);
 	PlayerInputComponent = NewObject<UInputComponent>(this);
-	PlayerInputComponent->BindAction("EstrategiaAtaque1", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey1);
-	PlayerInputComponent->BindAction("EstrategiaAtaque2", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey2);
-	PlayerInputComponent->BindAction("EstrategiaAtaque3", IE_Pressed, this, &AAdapterPatern1Pawn::HandleKey3);
+	PlayerInputComponent->BindAction("EstrategiaCamaraLenta1", IE_Pressed, this, &AAdapterPatern1Pawn::EstCamaraLenta);
+	PlayerInputComponent->BindAction("EstrategiaRecuperacion2", IE_Pressed, this, &AAdapterPatern1Pawn::EstRecuperacion);
+	PlayerInputComponent->BindAction("EstrategiaAtaque1", IE_Pressed, this, &AAdapterPatern1Pawn::EstAtaque1);
+	PlayerInputComponent->BindAction("EstrategiaAtaque2", IE_Pressed, this, &AAdapterPatern1Pawn::EstAtaque2);
+	PlayerInputComponent->BindAction("EstrategiaCambiarAatque1", IE_Pressed, this, &AAdapterPatern1Pawn::CambiarEstrategia1);
+	PlayerInputComponent->BindAction("EstrategiaCambiarAatque2", IE_Pressed, this, &AAdapterPatern1Pawn::CambiarEstrategia2);
+	PlayerInputComponent->BindAction("EstrategiaCambiarAatque3", IE_Pressed, this, &AAdapterPatern1Pawn::CambiarEstrategia3);
 }
 
 void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
@@ -143,11 +151,17 @@ void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
 	// Try and fire a shot
 	FireShot(FireDirection);
 
-	if (EstrategiaActual)
+	if (EstrategiaExplosiva)
 	{
-		EjecutarEstrategia();
+		EstrategiaExplosiva->Disparar();
+	}
+	if (EstrategiaAtaqueFinal)
+	{
+		EstrategiaAtaqueFinal->Disparar();
+
 	}
 }
+
 
 void AAdapterPatern1Pawn::FireShot(FVector FireDirection)
 {
@@ -310,14 +324,6 @@ void AAdapterPatern1Pawn::ReducirVida()
 	}*/
 }
 
-void AAdapterPatern1Pawn::Energia()
-{
-	EnergiaJugador++;
-	if (EnergiaJugador > 10)
-	{
-		EnergiaJugador = 10;
-	}
-}
 
 void AAdapterPatern1Pawn::InicializarEstadosJugador(FString _Estados)
 {
@@ -458,8 +464,8 @@ FString AAdapterPatern1Pawn::J_ObtenerEstadoActual()
 
 void AAdapterPatern1Pawn::AlternarEstrategias(AActor* _EstrategiaPawn)
 {
-	EstrategiaActual = Cast<IIEstrategia>(_EstrategiaPawn);
-	if (!EstrategiaActual)
+	EstrategiaAtaque = Cast<IIEstrategia>(_EstrategiaPawn);
+	if (!EstrategiaAtaque)
 	{ 
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No se pudo inicializar EstrategiaActual"));
 	}
@@ -467,17 +473,60 @@ void AAdapterPatern1Pawn::AlternarEstrategias(AActor* _EstrategiaPawn)
 
 void AAdapterPatern1Pawn::EjecutarEstrategia()
 {
-	if (EstrategiaActual)
+	if (EstrategiaAtaque)
 	{
-		EstrategiaActual->EjecutarEstrategia();
+		EstrategiaAtaque->Disparar();
 	}
 }
 
-void AAdapterPatern1Pawn::HandleKey1()
+void AAdapterPatern1Pawn::AlternarEstrategiasTiempo(AActor* _EstrategiaPawn)
+{
+	EstrategiaTiempo = Cast<IIEstrategiasTiempo>(_EstrategiaPawn);
+	if (!EstrategiaTiempo)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No se pudo inicializar EstrategiaActual"));
+	}
+}
+
+void AAdapterPatern1Pawn::EjectuarEstrategiaTiempo()
+{
+	if (EstrategiaTiempo)
+	{
+		EstrategiaTiempo->EjecutarTiempo();
+	}
+}
+
+void AAdapterPatern1Pawn::CambiarEstrategia(int32 NumeroEstrategia)
+{
+	AArmaAmiga* Arma = Cast<AArmaAmiga>(UGameplayStatics::GetActorOfClass(GetWorld(), AArmaAmiga::StaticClass()));
+	Arma->CambiarEstrategia(NumeroEstrategia);
+}
+
+void AAdapterPatern1Pawn::CambiarEstrategia1()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia 1"));
+	AArmaAmiga* Arma = Cast<AArmaAmiga>(UGameplayStatics::GetActorOfClass(GetWorld(), AArmaAmiga::StaticClass()));
+	Arma->CambiarEstrategia(1);
+}
+
+void AAdapterPatern1Pawn::CambiarEstrategia2()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia 2"));
+	AArmaAmiga* Arma = Cast<AArmaAmiga>(UGameplayStatics::GetActorOfClass(GetWorld(), AArmaAmiga::StaticClass()));
+	Arma->CambiarEstrategia(2);
+}
+
+void AAdapterPatern1Pawn::CambiarEstrategia3()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia 3"));
+	AArmaAmiga* Arma = Cast<AArmaAmiga>(UGameplayStatics::GetActorOfClass(GetWorld(), AArmaAmiga::StaticClass()));
+	Arma->CambiarEstrategia(3);
+}
+
+void AAdapterPatern1Pawn::EstCamaraLenta()
 {
 
-
-	//CONTADOR
+	AlternarEstrategiasTiempo(EstrategiaCamaraLenta);
 	if (bIsEstrategiaCamaraLentaActive)
 	{
 		// Detener la estrategia si ya está activa
@@ -490,13 +539,13 @@ void AAdapterPatern1Pawn::HandleKey1()
 		bIsEstrategiaCamaraLentaActive = false;
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta Detenida"));
 	}
-	else if (VidasRestantes == 1)
+	else 
 	{
 		// Activar la estrategia si no está activa
-		EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());
 		if (EstrategiaCamaraLenta)
 		{
-			EstrategiaCamaraLenta->EjecutarEstrategia();
+			EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());
+			EjectuarEstrategiaTiempo();
 			bIsEstrategiaCamaraLentaActive = true;
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta Activada"));
 		}
@@ -505,32 +554,36 @@ void AAdapterPatern1Pawn::HandleKey1()
 
 }
 
-void AAdapterPatern1Pawn::HandleKey2()
+void AAdapterPatern1Pawn::EstRecuperacion()
 {
 
 
-	if (VidasRestantes == 2)
-	{
-
-		EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
-		AlternarEstrategias(EstrategiaRecuperacion);
+	    EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
+		AlternarEstrategiasTiempo(EstrategiaRecuperacion);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Recuperacion"));
-		EstrategiaRecuperacion->EjecutarEstrategia();
-	}
+		EjectuarEstrategiaTiempo();
+	
 }
 
-void AAdapterPatern1Pawn::HandleKey3()
+void AAdapterPatern1Pawn::EstAtaque1()
 {
 	
-	if (VidasRestantes == 3)
-	{
-		EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
+	
+	    EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
 		AlternarEstrategias(EstrategiaExplosiva);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Explosiva"));
-		EstrategiaExplosiva->EjecutarEstrategia();
+		EjecutarEstrategia();
 
 
-	}
+	
+}
+
+void AAdapterPatern1Pawn::EstAtaque2()
+{
+	EstrategiaAtaqueFinal = GetWorld()->SpawnActor<AEstrategiaAtaqueFinal>(AEstrategiaAtaqueFinal::StaticClass());
+	AlternarEstrategias(EstrategiaAtaqueFinal);
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Ataque Final"));
+	EjecutarEstrategia();
 }
 
 

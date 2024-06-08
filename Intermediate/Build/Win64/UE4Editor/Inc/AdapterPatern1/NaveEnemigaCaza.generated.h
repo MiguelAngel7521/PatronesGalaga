@@ -13,10 +13,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define ADAPTERPATERN1_NaveEnemigaCaza_generated_h
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_SPARSE_DATA
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_RPC_WRAPPERS
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_RPC_WRAPPERS_NO_PURE_DECLS
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_INCLASS_NO_PURE_DECLS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_SPARSE_DATA
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_RPC_WRAPPERS
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_RPC_WRAPPERS_NO_PURE_DECLS
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesANaveEnemigaCaza(); \
 	friend struct Z_Construct_UClass_ANaveEnemigaCaza_Statics; \
@@ -25,7 +25,7 @@ public: \
 	DECLARE_SERIALIZER(ANaveEnemigaCaza)
 
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_INCLASS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_INCLASS \
 private: \
 	static void StaticRegisterNativesANaveEnemigaCaza(); \
 	friend struct Z_Construct_UClass_ANaveEnemigaCaza_Statics; \
@@ -34,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(ANaveEnemigaCaza)
 
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_STANDARD_CONSTRUCTORS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ANaveEnemigaCaza(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ANaveEnemigaCaza) \
@@ -47,7 +47,7 @@ private: \
 public:
 
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_ENHANCED_CONSTRUCTORS \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ANaveEnemigaCaza(ANaveEnemigaCaza&&); \
@@ -58,28 +58,28 @@ public: \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ANaveEnemigaCaza)
 
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_PRIVATE_PROPERTY_OFFSET
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_13_PROLOG
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_GENERATED_BODY_LEGACY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_PRIVATE_PROPERTY_OFFSET
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_14_PROLOG
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_PRIVATE_PROPERTY_OFFSET \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_SPARSE_DATA \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_RPC_WRAPPERS \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_INCLASS \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_STANDARD_CONSTRUCTORS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_PRIVATE_PROPERTY_OFFSET \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_SPARSE_DATA \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_RPC_WRAPPERS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_INCLASS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_GENERATED_BODY \
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_PRIVATE_PROPERTY_OFFSET \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_SPARSE_DATA \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_INCLASS_NO_PURE_DECLS \
-	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_16_ENHANCED_CONSTRUCTORS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_PRIVATE_PROPERTY_OFFSET \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_SPARSE_DATA \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_INCLASS_NO_PURE_DECLS \
+	AdapterPatern1_Source_AdapterPatern1_NaveEnemigaCaza_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
