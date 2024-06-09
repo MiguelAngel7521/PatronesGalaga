@@ -26,5 +26,6 @@ public:
 	void VisitNaveEnemigaCaza(class ANaveEnemigaCaza* Nave) override;
 	void VisitNaveEnemigaEspia(class ANaveEnemigaEspia* Nave) override;
 	void VisitNaveEnemigaNodriza(class ANaveEnemigaNodriza* Nave) override;
+	void VisitNaveEnemigaTransporte(class ANaveEnemigaTransporte* Nave)override;
 
 };

@@ -86,7 +86,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelDificil();
+	Facade->NivelFacil();
 
 	//Patron Strategy
 
@@ -98,14 +98,20 @@ void AAdapterPatern1GameMode::BeginPlay()
 
 	//// Obtener la ubicación y rotación del pawn
 	FVector PawnLocation = Jugador->GetActorLocation();
+	PawnLocation.Y += 200.0f;
 	FRotator PawnRotation = Jugador->GetActorRotation();
 
 	
-	AArmaAmiga* ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation + FVector(200, 600, 0), PawnRotation);
+	AArmaAmiga* ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation , PawnRotation);
 	if (ArmaIzquierda)
 	{
-		// Asociar el arma DN a la nave jugador
-		ArmaIzquierda->AttachToActor(Jugador, FAttachmentTransformRules::SnapToTargetIncludingScale);
+		// Anclar el arma al jugador con las reglas de anclaje deseadas
+		ArmaIzquierda->AttachToActor(Jugador, FAttachmentTransformRules::KeepWorldTransform);
+
+		// Ajustar la ubicación del arma después de anclarla
+		FVector NewRelativeLocation = ArmaIzquierda->GetActorLocation();
+		NewRelativeLocation.Y += 0.0f;
+		ArmaIzquierda->SetActorLocation(NewRelativeLocation);
 	}
 
 
@@ -166,5 +172,7 @@ void AAdapterPatern1GameMode::Tick(float DeltaTime)
 
 	
 }
+
+
 
 

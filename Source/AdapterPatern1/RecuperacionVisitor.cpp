@@ -5,6 +5,8 @@
 #include "NaveEnemigaCaza.h"
 #include "NaveEnemigaEspia.h"
 #include "NaveEnemigaNodriza.h"
+#include "NaveEnemigaTransporte.h"
+
 // Sets default values
 ARecuperacionVisitor::ARecuperacionVisitor()
 {
@@ -38,11 +40,20 @@ void ARecuperacionVisitor::VisitNaveEnemigaEspia(ANaveEnemigaEspia* Nave)
 {
 	Nave->Vida += 10;
 	Nave->Energia += 10;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaEspia"));
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaNodriza(ANaveEnemigaNodriza* Nave)
 {
 	Nave->Vida += 10;
 	Nave->Energia += 10;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaNodriza"));
+}
+
+void ARecuperacionVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave)
+{
+	Nave->Vida += 10;
+	Nave->Energia += 10;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaTransporte"));
 }
 

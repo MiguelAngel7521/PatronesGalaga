@@ -7,6 +7,11 @@
 #include "IObserverRadar.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
+//Patron Visitor
+#include "INaveEnemigaVisitor.h"
+#include "RecuperacionVisitor.h"
+#include "MovimientoVisitor.h"
+#include "AtaqueVisitor.h"
 
 ANaveEnemigaNodriza::ANaveEnemigaNodriza()
 {
@@ -44,6 +49,10 @@ void ANaveEnemigaNodriza::BeginPlay()
 		{
 			SuscribirRadar(*It);
 		}
+		//Patron Visitor
+		MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
+		RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
+		AtaqueVisitor = Cast<AAtaqueVisitor>(GetWorld()->SpawnActor(AAtaqueVisitor::StaticClass()));
 }
 
 
@@ -52,21 +61,20 @@ void ANaveEnemigaNodriza::Tick(float DeltaTime)
 {
 	//Notificar ala radar cada segundo
 	NotificarRadar();
-	// Calculate the new position based on the current direction and speed
-	FVector newLocation = GetActorLocation();
-	FVector targetLocation = targetLocations[currentTargetIndex];
-	FVector direction = (targetLocation - newLocation).GetSafeNormal();
-	float distance = FVector::Distance(targetLocation, newLocation);
-	newLocation += direction * speed * DeltaTime;
 
-	SetActorLocation(newLocation);
-
-	// Verificar si la nave ha llegado a la ubicación de destino actual
-	if (distance < 10.0f)
+	if (MovimientoVisitor)
 	{
-		// Mover a la siguiente ubicación de destino
-		currentTargetIndex = (currentTargetIndex + 1) % targetLocations.Num();
+		MovimientoVisitor->VisitNaveEnemigaNodriza(this);
 	}
+	if (RecuperacionVisitor)
+	{
+		RecuperacionVisitor->VisitNaveEnemigaNodriza(this);
+	}
+	if (AtaqueVisitor)
+	{
+		AtaqueVisitor->VisitNaveEnemigaNodriza(this);
+	}
+
 }
 
 
@@ -111,4 +119,9 @@ void ANaveEnemigaNodriza::NotificarRadar()
 			UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
 		}
 	}
+}
+
+void ANaveEnemigaNodriza::Accept(IINaveEnemigaVisitor* Visitor)
+{
+		Visitor->VisitNaveEnemigaNodriza(this);
 }

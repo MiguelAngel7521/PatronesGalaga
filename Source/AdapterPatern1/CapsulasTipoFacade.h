@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "NaveEnemiga.h"
 #include "CapsulasTipoFacade.generated.h"
 
 UCLASS()
@@ -48,5 +49,9 @@ public:
 	class AIngenieroEspecialista2* Ingeniero2;
 	class AIngenieroEspecialista3* Ingeniero3;
 	class ADirectorBuilder* Director;
+
+private:
+	TArray<ANaveEnemiga*> NavesEnemigas;
+
 
 };

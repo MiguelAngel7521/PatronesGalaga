@@ -20,7 +20,8 @@ public:
 
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
-public:
+
+
 public:
 	// Sets default values for this actor's properties
 	AProjectileEnemigo();

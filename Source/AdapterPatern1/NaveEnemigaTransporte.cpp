@@ -7,6 +7,11 @@
 #include "IObserverRadar.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
+//Patron Visitor
+#include "INaveEnemigaVisitor.h"
+#include "RecuperacionVisitor.h"
+#include "MovimientoVisitor.h"
+#include "AtaqueVisitor.h"
 
 void ANaveEnemigaTransporte::Tick(float DeltaTime)
 {
@@ -28,6 +33,20 @@ void ANaveEnemigaTransporte::Tick(float DeltaTime)
 	{
 		// Mover a la siguiente ubicación de destino
 		currentTargetIndex = (currentTargetIndex + 1) % targetLocations.Num();
+	}
+	//patron visitor
+
+	if (MovimientoVisitor)
+	{
+		MovimientoVisitor->VisitNaveEnemigaTransporte(this);
+	}
+	if (RecuperacionVisitor)
+	{
+		RecuperacionVisitor->VisitNaveEnemigaTransporte(this);
+	}
+	if (AtaqueVisitor)
+	{
+		AtaqueVisitor ->VisitNaveEnemigaTransporte(this);
 	}
 }
 
@@ -94,6 +113,10 @@ void ANaveEnemigaTransporte::BeginPlay()
 		ARadarHDU* RadarHDU = *ActorItr;
 		SuscribirRadar(RadarHDU);
 	}
+	//Patron Visitor
+	MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
+	RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
+	AtaqueVisitor = Cast<AAtaqueVisitor>(GetWorld()->SpawnActor(AAtaqueVisitor::StaticClass()));
 }
 
 void ANaveEnemigaTransporte::SuscribirRadar(AActor* RadarHDU)
@@ -116,4 +139,8 @@ void ANaveEnemigaTransporte::NotificarRadar()
 			UE_LOG(LogTemp, Warning, TEXT("Notificando radar: %s con Actor: %s"), *Observer->GetName(), *this->GetName());
 		}
 	}
+}
+
+void ANaveEnemigaTransporte::Accept(IINaveEnemigaVisitor* Visitor)
+{
 }

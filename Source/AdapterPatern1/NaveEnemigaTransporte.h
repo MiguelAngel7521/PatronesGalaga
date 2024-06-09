@@ -60,6 +60,14 @@ private:
 
 	// Velocidad de movimiento de la nave
 	float speed = 1000.0f;
+	//Patron Visitor
+public:
+	void Accept(IINaveEnemigaVisitor* Visitor) override;
+private:
+	// Visitor instance
+	class AMovimientoVisitor* MovimientoVisitor;
+	class ARecuperacionVisitor* RecuperacionVisitor;
+	class AAtaqueVisitor* AtaqueVisitor;
 
 
 };

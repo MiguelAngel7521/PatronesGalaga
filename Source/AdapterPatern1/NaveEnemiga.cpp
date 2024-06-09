@@ -111,12 +111,7 @@ void ANaveEnemiga::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	Angulo += Speed * DeltaTime;
-
-	float NuevaY = GetActorLocation().Y + Radio * FMath::Sin(Angulo) * DeltaTime;
-
-	FVector NewLocation = FVector(GetActorLocation().X, NuevaY, GetActorLocation().Z);
-	SetActorLocation(NewLocation);
+	
 	//Notificar ala radar cada segundo
 	NotificarRadar();
 
@@ -222,4 +217,11 @@ void ANaveEnemiga::RecibirDanio()
 		Destroy();
 	}
 }
+
+void ANaveEnemiga::Accept(IINaveEnemigaVisitor* Visitor)
+{
+}
+
+
+
 

@@ -8,6 +8,11 @@
 #include "IObserverRadar.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
+//Patron Visitor
+#include "INaveEnemigaVisitor.h"
+#include "RecuperacionVisitor.h"
+#include "MovimientoVisitor.h"
+#include "AtaqueVisitor.h"
 
 ANaveEnemigaEspia::ANaveEnemigaEspia()
 {
@@ -49,27 +54,31 @@ void ANaveEnemigaEspia::BeginPlay()
 	{
 		SuscribirRadar(*It);
 	}
+	//Patron Visitor
+	MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
+	RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
+	AtaqueVisitor = Cast<AAtaqueVisitor>(GetWorld()->SpawnActor(AAtaqueVisitor::StaticClass()));
 }
 
 void ANaveEnemigaEspia::Tick(float DeltaTime)
 {
 	//Notificar ala radar cada segundo
 	NotificarRadar();
-	// Calculate the new position based on the current direction and speed
-	FVector newLocation = GetActorLocation();
-	FVector targetLocation = targetLocations[currentTargetIndex];
-	FVector direction = (targetLocation - newLocation).GetSafeNormal();
-	float distance = FVector::Distance(targetLocation, newLocation);
-	newLocation += direction * speed * DeltaTime;
+	//patron visitor
 
-	SetActorLocation(newLocation);
-
-	// Verificar si la nave ha llegado a la ubicación de destino actual
-	if (distance < 10.0f)
+	if (MovimientoVisitor)
 	{
-		// Mover a la siguiente ubicación de destino
-		currentTargetIndex = (currentTargetIndex + 1) % targetLocations.Num();
+		MovimientoVisitor->VisitNaveEnemigaEspia(this);
 	}
+	if (RecuperacionVisitor)
+	{
+		RecuperacionVisitor->VisitNaveEnemigaEspia(this);
+	}
+	if (AtaqueVisitor)
+	{
+		AtaqueVisitor->VisitNaveEnemigaEspia(this);
+	}
+	
 }
 
 void ANaveEnemigaEspia::Mover(float DeltaTime)
@@ -122,28 +131,11 @@ void ANaveEnemigaEspia::NotificarRadar()
 	}
 }
 
-//void ANaveEnemigaEspia::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
-//{
-//	if (OtherActor && OtherActor->IsA(AAdapterPatern1Projectile::StaticClass()))
-//	{
-//		AAdapterPatern1Projectile* Projectile = Cast<AAdapterPatern1Projectile>(OtherActor);
-//		if (Projectile)
-//		{
-//			// Destruye el proyectil
-//			Projectile->Destroy();
-//
-//			Destroy();
-//
-//			if (SharedSistemaPuntuacionComponente)
-//			{
-//				SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
-//			}
-//			else
-//			{
-//				UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
-//			}
-//		}
-//	}
-//}
+void ANaveEnemigaEspia::Accept(IINaveEnemigaVisitor* Visitor)
+{
+	Visitor->VisitNaveEnemigaEspia(this);
+}
+
+
 
 

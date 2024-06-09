@@ -14,19 +14,21 @@
 #include "IngenieroEspecialista3.h" 
 #include "DirectorBuilder.h"
 #include "ConstruirNaveEnemiga.h"
+#include "RecuperacionVisitor.h"
+#include "MovimientoVisitor.h"
  
 // Sets default values
 ACapsulasTipoFacade::ACapsulasTipoFacade()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
 void ACapsulasTipoFacade::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
 }
 
@@ -88,6 +90,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos1()
 		{
 			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 
@@ -95,6 +98,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos1()
 		{
 			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 
@@ -121,6 +125,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 		{
 			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 
@@ -128,12 +133,14 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 		{
 			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 		for (int i = 0; i < 8; i++)
 		{
 			ubicacionInicioNavesEnemigasEspia = ubicacionInicioNavesEnemigasEspia + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaEspia* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaEspia>(ubicacionInicioNavesEnemigasEspia, rotacionInicioNavesEnemigasEspia);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 		}
 
 	}
@@ -162,6 +169,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 		{
 			ubicacionInicioNavesEnemigasCaza = ubicacionInicioNavesEnemigasCaza + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaCaza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaCaza>(ubicacionInicioNavesEnemigasCaza, rotacionInicioNavesEnemigasCaza);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 
@@ -169,17 +177,20 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 		{
 			ubicacionInicioNavesEnemigasTransporte = ubicacionInicioNavesEnemigasTransporte + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaTransporte* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaTransporte>(ubicacionInicioNavesEnemigasTransporte, rotacionInicioNavesEnemigasTransporte);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 
 		}
 		for (int i = 0; i < 5; i++)
 		{
 			ubicacionInicioNavesEnemigasEspia = ubicacionInicioNavesEnemigasEspia + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaEspia* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaEspia>(ubicacionInicioNavesEnemigasEspia, rotacionInicioNavesEnemigasEspia);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 		}
 		for (int i = 0; i < 5; i++)
 		{
 			ubicacionInicioNavesEnemigasNodriza = ubicacionInicioNavesEnemigasNodriza + FVector(0.0f, 200.0f, 0.0f);
 			ANaveEnemigaNodriza* NaveEnemigaTemporal = World->SpawnActor<ANaveEnemigaNodriza>(ubicacionInicioNavesEnemigasNodriza, rotacionInicioNavesEnemigasNodriza);
+			NavesEnemigas.Add(NaveEnemigaTemporal);
 		}
 
 	}
@@ -237,6 +248,10 @@ void ACapsulasTipoFacade::CrearOrden(const FString& _Orden)
 void ACapsulasTipoFacade::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 }
+
+
+
+
 

@@ -5,6 +5,7 @@
 #include "GameFramework/Actor.h"
 #include "SistemaPuntuacionComponente.h"
 #include "ISuscriptor.h"
+#include "INaveEnemigaVisitor.h"
 #include "NaveEnemiga.generated.h"
 
 UCLASS()
@@ -135,7 +136,8 @@ public:
 
 	int Vida = 3;
 	virtual void RecibirDanio() ;
-
+	//Patron Visitor
+	virtual void Accept(IINaveEnemigaVisitor* Visitor) ;
 
 
 };

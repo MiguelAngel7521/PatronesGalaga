@@ -42,7 +42,6 @@ public:
 	void DescativarRayoLaser();
 	void DispararRayoLaser();
 	void DispararMisiles();
-	virtual void mover(float DeltaTime);
 	virtual void FireProjectile() override;
 
 	//Etiqueta
@@ -84,15 +83,13 @@ public:
 	void EvitarArma();
 	void DirigirseReabastecimiento();
 
-	// Lista de coordenadas de destino
-	TArray<FVector> targetLocations;
-
-	// Índice de la ubicación de destino actual
-	int32 currentTargetIndex;
-
-	// Velocidad de movimiento de la nave
-	float speed = 1000.0f;
 	//Patron Visitor
 	
-	void Accept(IINaveEnemigaVisitor* Visitor) ;
+	void Accept(IINaveEnemigaVisitor* Visitor) override ;
+private:
+	// Visitor instance
+	class AMovimientoVisitor* MovimientoVisitor;
+	class ARecuperacionVisitor* RecuperacionVisitor;
+	class AAtaqueVisitor* AtaqueVisitor;
+
 };

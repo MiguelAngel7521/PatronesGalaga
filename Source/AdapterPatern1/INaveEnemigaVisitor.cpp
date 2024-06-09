@@ -4,3 +4,4 @@
 #include "INaveEnemigaVisitor.h"
 
 // Add default functionality here for any IINaveEnemigaVisitor functions that are not pure virtual.
+

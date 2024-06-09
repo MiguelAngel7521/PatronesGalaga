@@ -14,6 +14,8 @@
 //Patron Visitor
 #include "INaveEnemigaVisitor.h"
 #include "RecuperacionVisitor.h"
+#include "MovimientoVisitor.h"
+#include "AtaqueVisitor.h"
 
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
@@ -33,13 +35,11 @@ void ANaveEnemigaCaza::BeginPlay()
     {
         RadarEnemigo->AgregarObservador(this);
     }
-
-    // Crear una instancia del visitante
-    ARecuperacionVisitor* Visitor = GetWorld()->SpawnActor<ARecuperacionVisitor>();
-
-    // Aplicar el visitante a esta nave enemiga
-    Accept(Visitor);
-
+    //Patron Visitor
+    MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
+    RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
+    AtaqueVisitor = Cast<AAtaqueVisitor>(GetWorld()->SpawnActor(AAtaqueVisitor::StaticClass()));
+  
 }
 
 ANaveEnemigaCaza::ANaveEnemigaCaza()
@@ -71,53 +71,15 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
 
     Energia = 2000.0f;
     bReabasteciendo = false;
-    // Asignar coordenadas de destino
-    targetLocations.Add(FVector(-300, 3000, 200));    // Coordenada 1
-    targetLocations.Add(FVector(-700, 2000, 200));  // Coordenada 2
-    targetLocations.Add(FVector(-510, 1250, 200));  // Coordenada 3
-    targetLocations.Add(FVector(-700, 80, 200));  // Coordenada 4
-    targetLocations.Add(FVector(-510, -920, 200));  // Coordenada 5
-    targetLocations.Add(FVector(-700, -1960, 200));    // Coordenada 6
-    targetLocations.Add(FVector(-300, -3200, 200));    // Coordenada 7
+
 }
 
 void ANaveEnemigaCaza::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-
-    Angulo += Speed * DeltaTime;
-
-    float NuevaY = GetActorLocation().Y + Radio * FMath::Sin(Angulo) * DeltaTime;
-
-    FVector NewLocation = FVector(GetActorLocation().X, NuevaY, GetActorLocation().Z);
-    SetActorLocation(NewLocation);
     //Notificar ala radar cada segundo
     NotificarRadar();
-    //Observer Inge
-    if (bReabasteciendo)
-    {
-        DirigirseReabastecimiento();
-    }
-    if (Energia < 10.0f && !bReabasteciendo)
-    {
-        bReabasteciendo = true;
-    }
-
-    TiempoTranscurrido++;
-    if (TiempoTranscurrido > 500)
-    {
-
-        /* UWorld* const World = GetWorld();
-         if (World != nullptr)
-         {
-             FVector ubicacionBomba = GetActorLocation() + FVector(0.0f, 100.0f, 0.0f);
-             World->SpawnActor<ABomba>(ubicacionBomba, FRotator::ZeroRotator);
-         }*/
-
-        TiempoTranscurrido = 0;
-    }
-
 
     if (FireCooldown > 0.f)
     {
@@ -139,29 +101,21 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
         bReabasteciendo = true;
     }
 
-    FVector PosicionActual12 = GetActorLocation();
-    // Calculate the new position based on the current direction and speed
-    FVector newLocation = GetActorLocation();
-    FVector targetLocation = targetLocations[currentTargetIndex];
-    FVector direction = (targetLocation - newLocation).GetSafeNormal();
-    float distance = FVector::Distance(targetLocation, newLocation);
-    newLocation += direction * speed * DeltaTime;
-
-    SetActorLocation(newLocation);
-
-    // Verificar si la nave ha llegado a la ubicación de destino actual
-    if (distance < 10.0f)
+    
+    if (MovimientoVisitor)
     {
-        // Mover a la siguiente ubicación de destino
-        currentTargetIndex = (currentTargetIndex + 1) % targetLocations.Num();
+        MovimientoVisitor->VisitNaveEnemigaCaza(this);
     }
+    if (RecuperacionVisitor)
+	{
+		RecuperacionVisitor->VisitNaveEnemigaCaza(this);
+	}
+    if (AtaqueVisitor)
+	{
+		AtaqueVisitor->VisitNaveEnemigaCaza(this);
+	}
 
 
-    //// Crear una instancia del visitante
-    //ARecuperacionVisitor* Visitor = GetWorld()->SpawnActor<ARecuperacionVisitor>();
-
-    //// Aplicar el visitante a esta nave enemiga
-    //Accept(Visitor);
 }
 
 void ANaveEnemigaCaza::ActivarRayoLaser()
@@ -192,10 +146,7 @@ void ANaveEnemigaCaza::DispararMisiles()
     }
 }
 
-void ANaveEnemigaCaza::mover(float DeltaTime)
-{
 
-}
 
 void ANaveEnemigaCaza::FireProjectile()
 {
@@ -322,7 +273,7 @@ void ANaveEnemigaCaza::DirigirseReabastecimiento()
 
 void ANaveEnemigaCaza::Accept(class IINaveEnemigaVisitor* Visitor)
 {
-   /* Visitor = Cast<IINaveEnemigaVisitor>(Visitor);*/
+  
     Visitor->VisitNaveEnemigaCaza(this);
 }
 

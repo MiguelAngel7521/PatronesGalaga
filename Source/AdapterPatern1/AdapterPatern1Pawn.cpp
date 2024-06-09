@@ -249,7 +249,7 @@ void AAdapterPatern1Pawn::ReducirEnergia1()
 	if (EnergiaRestante < 10)
 		MoveSpeed = -600;
 	
-	if (EnergiaRestante == 50)
+	/*if (EnergiaRestante == 50)
 	{
 		InicializarEstadosJugador("ConEscudos");
 		EstadoConEscudos ->ConEscudos();
@@ -272,7 +272,7 @@ void AAdapterPatern1Pawn::ReducirEnergia1()
 		InicializarEstadosJugador("Invensible");
 		EstadoInvensible->Invencible();
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
-	}
+	}*/
 	
 		
 }
@@ -293,35 +293,6 @@ void AAdapterPatern1Pawn::ReducirVida()
 	if (VidasRestantes > 0)
 		VidasRestantes--;
 
-
-	/*if (VidasRestantes == 1) {
-		EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());
-		AlternarEstrategias(EstrategiaCamaraLenta);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Camara Lenta"));
-		EstrategiaCamaraLenta->EjecutarEstrategia();
-
-
-	}
-
-	if (VidasRestantes == 2)
-	{
-
-		EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
-		AlternarEstrategias(EstrategiaRecuperacion);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Recuperacion"));
-		EstrategiaRecuperacion->EjecutarEstrategia();
-
-
-	}
-	if (VidasRestantes == 3)
-	{
-		EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
-		AlternarEstrategias(EstrategiaExplosiva);
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Explosiva"));
-		EstrategiaExplosiva->EjecutarEstrategia();
-
-
-	}*/
 }
 
 

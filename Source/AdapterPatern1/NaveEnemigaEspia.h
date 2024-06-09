@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "NaveEnemiga.h"
+#include "INaveEnemigaVisitor.h"
 #include "NaveEnemigaEspia.generated.h"
 
 /**
@@ -66,6 +67,15 @@ private:
 
     // Velocidad de movimiento de la nave
     float speed = 1000.0f;
+
+    //Patron Visitor
+
+    void Accept(IINaveEnemigaVisitor* Visitor) override;
+private:
+    // Visitor instance
+    class AMovimientoVisitor* MovimientoVisitor;
+    class ARecuperacionVisitor* RecuperacionVisitor;
+    class AAtaqueVisitor* AtaqueVisitor;
 
     
 
