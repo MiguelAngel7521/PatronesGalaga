@@ -60,7 +60,6 @@ public:
 	float FireCooldown;
 	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
 
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	//Patron Observer 
 	void SuscribirRadar(AActor* RadarHDU);
@@ -72,16 +71,8 @@ private:
 	//Patron Observer Ingeniero
 public:
 	virtual void Actualizar(const FString& Accion);
-	virtual float ObtenerEnergia() const;
 	class ArmaAmiga* ArmaAmiga;
 
-public:
-	FVector UltimaPosicionArma;
-	float Energia;
-	bool bReabasteciendo;
-
-	void EvitarArma();
-	void DirigirseReabastecimiento();
 
 	//Patron Visitor
 	

@@ -27,6 +27,5 @@ public:
 	virtual void BuildNuevaNave(int z) = 0;
 	virtual void BuildComponentesArmas(int w) = 0;
 	virtual void BuildComponentesEscudos(int x) = 0;
-	virtual void BuildComponentesProjectile(int v) = 0;
 public:
 };

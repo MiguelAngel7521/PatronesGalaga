@@ -24,7 +24,6 @@ protected:
 	float danoProducido;
 	float valorDestruccion;
 	float recompensa;
-	float energia;
 	float tiempoDisparo;
 	float tiempoReaparicion;
 	FString nombre;
@@ -51,7 +50,6 @@ public:
 	FORCEINLINE float GetValorDestruccion() const { return valorDestruccion; }
 	FORCEINLINE float GetTiempoDisparo() const { return tiempoDisparo; }
 	FORCEINLINE float GetRecompensa() const { return recompensa; }
-	FORCEINLINE float GetEnergia() const { return energia; }
 	FORCEINLINE float GetTiempoReaparicion() const { return tiempoReaparicion; }
 	FORCEINLINE FString GetNombre() const { return nombre; }
 	FORCEINLINE FVector GetPosicion() const { return posicion; }
@@ -66,7 +64,6 @@ public:
 	FORCEINLINE void SetDanoProducido(float _danoProducido) { danoProducido = _danoProducido; }
 	FORCEINLINE void SetTiempoDisparo(float _tiempoDisparo) { tiempoDisparo = _tiempoDisparo; }
 	FORCEINLINE void SetRecompensa(float _recompensa) { recompensa = _recompensa; }
-	FORCEINLINE void SetEnergia(float _energia) { energia = _energia; }
 	FORCEINLINE void SetTiempoReaparicion(float _tiempoReaparicion) { tiempoReaparicion = _tiempoReaparicion; }
 	FORCEINLINE void SetNombre(FString _nombre) { nombre = _nombre; }
 	FORCEINLINE void SetPosicion(FVector _posicion) { posicion = _posicion; }
@@ -105,7 +102,7 @@ public:
 	
 	//Patron Facade
 	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
-	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 	//Patron Observer
 	
@@ -115,9 +112,9 @@ private:
 	TArray<AActor*> Observers;
 	//Patron Observer Inge
 	public:
-		void EvitarArma();
-		void DirigirseReabastecimiento();
-		float ObtenerEnergia() const;
+		virtual void EvitarArma() ;
+		virtual void DirigirseReabastecimiento();
+		virtual float ObtenerEnergia() const;
 		class ARadarEnemigo* Radar;
 
 

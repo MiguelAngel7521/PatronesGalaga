@@ -14,7 +14,8 @@
 #include "EngineUtils.h"
 #include "RadarEnemigo.h"
 #include "NaveEnemigaCaza.h"
-
+//Patron Proxy
+#include "ProxyNaveCompuesta.h"
 
 
 // Sets default values
@@ -48,8 +49,8 @@ ANaveEnemiga::ANaveEnemiga()
 	nombre = "NaveEnemiga";
 	//Tag
 	Tags.Add(FName("Radar"));
-	Energia = 100.0f;
-
+	Energia = 200.0f;
+	bReabasteciendo = false;
 	
 
 }
@@ -76,8 +77,7 @@ void ANaveEnemiga::BeginPlay()
 	{
 		RadarEnemigo->AgregarObservador(this);
 	}
-	Energia = 2000.0f;
-	bReabasteciendo = false;
+	
 	
 }
 
@@ -90,19 +90,32 @@ void ANaveEnemiga::FireProjectile()
 		FVector ForwardDirection = GetActorForwardVector();
 
 		// Calcula la rotación basada en la dirección hacia adelante
+
 		FRotator SpawnRotation = ForwardDirection.Rotation();
+
 
 		// Configura la posición y dirección del proyectil
 		FVector SpawnLocation = GetActorLocation();
-		SpawnLocation.X += 200;
+		SpawnLocation.X -= 10;
+
 
 		Projectile->SetActorLocationAndRotation(SpawnLocation, SpawnRotation);
 
 		// Dispara el proyectil
 		Projectile->Fire();
 
+		// Disminuir la energía al disparar
+		Energia -= 20.0f;
+		if (Energia < 0.0f)
+		{
+			Energia = 0.0f;
+		}
 
-		
+		// Verificar si la energía es menor a 10 para iniciar el reabastecimiento
+		if (Energia < 10.0f && !bReabasteciendo)
+		{
+			bReabasteciendo = true;
+		}
 	}
 }
 
@@ -115,14 +128,6 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	//Notificar ala radar cada segundo
 	NotificarRadar();
 
-	if (bReabasteciendo)
-	{
-		DirigirseReabastecimiento();
-	}
-	if (Energia < 10.0f && !bReabasteciendo)
-	{
-		bReabasteciendo = true;
-	}
 	//Observer
 	if (bReabasteciendo)
 	{
@@ -149,14 +154,7 @@ void ANaveEnemiga::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 
 			Destroy();
 
-			/*if (SharedSistemaPuntuacionComponente)
-			{
-				SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
-			}
-			else
-			{
-				UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
-			}*/
+			
 		}
 	}
 }
@@ -172,8 +170,27 @@ void ANaveEnemiga::NotificarRadar()
 void ANaveEnemiga::EvitarArma()
 {
 	FVector PosicionActual = GetActorLocation();
-	PosicionActual.Y += 100.0f; // Ajusta la lógica para evitar el arma
-	SetActorLocation(PosicionActual);	
+	PosicionActual.Y += 100.0f;
+
+	if (FMath::Abs(PosicionActual.Y - UltimaPosicionArma.Y) < +1000.0f) // Distancia mínima de seguridad
+	{
+		// Evitar la posición del arma
+		FVector NuevaPosicion = PosicionActual;
+		NuevaPosicion.Y += (PosicionActual.Y > UltimaPosicionArma.Y) ? 100.0f : -100.0f;
+		SetActorLocation(NuevaPosicion);
+	}
+	else
+	{
+		// Continuar con el movimiento normal
+		FVector Direccion = FVector(FMath::Cos(FMath::DegreesToRadians(Angulo)), FMath::Sin(FMath::DegreesToRadians(Angulo)), 0.0f);
+		FVector NuevaPosicion = PosicionActual + Direccion * Speed * GetWorld()->DeltaTimeSeconds;
+		SetActorLocation(NuevaPosicion);
+		Angulo += 1.0f;
+		if (Angulo >= 360.0f)
+		{
+			Angulo = 0.0f;
+		}
+	}
 }
 
 void ANaveEnemiga::DirigirseReabastecimiento()
@@ -215,6 +232,16 @@ void ANaveEnemiga::RecibirDanio()
 	if (Vida <= 0)
 	{
 		Destroy();
+		// Notify the proxy about the destruction
+		for (TActorIterator<AProxyNaveCompuesta> It(GetWorld()); It; ++It)
+		{
+			AProxyNaveCompuesta* Proxy = *It;
+			if (Proxy)
+			{
+				Proxy->NaveDestruida();
+				break;
+			}
+		}
 	}
 }
 

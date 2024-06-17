@@ -36,7 +36,7 @@ public:
 	virtual void BuildNuevaNave(int z) override;
 	void BuildComponentesArmas(int w) override;
 	void BuildComponentesEscudos(int x) override;
-	void BuildComponentesProjectile(int v) override;
+	void BuildComponentesProjectile(int v);
 	
 
 };

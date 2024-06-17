@@ -23,6 +23,8 @@
 #include "EstrategiaCamaraLenta.h"
 #include "EstrategiaExplosiva.h"
 #include "EstrategiaRecuperacion.h"
+//Patron Proxy
+#include "ProxyNaveCompuesta.h"
 
 
 AAdapterPatern1GameMode::AAdapterPatern1GameMode()
@@ -113,7 +115,9 @@ void AAdapterPatern1GameMode::BeginPlay()
 		NewRelativeLocation.Y += 0.0f;
 		ArmaIzquierda->SetActorLocation(NewRelativeLocation);
 	}
-
+	//Patron Proxy
+	   // Crear y configurar el proxy para la nave compuesta
+	AProxyNaveCompuesta* Proxy = GetWorld()->SpawnActor<AProxyNaveCompuesta>(AProxyNaveCompuesta::StaticClass());
 
 	//Patron Factory
 	

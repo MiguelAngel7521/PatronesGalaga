@@ -69,7 +69,6 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
     //Tag
     Tags.Add(FName("Radar"));
 
-    Energia = 2000.0f;
     bReabasteciendo = false;
 
 }
@@ -89,17 +88,7 @@ void ANaveEnemigaCaza::Tick(float DeltaTime)
     {
         FireCooldown = 0.f;
     }
-    //Observer
-    if (bReabasteciendo)
-    {
-        DirigirseReabastecimiento();
-    }
-       
-    // Verificar si la energía es menor a 10 para iniciar el reabastecimiento
-    if (Energia < 10.0f && !bReabasteciendo)
-    {
-        bReabasteciendo = true;
-    }
+
 
     
     if (MovimientoVisitor)
@@ -187,30 +176,6 @@ void ANaveEnemigaCaza::FireProjectile()
 }
 
 
-void ANaveEnemigaCaza::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
-{
-    if (OtherActor && OtherActor->IsA(AAdapterPatern1Projectile::StaticClass()))
-    {
-        AAdapterPatern1Projectile* Projectile = Cast<AAdapterPatern1Projectile>(OtherActor);
-        if (Projectile)
-        {
-            // Destruye el proyectil
-            Projectile->Destroy();
-
-            Destroy();
-
-            if (SharedSistemaPuntuacionComponente)
-            {
-                SharedSistemaPuntuacionComponente->SumarPuntaje(10.0f, nombre);
-            }
-            else
-            {
-                UE_LOG(LogTemp, Warning, TEXT("SistemaPuntuacionComponente is null!"));
-            }
-        }
-
-    }
-}
 
 void ANaveEnemigaCaza::SuscribirRadar(AActor* RadarHDU)
 {
@@ -248,28 +213,10 @@ void ANaveEnemigaCaza::Actualizar(const FString& Accion)
     }
 }
 
-float ANaveEnemigaCaza::ObtenerEnergia() const
-{
-    return Energia;
-}
 
 
 
-void ANaveEnemigaCaza::DirigirseReabastecimiento()
-{
-    FVector PosicionActual = GetActorLocation();
-    FVector PosicionReabastecimiento = FVector(2480.0f, -2620.0f, 250.0f); // Ajustar la posición de reabastecimiento según sea necesario
-    FVector Direccion = (PosicionReabastecimiento - PosicionActual).GetSafeNormal();
-    FVector NuevaPosicion = PosicionActual + Direccion * 200.0f * GetWorld()->DeltaTimeSeconds; // Ajustar velocidad según sea necesario
-    SetActorLocation(NuevaPosicion);
 
-    // Verificar si ha llegado a la posición de reabastecimiento
-    if (FVector::Dist(PosicionActual, PosicionReabastecimiento) < 100.0f) // Ajustar el umbral según sea necesario
-    {
-        Energia = 100.0f; // Reabastecer energía
-        bReabasteciendo = false;
-    }
-}
 
 void ANaveEnemigaCaza::Accept(class IINaveEnemigaVisitor* Visitor)
 {
@@ -278,20 +225,5 @@ void ANaveEnemigaCaza::Accept(class IINaveEnemigaVisitor* Visitor)
 }
 
 
-void ANaveEnemigaCaza::EvitarArma()
-{
-   
-    FVector PosicionActual = GetActorLocation();
-    PosicionActual.Y += 100.0f;
-
-        if (FMath::Abs(PosicionActual.Y - UltimaPosicionArma.Y) < +1000.0f) // Distancia mínima de seguridad
-        {
-            // Evitar la posición del arma
-            FVector NuevaPosicion = PosicionActual;
-            NuevaPosicion.Y += (PosicionActual.Y > UltimaPosicionArma.Y) ? 100.0f : -100.0f;
-            SetActorLocation(NuevaPosicion);
-        }
-    
-}
 
 

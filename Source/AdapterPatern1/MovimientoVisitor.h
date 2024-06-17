@@ -33,15 +33,21 @@ public:
 	void MoivientoNaveEnemiga4(AActor* Nave, float DeltaTime);
 	// Variables para el movimiento por coordenadas
 	TArray<FVector> targetLocations;
+	TArray<FVector> targetLocations1;
+	TArray<FVector> targetLocations2;
 	int32 currentTargetIndex;
 	float coordinateSpeed;
 
-	
+
 	// Velocidad de movimiento de la nave
 	float speed = 1000.0f;
 	float Radio; // Radio de la circunferencia
 	float Angulo; // Ángulo inicial
 	float Speed; // Velocidad de rotación
+	// Variables para el cambio de movimientos
+	float TiempoTranscurridoMovimiento = 0.0f;
+	float TiempoCambioMovimiento = 10.0f; // Tiempo en segundos antes de cambiar de movimiento
+	int32 NumMovimientos = 5;
 
 
 };

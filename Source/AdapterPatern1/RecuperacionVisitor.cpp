@@ -31,29 +31,34 @@ void ARecuperacionVisitor::Tick(float DeltaTime)
 
 void ARecuperacionVisitor::VisitNaveEnemigaCaza(ANaveEnemigaCaza* Nave)
 {
-	Nave->Vida += 10;
-	Nave->Energia += 10;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaCaza"));
+	if (Nave->Energia == 0) {
+		Nave->Vida += 10;
+		Nave->Energia += 10;
+	}
+
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaEspia(ANaveEnemigaEspia* Nave)
 {
-	Nave->Vida += 10;
-	Nave->Energia += 10;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaEspia"));
+	if (Nave->Energia == 0) {
+		Nave->Vida += 10;
+		Nave->Energia += 10;
+	}
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaNodriza(ANaveEnemigaNodriza* Nave)
 {
-	Nave->Vida += 10;
-	Nave->Energia += 10;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaNodriza"));
+	if (Nave->Energia == 0) {
+		Nave->Vida += 10;
+		Nave->Energia += 10;
+	}
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave)
 {
-	Nave->Vida += 10;
-	Nave->Energia += 10;
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("VisitNaveEnemigaTransporte"));
+	if (Nave->Energia == 0) {
+		Nave->Vida += 10;
+		Nave->Energia += 10;
+	}
 }
 

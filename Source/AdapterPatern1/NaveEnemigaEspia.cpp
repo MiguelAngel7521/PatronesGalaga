@@ -31,18 +31,7 @@ ANaveEnemigaEspia::ANaveEnemigaEspia()
 
 	// Tag
 	Tags.Add(FName("Radar"));
-	// Asignar coordenadas de destino
-	targetLocations.Add(FVector(-300, 1600, 200));    // Coordenada 1
-	targetLocations.Add(FVector(-880, 1000, 200));  // Coordenada 2
-	targetLocations.Add(FVector(-510, 560, 200));  // Coordenada 3
-	targetLocations.Add(FVector(-880, 40, 200));  // Coordenada 4
-	targetLocations.Add(FVector(-510, -480, 200));  // Coordenada 5
-	targetLocations.Add(FVector(-880, -950, 200));    // Coordenada 6
-	targetLocations.Add(FVector(-300, -1600, 200));    // Coordenada 7
 
-	// Set the initial target location index
-
-	currentTargetIndex = 0;
 }
 
 void ANaveEnemigaEspia::BeginPlay()
@@ -83,12 +72,7 @@ void ANaveEnemigaEspia::Tick(float DeltaTime)
 
 void ANaveEnemigaEspia::Mover(float DeltaTime)
 {
-	FVector PosicionActual = GetActorLocation();
-	float NuevaX = FMath::RandRange(-1000, 1000) * DeltaTime;
-	float NuevaY = FMath::RandRange(-1000, 1000) * DeltaTime;
-	FVector NuevaPosicion = FVector(PosicionActual.X + NuevaX, PosicionActual.Y + NuevaY, PosicionActual.Z);
-	NuevaPosicion.X = NuevaPosicion.X + Sigilo * DeltaTime;
-	SetActorLocation(NuevaPosicion);
+
 }
 
 void ANaveEnemigaEspia::ActivarSigilo()
