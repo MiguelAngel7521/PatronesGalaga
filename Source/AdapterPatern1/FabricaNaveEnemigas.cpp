@@ -6,6 +6,7 @@
 #include "NaveEnemigaTransporte.h"
 #include "NaveEnemigaNodriza.h"
 #include "NaveEnemigaEspia.h"
+#include "Engine/World.h"
 
 // Sets default values
 AFabricaNaveEnemigas::AFabricaNaveEnemigas()
@@ -15,14 +16,40 @@ AFabricaNaveEnemigas::AFabricaNaveEnemigas()
 
 }
 
-ANaveEnemiga* AFabricaNaveEnemigas::FabricarNave(FString TipoNave, UObject* Outer)
+ANaveEnemiga* AFabricaNaveEnemigas::FabricarNave(FString TipoNave, int32 CantidadNaves, int32 NumeroFilas, FVector NNSpawnLocation, UObject* Outer)
 {
+	TArray<ANaveEnemiga*> Naves;
 	TSubclassOf<ANaveEnemiga> NaveClass = ArmarNave(TipoNave);
-	if (NaveClass)
+	UWorld* World = Outer->GetWorld();
+	if (NaveClass && World)
 	{
-		return NewObject<ANaveEnemiga>(Outer, *NaveClass);
+		int32 NavesPorFila = 5; // Ajusta esto según el número deseado de naves por fila
+		int32 NumeroColumnas = FMath::CeilToInt((float)CantidadNaves / NavesPorFila);
+		FRotator rotacion = FRotator(0.0f, 180.0f, 0.0f);
+		float EspaciadoX = 400.0f; // Ajusta esto según el espaciado deseado entre filas en el eje X
+		float EspaciadoY = 200.0f; // Ajusta esto según el espaciado deseado entre naves en el eje Y
+
+		for (int32 Fila = 0; Fila < NumeroFilas; ++Fila)
+		{
+			for (int32 Columna = 0; Columna < NavesPorFila; ++Columna)
+			{
+				int32 Index = Fila * NavesPorFila + Columna;
+				if (Index >= CantidadNaves)
+				{
+					break;
+				}
+
+				FVector SpawnLocation = NNSpawnLocation + FVector(Fila * EspaciadoX, Columna * EspaciadoY, 0.0f);
+				FActorSpawnParameters SpawnParams;
+				ANaveEnemiga* Nave = World->SpawnActor<ANaveEnemiga>(NaveClass, SpawnLocation, rotacion, SpawnParams);
+				if (Nave)
+				{
+					Naves.Add(Nave);
+				}
+			}
+		}
 	}
-	return nullptr;
+	return Naves.Num() > 0 ? Naves[0] : nullptr;
 }
 
 TSubclassOf<ANaveEnemiga> AFabricaNaveEnemigas::ArmarNave(FString TipoNave)

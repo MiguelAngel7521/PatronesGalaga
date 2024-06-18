@@ -19,6 +19,7 @@ ACapsula::ACapsula()
 void ACapsula::BeginPlay()
 {
 	Super::BeginPlay();
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ACapsula::DestruirCapsula, 10.0f, false);
 	
 }
 
@@ -27,5 +28,10 @@ void ACapsula::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ACapsula::DestruirCapsula()
+{
+	Destroy();
 }
 

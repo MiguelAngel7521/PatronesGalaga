@@ -7,6 +7,7 @@
 #include "ComponenteEscudo.h"
 #include "ProjectileEnemigo.h"
 
+
 // Sets default values
 AConstruirNaveEnemiga::AConstruirNaveEnemiga()
 {
@@ -37,25 +38,21 @@ void AConstruirNaveEnemiga::Tick(float DeltaTime)
 
 }
 
-void AConstruirNaveEnemiga::BuildNuevaNave(int z)
+void AConstruirNaveEnemiga::BuildNuevaNave(FVector PosicionNave, int z)
 {
-	FVector PosicionNave = FVector(860.0f, 100.0f, 250.0f);
 	FRotator RotacionNave = FRotator(0.0f, 180.0f, 0.0f);
-
 
 	NaveEnemiga = GetWorld()->SpawnActor<ANaveEnemigaCaza>(ANaveEnemigaCaza::StaticClass());
 	NaveEnemiga->SetActorLocation(PosicionNave);
 	NaveEnemiga->SetActorRotation(RotacionNave);
 }
 
-void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
+void AConstruirNaveEnemiga::BuildComponentesArmas(FVector PosicionBase, int w)
 {
-	FVector PosArmas = FVector(740.0f, -330.0f, 250.0f);
-	FRotator RotArmas = FRotator(0.0f, 180.0f, 0.0f); //100.0f, 0.0f, 0.0f
+	FVector PosArmas = PosicionBase + FVector(-200.0f, -450.0f, 0.0f);
+	FRotator RotArmas = FRotator(0.0f, 180.0f, 0.0f);
 
-	FVector PosArmas1 = FVector(740.0f, -330.0f,250.0f);
-	FRotator RotArmas1 = FRotator(0.0f, 180.0f, 0.0f);
-	switch (w) 
+	switch (w)
 	{
 	case 1:
 		for (int i = 0; i < 2; i++)
@@ -63,64 +60,80 @@ void AConstruirNaveEnemiga::BuildComponentesArmas(int w)
 			Armas = GetWorld()->SpawnActor<AComponenteArmas>(AComponenteArmas::StaticClass());
 			Armas->SetActorLocation(PosArmas);
 			Armas->SetActorRotation(RotArmas);
-
-			PosArmas.Y = PosArmas.Y + 200.0f;
+			PosArmas.Y += 400.0f;
+			//if (Armas)
+			//{
+			//	// Adjuntar el componente Armas a la malla de la nave enemiga
+			//	Armas->AttachToComponent(NaveEnemiga->mallaNaveEnemiga, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+			//}
+			//else
+			//{
+			//	UE_LOG(LogTemp, Warning, TEXT("Fallo al spawnear Armas"));
+			//}
 		}
 		break;
-		case 2:
-			
-			break;
-		case 3:
-			for (int i = 0; i < 4; i++)
-			{
+	case 3:
+		for (int i = 0; i < 4; i++)
+		{
 			Armas = GetWorld()->SpawnActor<AComponenteArmas>(AComponenteArmas::StaticClass());
-			Armas->SetActorRotation(RotArmas1);
-			Armas->SetActorLocation(PosArmas1);
-			if (i == 1)
-			{
-				PosArmas1.Y = PosArmas1.Y + 720.0f;
-			}
-			else
-			{
-				PosArmas1.Y = PosArmas1.Y + 110.0f; //110
-			}
-			}
-			break;
+			Armas->SetActorLocation(PosArmas);
+			Armas->SetActorRotation(RotArmas);
+			PosArmas.Y += (i == 1) ? 720.0f : 110.0f;
+			// Asegurar que NaveEnemiga tenga un componente Armas antes de intentar acceder a él
+			//if (Armas)
+			//{
+			//	// Adjuntar el componente Armas a la malla de la nave enemiga
+			//	Armas->AttachToComponent(NaveEnemiga->mallaNaveEnemiga, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+			//}
+			//else
+			//{
+			//	GEngine -> AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Fallo al spawnear Armas"));
+			//}
+		}
+		break;
 	default:
 		break;
 	}
 }
 
-void AConstruirNaveEnemiga::BuildComponentesEscudos(int x)
+void AConstruirNaveEnemiga::BuildComponentesEscudos(FVector PosicionBase, int x)
 {
-	FVector PosEscudo = FVector(740.0f, -90.0f, 200.0f);
-	FRotator RotEscudo = FRotator(0.0f, 90.0f, 0.0f);
-	FVector PosEscudo1 = FVector(740.0f, -90.0f, 200.0f);
+	FVector PosEscudo = PosicionBase + FVector(-200.0f, -170.0f, 0.0f);
+	FRotator RotEscudo = FRotator(0.0f, 180.0f, 0.0f);
 
 	switch (x)
 	{
 	case 1:
-
 		Escudo = GetWorld()->SpawnActor<AComponenteEscudo>(AComponenteEscudo::StaticClass());
-		/*FVector PosEscudo = FVector(-150.0f, 0.0f, 350.0f);*/
 		Escudo->SetActorLocation(PosEscudo);
 		Escudo->SetActorRotation(RotEscudo);
-
+		//if (Escudo)
+		//{
+		//	// Adjuntar el componente Escudo a la malla de la nave enemiga
+		//	Escudo->AttachToComponent(NaveEnemiga->mallaNaveEnemiga, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+		//}
+		//else
+		//{
+		//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Fallo al spawnear Escudo"));	
+		//}
 		break;
 	case 2:
-
 		for (int i = 0; i < 3; i++)
 		{
 			Escudo = GetWorld()->SpawnActor<AComponenteEscudo>(AComponenteEscudo::StaticClass());
-			/*FVector PosEscudo1 = FVector(-150.0f, 700.0f, 350.0f);*/
-			Escudo->SetActorLocation(PosEscudo1);
+			Escudo->SetActorLocation(PosEscudo);	
 			Escudo->SetActorRotation(RotEscudo);
-			PosEscudo1.Y = PosEscudo1.Y + 200.0f;
+			PosEscudo.Y += 200.0f;
+			//if (Escudo)
+			//{
+			//	// Adjuntar el componente Escudo a la malla de la nave enemiga
+			//	Escudo->AttachToComponent(NaveEnemiga->mallaNaveEnemiga, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+			//}
+			//else
+			//{
+			//	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Fallo al spawnear Escudo"));
+			//}
 		}
-
-		break;
-	case 3:
-
 		break;
 	default:
 		break;
@@ -176,6 +189,14 @@ void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 	default:
 		break;
 	}*/
+}
+
+void AConstruirNaveEnemiga::ConstruirNaveCompleta(FVector PosicionBase, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo)
+{
+	BuildNuevaNave(PosicionBase, naveTipo);
+	BuildComponentesArmas(PosicionBase, armasTipo);
+	BuildComponentesEscudos(PosicionBase, escudosTipo);
+	BuildComponentesProjectile(proyectilesTipo);
 }
 
 

@@ -30,22 +30,28 @@ void AIngenieroEspecialista3::Tick(float DeltaTime)
 
 void AIngenieroEspecialista3::SetNuevaNave(int a)
 {
-	ConstruirNave2->BuildNuevaNave(a);
+	ConstruirNave2->BuildNuevaNave(FVector::ZeroVector, a);
 }
 
 void AIngenieroEspecialista3::SetComponentesArmas(int d)
 {
-	ConstruirNave2->BuildComponentesArmas(d);
+	ConstruirNave2->BuildComponentesArmas(FVector::ZeroVector, d);
 }
 
 void AIngenieroEspecialista3::SetComponentesEscudos(int b)
 {
-	ConstruirNave2->BuildComponentesEscudos(b);
+	ConstruirNave2->BuildComponentesEscudos(FVector::ZeroVector, b);
 }
 
 void AIngenieroEspecialista3::SetComponentesProjectile(int c)
 {
-	ConstruirNave2->BuildComponentesProjectile(c);
+	/*ConstruirNave2->BuildComponentesProjectile(c);*/
+}
+
+void AIngenieroEspecialista3::ConstruirNaveEnUbicacion(FVector Posicion, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo)
+{
+	ConstruirNave2->ConstruirNaveCompleta(Posicion, naveTipo, armasTipo, escudosTipo, proyectilesTipo);
+	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Green, TEXT("Nave Compuesta Construida en la Ubicación Especificada"));
 }
 
 AConstruirNaveEnemiga* AIngenieroEspecialista3::GetNaveEnemiga()

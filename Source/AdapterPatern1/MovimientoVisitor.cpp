@@ -6,6 +6,8 @@
 #include "NaveEnemigaEspia.h"
 #include "NaveEnemigaNodriza.h"
 #include "NaveEnemigaTransporte.h"
+#include "ComponenteEscudo.h"
+#include "ComponenteArmas.h"
 
 
 // Sets default values
@@ -48,6 +50,8 @@ AMovimientoVisitor::AMovimientoVisitor()
 	targetLocations2.Add(FVector(-510, 0, 200));  // Coordenada 5
 	targetLocations2.Add(FVector(-1500, 0, 200));    // Coordenada 6
 	targetLocations2.Add(FVector(-2000, -0, 200));    // Coordenada 7
+
+
 
 
 
@@ -242,6 +246,90 @@ void AMovimientoVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave
 	{
 		TiempoTranscurridoMovimiento = 0.0f;
 	}
+}
+
+void AMovimientoVisitor::VisitComponenteEscudo(AComponenteEscudo* Componente)
+{
+	////Movimiento cada 10 s
+	//float DeltaTime = Componente->GetWorld()->GetDeltaSeconds();
+
+	//// Incrementar el tiempo transcurrido desde el último cambio de movimiento
+	//TiempoTranscurridoMovimiento += DeltaTime;
+
+	//// Determinar el tipo de movimiento actual basado en el tiempo transcurrido
+	//int32 TipoMovimiento = static_cast<int32>(FMath::FloorToInt(TiempoTranscurridoMovimiento / TiempoCambioMovimiento)) % NumMovimientos;
+
+	//// Realizar el movimiento correspondiente
+	//switch (TipoMovimiento)
+	//{
+	//case 0:
+	//	MoivientoNaveEnemiga(Componente, DeltaTime);
+	//	break;
+	//case 1:
+	//	MoivientoNaveEnemiga1(Componente, DeltaTime);
+	//	break;
+	//case 2:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//case 3:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//case 4:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//default:
+	//	// Movimiento predeterminado
+	//	MoivientoNaveEnemiga(Componente, DeltaTime);
+	//	break;
+	//}
+
+	//// Si ha pasado el tiempo para cambiar el movimiento, reiniciar el contador
+	//if (TiempoTranscurridoMovimiento >= TiempoCambioMovimiento * NumMovimientos)
+	//{
+	//	TiempoTranscurridoMovimiento = 0.0f;
+	//}
+}
+
+void AMovimientoVisitor::VisitComponenteArmas(AComponenteArmas* Componente)
+{
+	////Movimiento cada 10 s
+	//float DeltaTime = Componente->GetWorld()->GetDeltaSeconds();
+
+	//// Incrementar el tiempo transcurrido desde el último cambio de movimiento
+	//TiempoTranscurridoMovimiento += DeltaTime;
+
+	//// Determinar el tipo de movimiento actual basado en el tiempo transcurrido
+	//int32 TipoMovimiento = static_cast<int32>(FMath::FloorToInt(TiempoTranscurridoMovimiento / TiempoCambioMovimiento)) % NumMovimientos;
+
+	//// Realizar el movimiento correspondiente
+	//switch (TipoMovimiento)
+	//{
+	//case 0:
+	//	MoivientoNaveEnemiga(Componente, DeltaTime);
+	//	break;
+	//case 1:
+	//	MoivientoNaveEnemiga1(Componente, DeltaTime);
+	//	break;
+	//case 2:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//case 3:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//case 4:
+	//	MoivientoNaveEnemiga3(Componente, DeltaTime);
+	//	break;
+	//default:
+	//	// Movimiento predeterminado
+	//	MoivientoNaveEnemiga(Componente, DeltaTime);
+	//	break;
+	//}
+
+	//// Si ha pasado el tiempo para cambiar el movimiento, reiniciar el contador
+	//if (TiempoTranscurridoMovimiento >= TiempoCambioMovimiento * NumMovimientos)
+	//{
+	//	TiempoTranscurridoMovimiento = 0.0f;
+	//}
 }
 
 void AMovimientoVisitor::MoivientoNaveEnemiga(AActor* Nave, float DeltaTime)

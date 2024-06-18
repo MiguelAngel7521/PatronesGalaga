@@ -98,6 +98,14 @@ void AAtaqueVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave)
     }
 }
 
+void AAtaqueVisitor::VisitComponenteEscudo(AComponenteEscudo* Componente)
+{
+}
+
+void AAtaqueVisitor::VisitComponenteArmas(AComponenteArmas* Componente)
+{
+}
+
 void AAtaqueVisitor::AtaqueSierra(AProjectileEnemigo* Proyectil)
 {
     //Proyectil->OnTickDelegate.AddLambda([Proyectil](float DeltaTime)

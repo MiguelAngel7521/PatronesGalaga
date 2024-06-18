@@ -17,7 +17,7 @@ public:
 	
 public:
 	UFUNCTION(BlueprintCallable, Category = "Factory")
-	static ANaveEnemiga* FabricarNave(FString TipoNave, UObject* Outer);
+	static ANaveEnemiga* FabricarNave(FString TipoNave, int32 CantidadNaves, int32 NumeroFilas, FVector NNSpawnLocation, UObject* Outer);
 
 private:
 	static TSubclassOf<ANaveEnemiga> ArmarNave(FString TipoNave);

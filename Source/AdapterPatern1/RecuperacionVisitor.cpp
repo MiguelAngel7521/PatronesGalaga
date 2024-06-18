@@ -62,3 +62,11 @@ void ARecuperacionVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Na
 	}
 }
 
+void ARecuperacionVisitor::VisitComponenteEscudo(AComponenteEscudo* Componente)
+{
+}
+
+void ARecuperacionVisitor::VisitComponenteArmas(AComponenteArmas* Componente)
+{
+}
+

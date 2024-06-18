@@ -16,6 +16,9 @@
 #include "RecuperacionVisitor.h"
 #include "MovimientoVisitor.h"
 #include "AtaqueVisitor.h"
+//Patron Builder
+#include "ComponenteArmas.h"
+#include "ComponenteEscudo.h"
 
 
 USistemaPuntuacionComponente* ANaveEnemigaCaza::SharedSistemaPuntuacionComponente = nullptr;
@@ -35,6 +38,13 @@ void ANaveEnemigaCaza::BeginPlay()
     {
         RadarEnemigo->AgregarObservador(this);
     }
+    ////Patron Builder 
+
+    //if (Armas && Escudo)
+    //{
+    //    Armas->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
+    //    Escudo->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
+    //}
     //Patron Visitor
     MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
     RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
@@ -57,6 +67,10 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
     RayosLaserActivos = false;
     DanoRayoLaser = 10;
     TiempoEntreRayosLaser = 1;
+
+    //// Inicializar componentes (como actores)
+    //Armas = CreateDefaultSubobject<AComponenteArmas>(TEXT("ComponenteArmas"));
+    //Escudo = CreateDefaultSubobject<AComponenteEscudo>(TEXT("ComponenteEscudo"));
 
     //Creacion del Componente de Puntaje
    /* if (SharedSistemaPuntuacionComponente == nullptr)

@@ -37,6 +37,9 @@ protected:
 	void CrearEscuadronEnemigos2(); //Escuadron2
 	void CrearEscuadronEnemigos3(); //Escuadron3
 
+	void CrearObstaculos(); //Obstaculo1
+	FTimerHandle TimerHandle;
+
 public:
 	void RecibirOrden(const TArray<FString>& _Orden);
 	void CrearOrden(const FString& _Orden);

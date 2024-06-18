@@ -59,6 +59,8 @@ public:
 	float FireRate;
 	float FireCooldown;
 	static USistemaPuntuacionComponente* SharedSistemaPuntuacionComponente;
+	class AComponenteEscudo* Escudo;
+	class AComponenteArmas* Armas;
 
 
 	//Patron Observer 

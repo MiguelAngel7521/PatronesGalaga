@@ -23,6 +23,7 @@ void AProxyNaveCompuesta::BeginPlay()
 	for (TActorIterator<ANaveEnemiga> It(GetWorld()); It; ++It)
 	{
 		navesEnemigasRestantes++;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Naves enemigas restantes: %d"), navesEnemigasRestantes));
 	}
 }
 
@@ -30,35 +31,36 @@ void AProxyNaveCompuesta::BeginPlay()
 void AProxyNaveCompuesta::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
 
 }
 
-void AProxyNaveCompuesta::BuildNuevaNave(int z)
+void AProxyNaveCompuesta::BuildNuevaNave(FVector PosicionNave, int z)
 {
 	// Delega la creación de nuevas naves al builder real
 	if (construirNaveEnemiga == nullptr)
 	{
 		construirNaveEnemiga = GetWorld()->SpawnActor<AConstruirNaveEnemiga>(AConstruirNaveEnemiga::StaticClass());
 	}
-	construirNaveEnemiga->BuildNuevaNave(z);
+	construirNaveEnemiga->BuildNuevaNave(PosicionNave, z);
 }
 
-void AProxyNaveCompuesta::BuildComponentesArmas(int w)
+void AProxyNaveCompuesta::BuildComponentesArmas(FVector PosicionBase, int w)
 {
 	if (construirNaveEnemiga == nullptr)
 	{
 		construirNaveEnemiga = GetWorld()->SpawnActor<AConstruirNaveEnemiga>(AConstruirNaveEnemiga::StaticClass());
 	}
-	construirNaveEnemiga->BuildComponentesArmas(w);
+	construirNaveEnemiga->BuildComponentesArmas(PosicionBase, w);
 }
 
-void AProxyNaveCompuesta::BuildComponentesEscudos(int x)
+void AProxyNaveCompuesta::BuildComponentesEscudos(FVector PosicionBase, int x)
 {
 	if (construirNaveEnemiga == nullptr)
 	{
 		construirNaveEnemiga = GetWorld()->SpawnActor<AConstruirNaveEnemiga>(AConstruirNaveEnemiga::StaticClass());
 	}
-	construirNaveEnemiga->BuildComponentesEscudos(x);
+	construirNaveEnemiga->BuildComponentesEscudos(PosicionBase, x);
 }
 
 void AProxyNaveCompuesta::NaveDestruida()
@@ -67,10 +69,12 @@ void AProxyNaveCompuesta::NaveDestruida()
 
 	if (navesEnemigasRestantes <= 0)
 	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Todas las naves enemigas han sido destruidas"));
 		// Todas las naves han sido destruidas, construir la nave compuesta
-		BuildNuevaNave(1);  // Asume que 1 es el código para la nave compuesta
-		BuildComponentesArmas(3);  // Configura con los componentes deseados
-		BuildComponentesEscudos(2);  // Configura con los componentes deseados
+		FVector PosicionNaveCompuesta = FVector(1270.0f, 290.0f, 200.0f);
+		BuildNuevaNave(PosicionNaveCompuesta, 1);  // Asume que 1 es el código para la nave compuesta
+		BuildComponentesArmas(PosicionNaveCompuesta, 3);  // Configura con los componentes deseados
+		BuildComponentesEscudos(PosicionNaveCompuesta, 2);  // Configura con los componentes deseados
 	}
 }
 

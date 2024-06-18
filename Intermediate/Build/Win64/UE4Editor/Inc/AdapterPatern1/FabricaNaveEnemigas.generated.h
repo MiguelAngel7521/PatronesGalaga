@@ -8,6 +8,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FVector;
 class UObject;
 class ANaveEnemiga;
 #ifdef ADAPTERPATERN1_FabricaNaveEnemigas_generated_h

@@ -26,8 +26,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 public:
 	void OrdenarIngeniero(AActor* Ingeniero);
-	void ContruirNaveEnemiga();
-	void ConstruirNaveEscudo();
-	void ConstruirNaveBatalla();
+	void ContruirNaveEnemiga(FVector Posicion);
+	void ConstruirNaveEscudo(FVector Posicion);
+	void ConstruirNaveBatalla(FVector Posicion);
 	class AConstruirNaveEnemiga* ObtenerNave();
 };

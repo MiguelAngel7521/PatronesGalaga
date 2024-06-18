@@ -105,7 +105,7 @@ void ANaveEnemiga::FireProjectile()
 		Projectile->Fire();
 
 		// Disminuir la energía al disparar
-		Energia -= 20.0f;
+		Energia -= 1.0f;
 		if (Energia < 0.0f)
 		{
 			Energia = 0.0f;

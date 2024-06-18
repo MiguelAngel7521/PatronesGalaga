@@ -29,5 +29,6 @@ public:
 	void SetComponentesArmas(int d) override;
 	void SetComponentesEscudos(int b) override;
 	void SetComponentesProjectile(int c) override;
+	void ConstruirNaveEnUbicacion(FVector Posicion, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo) override;
 	class AConstruirNaveEnemiga* GetNaveEnemiga() override;
 };

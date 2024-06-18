@@ -33,10 +33,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	virtual void BuildNuevaNave(int z) override;
-	void BuildComponentesArmas(int w) override;
-	void BuildComponentesEscudos(int x) override;
+	virtual void BuildNuevaNave(FVector PosicionNave, int z) override;
+	void BuildComponentesArmas(FVector PosicionBase, int w) override;
+	void BuildComponentesEscudos(FVector PosicionBase, int x) override;
 	void BuildComponentesProjectile(int v);
+	void ConstruirNaveCompleta(FVector PosicionBase, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo) ;
 	
 
 };

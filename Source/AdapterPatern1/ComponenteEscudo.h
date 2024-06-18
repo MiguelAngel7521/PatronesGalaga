@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "INaveEnemigaVisitor.h"
 #include "ComponenteEscudo.generated.h"
 
 UCLASS()
@@ -36,5 +37,12 @@ public:
 
 	// Velocidad de movimiento de la nave
 	float speed = 1000.0f;
+	//Patron Visitor
+	virtual void Accept(IINaveEnemigaVisitor* Visitor);
+private:
+	// Visitor instance
+	class AMovimientoVisitor* MovimientoVisitor;
+	class ARecuperacionVisitor* RecuperacionVisitor;
+	class AAtaqueVisitor* AtaqueVisitor;
 
 };

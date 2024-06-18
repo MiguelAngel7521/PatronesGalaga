@@ -26,6 +26,8 @@ public:
 	void VisitNaveEnemigaEspia(class ANaveEnemigaEspia* Nave) override;
 	void VisitNaveEnemigaNodriza(class ANaveEnemigaNodriza* Nave) override;
 	void VisitNaveEnemigaTransporte(class ANaveEnemigaTransporte* Nave)override;
+    void VisitComponenteEscudo(class AComponenteEscudo* Componente) override;
+	void VisitComponenteArmas(class AComponenteArmas* Componente) override ;
 	void MoivientoNaveEnemiga(AActor* Nave, float DeltaTime);
 	void MoivientoNaveEnemiga1(AActor* Nave, float DeltaTime);
 	void MoivientoNaveEnemiga2(AActor* Nave, float DeltaTime);
@@ -35,6 +37,7 @@ public:
 	TArray<FVector> targetLocations;
 	TArray<FVector> targetLocations1;
 	TArray<FVector> targetLocations2;
+	TArray<FVector> targetLocations3;
 	int32 currentTargetIndex;
 	float coordinateSpeed;
 

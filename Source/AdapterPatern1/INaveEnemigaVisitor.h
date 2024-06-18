@@ -28,5 +28,7 @@ public:
 	virtual void VisitNaveEnemigaEspia(class ANaveEnemigaEspia* Nave) = 0;
 	virtual void VisitNaveEnemigaNodriza(class ANaveEnemigaNodriza* Nave) = 0;
 	virtual void VisitNaveEnemigaTransporte(class ANaveEnemigaTransporte* Nave) = 0;
+	virtual void VisitComponenteEscudo(class AComponenteEscudo* Componente) = 0;
+	virtual void VisitComponenteArmas(class AComponenteArmas* Componente) = 0;
 
 };

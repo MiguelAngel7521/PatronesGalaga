@@ -88,7 +88,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelFacil();
+	Facade->NivelDificil();
 
 	//Patron Strategy
 
@@ -122,7 +122,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Factory
 	
 	
-	//FVector ubicacionInicialNavesEnemigas = FVector(2300.0f, -510.0f, 240);
+	//FVector ubicacionInicialNavesEnemigas = FVector(670.0f, -460.0f, 240);
 	//FVector ubicacionActualNaveEnemiga = ubicacionInicialNavesEnemigas;
 	//FRotator rotacionNave = FRotator(0.0f, 0.0f, 0.0f);
 
@@ -132,39 +132,11 @@ void AAdapterPatern1GameMode::BeginPlay()
 
 	//if (World != nullptr)
 	//{
-	//	const int32 MaxNaves = 15;
-	//	const int32 NumTiposNaves = 4; // Caza, Transporte, Espia, Nodriza 
-	//	const int32 MaxNavesPorTipo = MaxNaves / NumTiposNaves;
+	//	AFabricaNaveEnemigas::FabricarNave("Caza", 25, 5, ubicacionActualNaveEnemiga, World);
 
-	//	TArray<ANaveEnemiga*> NavesEnemigas;
-
-	//	for (int i = 0; i < 10; ++i)
-	//	{
-	//		int32 TipoNave = FMath::RandRange(0, 3); // Random entre 0 y 3 para los 4 tipos de naves
-
-	//		FString NombreNave = "Nave Enemiga " + FString::FromInt(i);
-
-	//		ANaveEnemiga* NuevaNaveEnemiga = AFabricaNaveEnemigas::FabricarNave(TipoNave == 0 ? "Caza" : TipoNave == 1 ? "Transporte" : TipoNave == 2 ? "Espia" : "Nodriza", this);
-
-	//		if (NuevaNaveEnemiga)
-	//		{
-	//			NuevaNaveEnemiga->SetNombre(NombreNave);
-	//			NuevaNaveEnemiga->SetActorLocation(ubicacionInicialNavesEnemigas);
-	//			NuevaNaveEnemiga->SetActorRotation(rotacionNave);
-	//			NuevaNaveEnemiga->FinishSpawning(FTransform(rotacionNave, ubicacionInicialNavesEnemigas));
-
-	//			World->SpawnActor(NuevaNaveEnemiga->GetClass(), &ubicacionInicialNavesEnemigas, &rotacionNave);
-
-
-	//			ubicacionActualNaveEnemiga.Y += 800.0f;
-	//			ubicacionActualNaveEnemiga.X = 0.0f;
-	//			ubicacionActualNaveEnemiga.Z = 240.0f;
-	//		}
-	//		else
-	//		{
-	//			UE_LOG(LogTemp, Warning, TEXT("No se pudo crear la nave enemiga %s"), *NombreNave);
-	//		}
-	//	}
+	//	//AFabricaNaveEnemigas::FabricarNave("Transporte", 10, 5, ubicacionActualNaveEnemiga, World);
+	//	//AFabricaNaveEnemigas::FabricarNave("Nodriza", 10, 5, ubicacionActualNaveEnemiga, World);
+	//	//AFabricaNaveEnemigas::FabricarNave("Espia", 10, 5, ubicacionActualNaveEnemiga, World);
 	//}
 }
 

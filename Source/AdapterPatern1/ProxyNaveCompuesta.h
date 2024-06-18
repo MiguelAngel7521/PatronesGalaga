@@ -26,8 +26,8 @@ private:
 	class AConstruirNaveEnemiga* construirNaveEnemiga;
 	int navesEnemigasRestantes;
 public:
-	virtual void BuildNuevaNave(int z) override;
-	void BuildComponentesArmas(int w) override;
-	void BuildComponentesEscudos(int x) override;
+	virtual void BuildNuevaNave(FVector PosicionNave, int z) override;
+	void BuildComponentesArmas(FVector PosicionBase, int w) override;
+	void BuildComponentesEscudos(FVector PosicionBase, int x) override;
 	void NaveDestruida();
 };

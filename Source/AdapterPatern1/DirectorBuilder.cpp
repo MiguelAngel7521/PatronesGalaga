@@ -27,30 +27,42 @@ void ADirectorBuilder::Tick(float DeltaTime)
 
 void ADirectorBuilder::OrdenarIngeniero(AActor* Ingeniero)
 {
+	if (!Ingeniero)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Ingeniero is null!"));
+		return;
+	}
+
 	IngenieroACargo = Cast<IIngenieroGeneral>(Ingeniero);
+	if (!IngenieroACargo)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Ingeniero does not implement IIngenieroGeneral interface!"));
+	}
 }
 
-void ADirectorBuilder::ContruirNaveEnemiga()
+void ADirectorBuilder::ContruirNaveEnemiga(FVector Posicion)
 {
-	IngenieroACargo->SetNuevaNave(1);
-	IngenieroACargo->SetComponentesArmas(1);
-	IngenieroACargo->SetComponentesEscudos(1);
-	/*IngenieroACargo->SetComponentesProjectile(1);*/
+	if (IngenieroACargo)
+	{
+		IngenieroACargo->ConstruirNaveEnUbicacion(Posicion, 1, 1, 1, 0);
+	}
 
 }
 
-void ADirectorBuilder::ConstruirNaveEscudo()
+void ADirectorBuilder::ConstruirNaveEscudo(FVector Posicion)
 {
-	IngenieroACargo->SetNuevaNave(2);
-	IngenieroACargo->SetComponentesArmas(3);
-	IngenieroACargo->SetComponentesEscudos(2);
+	if (IngenieroACargo)
+	{
+		IngenieroACargo->ConstruirNaveEnUbicacion(Posicion, 3, 3, 0, 3);
+	}
 }
 
-void ADirectorBuilder::ConstruirNaveBatalla()
+void ADirectorBuilder::ConstruirNaveBatalla(FVector Posicion)
 {
-	/*IngenieroACargo->SetNuevaNave(3);*/
-	IngenieroACargo->SetComponentesArmas(3);
-	/*IngenieroACargo->SetComponentesProjectile(3);*/
+	if (IngenieroACargo)
+	{
+		IngenieroACargo->ConstruirNaveEnUbicacion(Posicion, 3, 3, 0, 3);
+	}
 }
 
 AConstruirNaveEnemiga* ADirectorBuilder::ObtenerNave()

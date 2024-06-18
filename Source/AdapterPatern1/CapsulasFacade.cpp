@@ -23,6 +23,7 @@ void ACapsulasFacade::BeginPlay()
 	//Creamos el nivel
 	NivelActual = GetWorld()->SpawnActor<ANivel>(ANivel::StaticClass());
 	Nivel.Add(NivelActual);
+
 }
 
 // Called every frame
@@ -47,6 +48,7 @@ void ACapsulasFacade::NivelFacil()
 	OrdenCapsulas.Add("Energia");
 	OrdenCapsulas.Add("Velocidad");
 	OrdenCapsulas.Add("Escuadron1");
+	//OrdenCapsulas.Add("Obstaculo1");
 	NivelesCapsulas(Nivel, OrdenCapsulas);
 }
 
@@ -55,6 +57,7 @@ void ACapsulasFacade::NivelMedio()
 	OrdenCapsulas.Empty();
 	OrdenCapsulas.Add("Vida");
 	OrdenCapsulas.Add("Escuadron2");
+	//OrdenCapsulas.Add("Obstaculo1");
 	NivelesCapsulas(Nivel, OrdenCapsulas);
 }
 
@@ -63,6 +66,7 @@ void ACapsulasFacade::NivelDificil()
 	OrdenCapsulas.Empty();
 	OrdenCapsulas.Add("SinCapsulas");
 	OrdenCapsulas.Add("Escuadron3");
+	//OrdenCapsulas.Add("Obstaculo1");
 	NivelesCapsulas(Nivel, OrdenCapsulas);
 }
 

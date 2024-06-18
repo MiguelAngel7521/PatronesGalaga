@@ -90,28 +90,28 @@ void ARadarEnemigo::Notificar(const FString& Accion)
 
 void ARadarEnemigo::VerificarNavesEnemigas(const FVector& PosicionArma)
 {
-    UltimaPosicionArma = PosicionArma;
-    for (IISuscriptor* Suscriptor : Suscriptores)
-    {
-        ANaveEnemigaCaza* NaveEnemiga = Cast<ANaveEnemigaCaza>(Suscriptor);
-        AArmaAmiga* ArmaAmiga = Cast<AArmaAmiga>(Suscriptor);
-        if (NaveEnemiga)
-        {
-            if (NaveEnemiga->ObtenerEnergia() < 10.0f)
-            {
-                Notificar( "Reabastecer"); // Notificar la acción de reabastecer
-            }
-            else
-            {
-                FVector PosicionNave = NaveEnemiga->GetActorLocation();
-               /* FVector PosicionArma = ArmaAmiga -> GetActorLocation();*/
-                if (PosicionNave.Y == UltimaPosicionArma.Y) // Distancia mínima de seguridad en el eje Y
-                {
-                    GEngine -> AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Se Notifico Evitar Arma"));
-                    Notificar("EvitarArma"); // Notificar la acción de evitar arma
-                }
-            }
-        }
-    }
+    //UltimaPosicionArma = PosicionArma;
+    //for (IISuscriptor* Suscriptor : Suscriptores)
+    //{
+    //    ANaveEnemigaCaza* NaveEnemiga = Cast<ANaveEnemigaCaza>(Suscriptor);
+    //    AArmaAmiga* ArmaAmiga = Cast<AArmaAmiga>(Suscriptor);
+    //    if (NaveEnemiga)
+    //    {
+    //        if (NaveEnemiga->ObtenerEnergia() < 10.0f)
+    //        {
+    //            Notificar( "Reabastecer"); // Notificar la acción de reabastecer
+    //        }
+    //        else
+    //        {
+    //            FVector PosicionNave = NaveEnemiga->GetActorLocation();
+    //           /* FVector PosicionArma = ArmaAmiga -> GetActorLocation();*/
+    //            if (PosicionNave.Y == UltimaPosicionArma.Y) // Distancia mínima de seguridad en el eje Y
+    //            {
+    //                GEngine -> AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, TEXT("Se Notifico Evitar Arma"));
+    //                Notificar("EvitarArma"); // Notificar la acción de evitar arma
+    //            }
+    //        }
+    //    }
+    //}
 }
 

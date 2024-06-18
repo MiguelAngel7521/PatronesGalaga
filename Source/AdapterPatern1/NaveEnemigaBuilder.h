@@ -24,8 +24,8 @@ class ADAPTERPATERN1_API INaveEnemigaBuilder
 public:
 
 
-	virtual void BuildNuevaNave(int z) = 0;
-	virtual void BuildComponentesArmas(int w) = 0;
-	virtual void BuildComponentesEscudos(int x) = 0;
+	virtual void BuildNuevaNave(FVector PosicionNave, int z) = 0;
+	virtual void BuildComponentesArmas(FVector PosicionBase, int w) = 0;
+	virtual void BuildComponentesEscudos(FVector PosicionBase, int x) = 0;
 public:
 };

@@ -26,5 +26,6 @@ public:
 	virtual void SetComponentesArmas(int d) = 0;
 	virtual void SetComponentesEscudos(int b) = 0;
 	virtual void SetComponentesProjectile(int c) = 0;
+	virtual void ConstruirNaveEnUbicacion(FVector Posicion, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo) = 0;
 	virtual class AConstruirNaveEnemiga* GetNaveEnemiga() = 0;
 };

@@ -1,8 +1,14 @@
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Development\AdapterPatern1\Definitions.AdapterPatern1.h
-C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/ProxyNaveCompuesta.gen.cpp
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/FabricaCapsulas.gen.cpp
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
 C:\SDMiguel\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1/ProxyNaveCompuesta.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\NaveEnemigaBuilder.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\NaveEnemigaBuilder.generated.h
-C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ProxyNaveCompuesta.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1/FabricaCapsulas.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Capsula.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Capsula.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\FabricaCapsulas.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/FabricaObstaculos.gen.cpp
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1/FabricaObstaculos.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Obstaculo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Obstaculo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\FabricaObstaculos.generated.h
+C:/Users/Jorge/OneDrive/Documentos/Unreal Projects/AdapterPatern1/Intermediate/Build/Win64/UE4Editor/Inc/AdapterPatern1/Obstaculo.gen.cpp
