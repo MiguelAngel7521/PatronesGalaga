@@ -19,6 +19,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	AArmaAmiga* Arma1;
+	class AAdapterPatern1Pawn* Jugador;
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

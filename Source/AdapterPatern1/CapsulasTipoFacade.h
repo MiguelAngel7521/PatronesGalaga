@@ -39,6 +39,7 @@ protected:
 
 	void CrearObstaculos(); //Obstaculo1
 	FTimerHandle TimerHandle;
+	
 
 public:
 	void RecibirOrden(const TArray<FString>& _Orden);
@@ -52,6 +53,7 @@ public:
 	class AIngenieroEspecialista2* Ingeniero2;
 	class AIngenieroEspecialista3* Ingeniero3;
 	class ADirectorBuilder* Director;
+	class AProxyNaveCompuesta* Proxy;
 
 private:
 	TArray<ANaveEnemiga*> NavesEnemigas;

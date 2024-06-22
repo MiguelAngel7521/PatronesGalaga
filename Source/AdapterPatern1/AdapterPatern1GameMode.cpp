@@ -88,36 +88,31 @@ void AAdapterPatern1GameMode::BeginPlay()
 	//Patron Facade de capsulas
 
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
-	Facade->NivelDificil();
+	Facade->NivelMedio();
 
-	//Patron Strategy
+	////// Obtener la ubicación y rotación del pawn
+	//FVector PawnLocation = Jugador->GetActorLocation();
+	//PawnLocation.Y += 200.0f;
+	//FRotator PawnRotation = Jugador->GetActorRotation();
 
+	//
+	//ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation , PawnRotation);
+	//if (ArmaIzquierda)
+	//{
+	//	// Anclar el arma al jugador con las reglas de anclaje deseadas
+	//	ArmaIzquierda->AttachToActor(Jugador, FAttachmentTransformRules::KeepWorldTransform);
 
-	/*EstrategiaRecuperacion = GetWorld()->SpawnActor<AEstrategiaRecuperacion>(AEstrategiaRecuperacion::StaticClass());
-	EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
-	EstrategiaAtaqueFinal = GetWorld()->SpawnActor<AEstrategiaAtaqueFinal>(AEstrategiaAtaqueFinal::StaticClass());
-	EstrategiaCamaraLenta = GetWorld()->SpawnActor<AEstrategiaCamaraLenta>(AEstrategiaCamaraLenta::StaticClass());*/
-
-	//// Obtener la ubicación y rotación del pawn
-	FVector PawnLocation = Jugador->GetActorLocation();
-	PawnLocation.Y += 200.0f;
-	FRotator PawnRotation = Jugador->GetActorRotation();
-
-	
-	AArmaAmiga* ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation , PawnRotation);
-	if (ArmaIzquierda)
-	{
-		// Anclar el arma al jugador con las reglas de anclaje deseadas
-		ArmaIzquierda->AttachToActor(Jugador, FAttachmentTransformRules::KeepWorldTransform);
-
-		// Ajustar la ubicación del arma después de anclarla
-		FVector NewRelativeLocation = ArmaIzquierda->GetActorLocation();
-		NewRelativeLocation.Y += 0.0f;
-		ArmaIzquierda->SetActorLocation(NewRelativeLocation);
-	}
+	//	// Ajustar la ubicación del arma después de anclarla
+	//	FVector NewRelativeLocation = ArmaIzquierda->GetActorLocation();
+	//	NewRelativeLocation.Y += 0.0f;
+	//	ArmaIzquierda->SetActorLocation(NewRelativeLocation);
+	//}
+	// 
+	// 
+	// 
 	//Patron Proxy
 	   // Crear y configurar el proxy para la nave compuesta
-	AProxyNaveCompuesta* Proxy = GetWorld()->SpawnActor<AProxyNaveCompuesta>(AProxyNaveCompuesta::StaticClass());
+	AProxyNaveCompuesta* ProxyNaveCompuesta = AProxyNaveCompuesta::GetInstance(GetWorld());
 
 	//Patron Factory
 	
@@ -145,7 +140,7 @@ void AAdapterPatern1GameMode::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TimerController += DeltaTime;
-
+	
 	
 }
 

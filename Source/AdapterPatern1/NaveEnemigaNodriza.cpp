@@ -16,7 +16,7 @@
 ANaveEnemigaNodriza::ANaveEnemigaNodriza()
 {
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
-	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NaveEnemiga3.NaveEnemiga3'"));
 	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
 	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
 	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
@@ -28,6 +28,7 @@ ANaveEnemigaNodriza::ANaveEnemigaNodriza()
 	AtaqueFinal = 100;
 	tripulacion = 100;
 	ataqueEspecial = 100;
+	Puntos = 300; // Valor específico para esta nave
 
 	//Tag
 	Tags.Add(FName("Radar"));	

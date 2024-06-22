@@ -19,11 +19,11 @@ void AFabricaCapsulas::BeginPlay()
 {
 	Super::BeginPlay();
     // Establece el rango de ubicaciones de spawn
-    RangoSpawnX = 500.0f; // Ajusta esto según tu rango deseado en el eje X
+    RangoSpawnX = 200.0f; // Ajusta esto según tu rango deseado en el eje X
     RangoSpawnY = 1000.0f; // Ajusta esto según tu rango deseado en el eje Y
 
     // Inicia el temporizador para generar cápsulas
-    GetWorldTimerManager().SetTimer(TimerHandle, this, &AFabricaCapsulas::GenerarCapsula, 25.0f, true);
+    GetWorldTimerManager().SetTimer(TimerHandle, this, &AFabricaCapsulas::GenerarCapsula, 6.0f, true);
 }
 
 // Called every frame

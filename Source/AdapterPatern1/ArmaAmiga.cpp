@@ -25,6 +25,8 @@ AArmaAmiga::AArmaAmiga()
     MallaArmas->SetStaticMesh(Mesh.Object);
 
     FireRate = 3.0f;//Cadencia Balas
+    FireCooldown = 0.0f;
+    Vida = 100;
 }
 
 
@@ -91,6 +93,15 @@ void AArmaAmiga::FireProjectile()
         // Dispara el proyectil
         Projectile->Fire();
     }
+}
+
+void AArmaAmiga::RecibirDano()
+{
+	Vida -= 30;
+    if (Vida <= 0)
+    {
+		Destroy();
+	}
 }
 
 void AArmaAmiga::NotificarRadar()

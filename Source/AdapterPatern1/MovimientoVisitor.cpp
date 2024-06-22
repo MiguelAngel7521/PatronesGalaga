@@ -24,32 +24,32 @@ AMovimientoVisitor::AMovimientoVisitor()
 	currentTargetIndex = 0;
 	coordinateSpeed = 1000.0f; // Velocidad del movimiento por coordenadas
 	// Asignar coordenadas de destino
-	targetLocations.Add(FVector(-300, 3000, 200));    // Coordenada 1
-	targetLocations.Add(FVector(-700, 2000, 200));  // Coordenada 2
-	targetLocations.Add(FVector(-510, 1250, 200));  // Coordenada 3
-	targetLocations.Add(FVector(-700, 80, 200));  // Coordenada 4
-	targetLocations.Add(FVector(-510, -920, 200));  // Coordenada 5
-	targetLocations.Add(FVector(-700, -1960, 200));    // Coordenada 6
-	targetLocations.Add(FVector(-300, -3200, 200));    // Coordenada 7
+	targetLocations.Add(FVector(700, 2000, 200));    // Coordenada 1
+	targetLocations.Add(FVector(600, 1000, 200));  // Coordenada 2
+	targetLocations.Add(FVector(1510, 250, 200));  // Coordenada 3
+	targetLocations.Add(FVector(1700, 80, 200));  // Coordenada 4
+	targetLocations.Add(FVector(1510, -420, 200));  // Coordenada 5
+	targetLocations.Add(FVector(1700, -960, 200));    // Coordenada 6
+	targetLocations.Add(FVector(3100, -2200, 200));    // Coordenada 7
 
 	//
 	// Asignar coordenadas de destino
-	targetLocations1.Add(FVector(-1000, 3000, 200));    // Coordenada 1
-	targetLocations1.Add(FVector(-2500, 2000, 200));  // Coordenada 2
-	targetLocations1.Add(FVector(-1110, 1250, 200));  // Coordenada 3
-	targetLocations1.Add(FVector(-2500, 80, 200));  // Coordenada 4
-	targetLocations1.Add(FVector(-1110, -920, 200));  // Coordenada 5
-	targetLocations1.Add(FVector(-2500, -1960, 200));    // Coordenada 6
-	targetLocations1.Add(FVector(-1000, -3200, 200));    // Coordenada 7
+	targetLocations1.Add(FVector(-1000, 2000, 200));    // Coordenada 1
+	targetLocations1.Add(FVector(700, 1000, 200));  // Coordenada 2
+	targetLocations1.Add(FVector(-800, 250, 200));  // Coordenada 3
+	targetLocations1.Add(FVector(-300, 80, 200));  // Coordenada 4
+	targetLocations1.Add(FVector(-110, -420, 200));  // Coordenada 5
+	targetLocations1.Add(FVector(-500, -960, 200));    // Coordenada 6
+	targetLocations1.Add(FVector(-1000, -2200, 200));    // Coordenada 7
 
 	// Asignar coordenadas de destino
-	targetLocations2.Add(FVector(-2000, 0, 200));    // Coordenada 1
-	targetLocations2.Add(FVector(-1000, 0, 200));  // Coordenada 2
-	targetLocations2.Add(FVector(-500, 0, 200));  // Coordenada 3
-	targetLocations2.Add(FVector(-1500, 0, 200));  // Coordenada 4
-	targetLocations2.Add(FVector(-510, 0, 200));  // Coordenada 5
-	targetLocations2.Add(FVector(-1500, 0, 200));    // Coordenada 6
-	targetLocations2.Add(FVector(-2000, -0, 200));    // Coordenada 7
+	targetLocations2.Add(FVector(9000, -500, 200));    // Coordenada 1
+	targetLocations2.Add(FVector(8500, -100, 200));  // Coordenada 2
+	targetLocations2.Add(FVector(8000, -300, 200));  // Coordenada 3
+	targetLocations2.Add(FVector(7500, 100, 200));  // Coordenada 4
+	targetLocations2.Add(FVector(7110, 300, 200));  // Coordenada 5
+	targetLocations2.Add(FVector(7300, 800, 200));    // Coordenada 6
+	targetLocations2.Add(FVector(7500, 1060, 200));    // Coordenada 7
 
 
 
@@ -181,16 +181,16 @@ void AMovimientoVisitor::VisitNaveEnemigaNodriza(ANaveEnemigaNodriza* Nave)
 		MoivientoNaveEnemiga(Nave, DeltaTime);
 		break;
 	case 1:
-		MoivientoNaveEnemiga1(Nave, DeltaTime);
+		MoivientoNaveEnemiga(Nave, DeltaTime);
 		break;
 	case 2:
-		MoivientoNaveEnemiga1(Nave, DeltaTime);
+		MoivientoNaveEnemiga(Nave, DeltaTime);
 		break;
 	case 3:
-		MoivientoNaveEnemiga3(Nave, DeltaTime);
+		MoivientoNaveEnemiga4(Nave, DeltaTime);
 		break;
 	case 4:
-		MoivientoNaveEnemiga3(Nave, DeltaTime);
+		MoivientoNaveEnemiga4(Nave, DeltaTime);
 		break;
 	default:
 		// Movimiento predeterminado

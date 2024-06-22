@@ -36,7 +36,7 @@ public:
 
 	float FireCooldown;
 	FTimerHandle FireTimerHandle;
-	int vida = 3;
+	int vida = 1;
 	void RecibirDanio();
 
 	// Lista de coordenadas de destino

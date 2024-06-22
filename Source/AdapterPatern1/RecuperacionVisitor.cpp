@@ -31,35 +31,35 @@ void ARecuperacionVisitor::Tick(float DeltaTime)
 
 void ARecuperacionVisitor::VisitNaveEnemigaCaza(ANaveEnemigaCaza* Nave)
 {
-	if (Nave->Energia == 0) {
+	/*if (Nave->Energia == 0) {
 		Nave->Vida += 10;
 		Nave->Energia += 10;
-	}
+	}*/
 
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaEspia(ANaveEnemigaEspia* Nave)
 {
-	if (Nave->Energia == 0) {
+	/*if (Nave->Energia == 0) {
 		Nave->Vida += 10;
 		Nave->Energia += 10;
-	}
+	}*/
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaNodriza(ANaveEnemigaNodriza* Nave)
 {
-	if (Nave->Energia == 0) {
+	/*if (Nave->Energia == 0) {
 		Nave->Vida += 10;
 		Nave->Energia += 10;
-	}
+	}*/
 }
 
 void ARecuperacionVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave)
 {
-	if (Nave->Energia == 0) {
+	/*if (Nave->Energia == 0) {
 		Nave->Vida += 10;
 		Nave->Energia += 10;
-	}
+	}*/
 }
 
 void ARecuperacionVisitor::VisitComponenteEscudo(AComponenteEscudo* Componente)

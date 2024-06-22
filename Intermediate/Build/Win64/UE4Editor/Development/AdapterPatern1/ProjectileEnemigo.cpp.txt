@@ -1,0 +1,27 @@
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Development\AdapterPatern1\Definitions.AdapterPatern1.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ProjectileEnemigo.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/ProjectileMovementComponent.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/MovementComponent.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\MovementComponent.generated.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ProjectileMovementComponent.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ProjectileEnemigo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\AdapterPatern1Pawn.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\SDMiguel\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\SDMiguel\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IBounceBall.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IBounceBall.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstados.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstados.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategia.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategia.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategiasTiempo.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategiasTiempo.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\AdapterPatern1Pawn.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ArmaAmiga.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\IEstrategiasAtaquesPawn.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\IEstrategiasAtaquesPawn.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ArmaAmiga.generated.h

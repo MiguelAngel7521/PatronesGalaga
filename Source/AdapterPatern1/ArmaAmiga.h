@@ -35,6 +35,8 @@ public:
 
 	float FireCooldown;
 	FTimerHandle FireTimerHandle;
+	int Vida;
+	void RecibirDano();
 
 	class ANaveEnemigaCaza* NaveEnemigaCaza;
 private:

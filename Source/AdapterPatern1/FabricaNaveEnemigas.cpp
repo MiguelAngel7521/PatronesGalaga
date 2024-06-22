@@ -6,6 +6,9 @@
 #include "NaveEnemigaTransporte.h"
 #include "NaveEnemigaNodriza.h"
 #include "NaveEnemigaEspia.h"
+#include "AdapterPatern1Pawn.h"
+#include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 
 // Sets default values
@@ -18,9 +21,12 @@ AFabricaNaveEnemigas::AFabricaNaveEnemigas()
 
 ANaveEnemiga* AFabricaNaveEnemigas::FabricarNave(FString TipoNave, int32 CantidadNaves, int32 NumeroFilas, FVector NNSpawnLocation, UObject* Outer)
 {
+	
 	TArray<ANaveEnemiga*> Naves;
 	TSubclassOf<ANaveEnemiga> NaveClass = ArmarNave(TipoNave);
 	UWorld* World = Outer->GetWorld();
+	AAdapterPatern1Pawn* Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(World, 0));
+	
 	if (NaveClass && World)
 	{
 		int32 NavesPorFila = 5; // Ajusta esto según el número deseado de naves por fila
@@ -45,6 +51,7 @@ ANaveEnemiga* AFabricaNaveEnemigas::FabricarNave(FString TipoNave, int32 Cantida
 				if (Nave)
 				{
 					Naves.Add(Nave);
+					Nave->Jugador = Jugador;
 				}
 			}
 		}

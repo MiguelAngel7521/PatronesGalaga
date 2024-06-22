@@ -49,6 +49,7 @@ void ANaveEnemigaCaza::BeginPlay()
     MovimientoVisitor = Cast<AMovimientoVisitor>(GetWorld()->SpawnActor(AMovimientoVisitor::StaticClass()));
     RecuperacionVisitor = Cast<ARecuperacionVisitor>(GetWorld()->SpawnActor(ARecuperacionVisitor::StaticClass()));
     AtaqueVisitor = Cast<AAtaqueVisitor>(GetWorld()->SpawnActor(AAtaqueVisitor::StaticClass()));
+
   
 }
 
@@ -84,6 +85,7 @@ ANaveEnemigaCaza::ANaveEnemigaCaza()
     Tags.Add(FName("Radar"));
 
     bReabasteciendo = false;
+    Puntos = 250; // Valor específico para esta nave
 
 }
 

@@ -51,3 +51,5 @@ C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\Adapter
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\Obstaculo.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\Obstaculo.generated.h
 C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\FabricaObstaculos.generated.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Source\AdapterPatern1\ProxyNaveCompuesta.h
+C:\Users\Jorge\OneDrive\Documentos\Unreal Projects\AdapterPatern1\Intermediate\Build\Win64\UE4Editor\Inc\AdapterPatern1\ProxyNaveCompuesta.generated.h

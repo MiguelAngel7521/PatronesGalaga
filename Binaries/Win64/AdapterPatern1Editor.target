@@ -28,6 +28,22 @@
 			"Type": "Executable"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/Binaries/Win64/UE4Editor-DungeonGeneratorPlugin.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/Binaries/Win64/UE4Editor-DungeonGeneratorPlugin.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/Binaries/Win64/UE4Editor-DungeonGeneratorEditorMode.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/Binaries/Win64/UE4Editor-DungeonGeneratorEditorMode.pdb",
+			"Type": "SymbolFile"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-Paper2D.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -2368,6 +2384,10 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/Binaries/Win64/UE4Editor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor.modules",
 			"Type": "RequiredResource"
 		},
@@ -2851,6 +2871,10 @@
 	"RuntimeDependencies": [
 		{
 			"Path": "$(ProjectDir)/AdapterPatern1.uproject",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Marketplace/DungeonGeneratorPlugin/DungeonGeneratorPlugin.uplugin",
 			"Type": "UFS"
 		},
 		{

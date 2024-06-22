@@ -3,6 +3,8 @@
 
 #include "ProjectileEnemigo.h"
 #include "AdapterPatern1Pawn.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "ArmaAmiga.h"
 
 // Sets default values
 AProjectileEnemigo::AProjectileEnemigo()
@@ -59,13 +61,18 @@ void AProjectileEnemigo::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
 		GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Yellow, Message2);
 		//PawnScore += ScorePorEnemigo;
 
-
-		// Llamar a la función destruir de la nave enemiga
-		Pawn->recibirImpacto();
 	}
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 20.0f, GetActorLocation());
+	}
+	if (OtherActor != nullptr && OtherActor != this)
+	{
+		AArmaAmiga* Arma = Cast<AArmaAmiga>(OtherActor);
+		if (Arma)
+		{
+			Arma->RecibirDano();
+		}
 	}
 
 	Destroy();

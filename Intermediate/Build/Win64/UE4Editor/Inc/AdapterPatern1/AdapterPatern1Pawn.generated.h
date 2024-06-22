@@ -14,8 +14,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define ADAPTERPATERN1_AdapterPatern1Pawn_generated_h
 
 #define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_SPARSE_DATA
-#define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_RPC_WRAPPERS
-#define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execAgregarPuntos);
+
+
+#define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execAgregarPuntos);
+
+
 #define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAAdapterPatern1Pawn(); \
@@ -62,7 +70,7 @@ public: \
 
 #define AdapterPatern1_Source_AdapterPatern1_AdapterPatern1Pawn_h_15_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__ShipMeshComponent() { return STRUCT_OFFSET(AAdapterPatern1Pawn, ShipMeshComponent); } \
-	FORCEINLINE static uint32 __PPO__CamuflajeMesh() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CamuflajeMesh); } \
+	FORCEINLINE static uint32 __PPO__InvencibleMesh() { return STRUCT_OFFSET(AAdapterPatern1Pawn, InvencibleMesh); } \
 	FORCEINLINE static uint32 __PPO__CameraComponent() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CameraComponent); } \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(AAdapterPatern1Pawn, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__DynamicMaterialInstance() { return STRUCT_OFFSET(AAdapterPatern1Pawn, DynamicMaterialInstance); } \

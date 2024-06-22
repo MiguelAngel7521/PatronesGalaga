@@ -111,7 +111,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemigaTransporte() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANaveEnemigaTransporte, 3323024649);
+	IMPLEMENT_CLASS(ANaveEnemigaTransporte, 2439690672);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ANaveEnemigaTransporte>()
 	{
 		return ANaveEnemigaTransporte::StaticClass();

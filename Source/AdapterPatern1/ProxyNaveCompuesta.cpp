@@ -5,7 +5,13 @@
 #include "NaveEnemiga.h"
 #include "ConstruirNaveEnemiga.h"
 #include "EngineUtils.h"
-
+#include "Engine/Engine.h"
+#include "Engine/World.h"
+#include "NaveEnemiga.h"
+#include "ComponenteArmas.h"
+#include "ComponenteEscudo.h"
+// Initialize static member
+AProxyNaveCompuesta* AProxyNaveCompuesta::Instance = nullptr;
 // Sets default values
 AProxyNaveCompuesta::AProxyNaveCompuesta()
 {
@@ -13,6 +19,7 @@ AProxyNaveCompuesta::AProxyNaveCompuesta()
 	PrimaryActorTick.bCanEverTick = true;
 	construirNaveEnemiga = nullptr;
 	navesEnemigasRestantes = 0;  // Inicialmente, este valor se debe configurar según la cantidad total de naves enemigas.
+	bNaveCompuestaCreada = false; // Inicializa el flag en falso
 }
 
 // Called when the game starts or when spawned
@@ -31,7 +38,7 @@ void AProxyNaveCompuesta::BeginPlay()
 void AProxyNaveCompuesta::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+
 
 }
 
@@ -67,14 +74,25 @@ void AProxyNaveCompuesta::NaveDestruida()
 {
 	navesEnemigasRestantes--;
 
-	if (navesEnemigasRestantes <= 0)
+	if (navesEnemigasRestantes <= 0 && !bNaveCompuestaCreada) // Check if the composite ship hasn't been created yet
 	{
+		bNaveCompuestaCreada = true; // Set the flag to true
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Todas las naves enemigas han sido destruidas"));
 		// Todas las naves han sido destruidas, construir la nave compuesta
 		FVector PosicionNaveCompuesta = FVector(1270.0f, 290.0f, 200.0f);
 		BuildNuevaNave(PosicionNaveCompuesta, 1);  // Asume que 1 es el código para la nave compuesta
 		BuildComponentesArmas(PosicionNaveCompuesta, 3);  // Configura con los componentes deseados
 		BuildComponentesEscudos(PosicionNaveCompuesta, 2);  // Configura con los componentes deseados
+		
 	}
+}
+
+AProxyNaveCompuesta* AProxyNaveCompuesta::GetInstance(UWorld* World)
+{
+	if (!Instance)
+	{
+		Instance = World->SpawnActor<AProxyNaveCompuesta>(AProxyNaveCompuesta::StaticClass());
+	}
+	return Instance;
 }
 

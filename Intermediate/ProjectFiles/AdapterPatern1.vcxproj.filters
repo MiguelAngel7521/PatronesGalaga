@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
       <UniqueIdentifier>{12C3C594-4746-4B51-B847-D5C91AA5E497}</UniqueIdentifier>
     </Filter>
@@ -409,5 +408,10 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\SistemaPuntuacionComponente.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\AdapterPatern1.uproject">
+      <Filter>Source\AdapterPatern1</Filter>
+    </None>
   </ItemGroup>
 </Project>

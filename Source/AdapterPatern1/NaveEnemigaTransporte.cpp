@@ -58,7 +58,7 @@ void ANaveEnemigaTransporte::ReabastecerNaves()
 ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 {
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
-	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NaveEnemiga4.NaveEnemiga4'"));
 	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
 	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
 	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
@@ -69,7 +69,7 @@ ANaveEnemigaTransporte::ANaveEnemigaTransporte()
 	CapacidadCarga = 100;
 	//Tag
 	Tags.Add(FName("Radar"));
-
+	Puntos = 100; // Valor específico para esta nave
 }
 
 void ANaveEnemigaTransporte::Mover(float DeltaTime)

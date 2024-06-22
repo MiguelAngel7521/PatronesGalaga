@@ -17,7 +17,7 @@
 ANaveEnemigaEspia::ANaveEnemigaEspia()
 {
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO'"));
-	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NavesEnemigas.NavesEnemigas'"));
+	static ConstructorHelpers::FObjectFinder<UMaterialInstance> MaterialBall(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/NaveEnemiga2.NaveEnemiga2'"));
 	mallaNaveEnemiga->SetStaticMesh(Mesh.Object);;
 	mallaNaveEnemiga->SetMaterial(0, MaterialBall.Object);
 	mallaNaveEnemiga->BodyInstance.SetCollisionProfileName("NaveEnemiga");
@@ -31,7 +31,7 @@ ANaveEnemigaEspia::ANaveEnemigaEspia()
 
 	// Tag
 	Tags.Add(FName("Radar"));
-
+	Puntos = 150; // Valor específico para esta nave
 }
 
 void ANaveEnemigaEspia::BeginPlay()

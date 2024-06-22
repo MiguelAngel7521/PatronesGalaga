@@ -27,8 +27,7 @@ void ACapsulaVida::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 		//PawnScore += ScorePorEnemigo;
 
 
-		// Llamar a la función destruir de la nave enemiga
-		Pawn->recibirImpacto();
+		
 		Destroy();
 	}
 	

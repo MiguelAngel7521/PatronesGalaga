@@ -22,6 +22,11 @@
 #include "EstadoInvencible.h"
 #include "IEstados.h"
 #include "ArmaAmiga.h"
+#include "NaveEnemiga.h"
+#include "NaveEnemigaCaza.h"
+#include "NaveEnemigaEspia.h"
+#include "NaveEnemigaNodriza.h"
+#include "NaveEnemigaTransporte.h"
 //Patron Strategy
 #include "EstrategiaExplosiva.h"
 #include "EstrategiaRecuperacion.h"
@@ -33,29 +38,46 @@
 
 
 
+
 const FName AAdapterPatern1Pawn::MoveForwardBinding("MoveForward");
 const FName AAdapterPatern1Pawn::MoveRightBinding("MoveRight");
 const FName AAdapterPatern1Pawn::FireForwardBinding("FireForward");
 const FName AAdapterPatern1Pawn::FireRightBinding("FireRight");
 
+void AAdapterPatern1Pawn::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
 AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 
 {	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
-	/*static ConstructorHelpers::FObjectFinder<UMaterialInterface> Material(TEXT("MaterialInstanceConstant'/Game/TwinStick/Meshes/Pawn.Pawn'"));
-
-	if (Material.Succeeded())
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> InvencibleMesh2(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO_2.TwinStickUFO_2'"));
+	if (ShipMesh.Succeeded())
 	{
-		BaseMaterial = Material.Object;
-	}*/
-	// Create the mesh component
-	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));		
-	RootComponent = ShipMeshComponent;
-	/*CamouflageMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CamuflajeMesh"));*/
+		ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
+		ShipMeshComponent->SetWorldScale3D(FVector(1.0f));
+		RootComponent = ShipMeshComponent;
+		
 
+		
+	}
+	
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
-	
+	if (InvencibleMesh2.Succeeded())
+	{
+
+
+		InvencibleMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh'/Game/TwinStick/Meshes/TwinStickUFO_2.TwinStickUFO_2'"));
+		// Ensure InvincibleMesh is hidden initially
+		InvencibleMesh->SetupAttachment(RootComponent);
+		InvencibleMesh->SetVisibility(false);
+		InvencibleMesh->SetStaticMesh(InvencibleMesh2.Object);
+	}
+
 	// Cache our sound effect
 	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
 	FireSound = FireAudio.Object;
@@ -85,14 +107,19 @@ AAdapterPatern1Pawn::AAdapterPatern1Pawn()
 	Estado = NewObject<ABasico>();
 	Estado->EstablecerJugador(this);
 
-	// Create a dynamic material instance
-	/*DynamicMaterialInstance = UMaterialInstanceDynamic::Create(BaseMaterial, this);
-	ShipMeshComponent->SetMaterial(0, DynamicMaterialInstance);*/
-
 	//Patron Strategy
 	bIsEstrategiaCamaraLentaActive = false;
 	bIsEstrategiaRecuperacionActive = false;
 	bIsEstrategiaExplosivaActive = false;
+	bIsInvincible = false;
+	PuntosJugador = 0;
+	// Otras inicializaciones
+	MaxVidas = 10;
+	VidasRestantes = MaxVidas;
+	MaxProyectiles = 100;
+	ProyectilesRestantes = MaxProyectiles;
+	MaxEnergia = 200;
+	EnergiaRestante = MaxEnergia;
 	
 	
 }
@@ -134,12 +161,31 @@ void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
 		const FRotator NewRotation = Movement.Rotation();
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
-		
+
 		if (Hit.IsValidBlockingHit())
 		{
 			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
 			const FVector Deflection = FVector::VectorPlaneProject(Movement, Normal2D) * (1.f - Hit.Time);
 			RootComponent->MoveComponent(Deflection, NewRotation, true);
+		}
+		// Reducir energía al moverse
+
+
+		//EnergiaRestante -= DeltaSeconds * 2; // Ajusta el factor de reducción de energía según sea necesario
+		//if (EnergiaRestante < 50)
+		//{
+		//	FString Message2 = FString::Printf(TEXT("Energia restante: %d "), ObtenerEnergiaRestante());
+		//	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, Message2);
+		//}
+		if (EnergiaRestante < 200)
+		{
+			EnergiaRestante += 0.2;
+
+		}
+		if (EnergiaRestante < 0)
+		{
+			EnergiaRestante = 0;
+			// Manejar lo que sucede cuando la energía se agota, si es necesario
 		}
 	}
 	
@@ -166,7 +212,7 @@ void AAdapterPatern1Pawn::Tick(float DeltaSeconds)
 void AAdapterPatern1Pawn::FireShot(FVector FireDirection)
 {
 	// If it's ok to fire again
-	if (EnergiaRestante > 0)
+	if (ProyectilesRestantes > 0)
 	{
 		if (bCanFire == true)
 		{
@@ -192,9 +238,13 @@ void AAdapterPatern1Pawn::FireShot(FVector FireDirection)
 				{
 					UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
 				}
-				EnergiaRestante -= 2;
-				FString Message2 = FString::Printf(TEXT("Energia restante: %d "), ObtenerEnergiaRestante());
-				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, Message2);
+				/*EnergiaRestante -= 2;*/
+				/*FString Message2 = FString::Printf(TEXT("Energia restante: %d "), ObtenerEnergiaRestante());
+				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, Message2);*/
+
+				ProyectilesRestantes--;
+				FString Message = FString::Printf(TEXT("Proyectiles restantes: %d "), ObtenerProyectilesRestantes());
+				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Yellow, Message);
 				bCanFire = false;
 			}
 		}
@@ -222,25 +272,6 @@ void AAdapterPatern1Pawn::SetBounceBall(AActor* _Adaptador)
 }
 
 
-void AAdapterPatern1Pawn::RecibirDanio(int32 CantidadDanio)
-{
-	
-
-	// Si la energía del jugador llega a 0, reducir una vida y reiniciar la energía
-	if (EnergiaRestante <= -20)
-	{
-		VidasRestantes--;
-		EnergiaRestante = 1000; // Reiniciar la energía
-
-		// Verificar si el jugador ha perdido todas sus vidas
-		if (VidasRestantes <= 0)
-		{
-			// Aquí puedes manejar la lógica para el fin del juego
-			UE_LOG(LogTemp, Warning, TEXT("Juego Terminado"));
-		}
-	}
-	
-}
 
 void AAdapterPatern1Pawn::ReducirEnergia1()
 {
@@ -249,50 +280,47 @@ void AAdapterPatern1Pawn::ReducirEnergia1()
 	if (EnergiaRestante < 10)
 		MoveSpeed = -600;
 	
-	/*if (EnergiaRestante == 50)
-	{
-		InicializarEstadosJugador("ConEscudos");
-		EstadoConEscudos ->ConEscudos();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
-	}
-	if (EnergiaRestante == 100)
-	{
-		InicializarEstadosJugador("ConArmamentoAdicional");
-		EstadoConArmamentoAdicional->ConArmamentoAdicional();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
-	}
-	if (EnergiaRestante == 16)
-	{
-		InicializarEstadosJugador("ConCamuflaje");
-		EstadoConCamuflaje->ConCamuflaje();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
-	}
-	if (EnergiaRestante == 15)
-	{
-		InicializarEstadosJugador("Invensible");
-		EstadoInvensible->Invencible();
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
-	}*/
+	
 	
 		
 }
 
-void AAdapterPatern1Pawn::recibirImpacto()
-{
-	/*ContImpacto++;
-	if (ContImpacto == 3)
-	{
-		ContImpacto = 0;
-		ReducirVida();
-		ReducirEnergia1();
-	}*/
-}
 
 void AAdapterPatern1Pawn::ReducirVida()
 {
 	if (VidasRestantes > 0)
 		VidasRestantes--;
-
+	if (VidasRestantes == 3)
+	{
+		InicializarEstadosJugador("ConEscudos");
+		EstadoConEscudos ->ConEscudos();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		
+	}
+	if (VidasRestantes == 9)
+	{
+		InicializarEstadosJugador("ConArmamentoAdicional");
+		EstadoConArmamentoAdicional->ConArmamentoAdicional();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+		
+	}
+	if (VidasRestantes == 16)
+	{
+		InicializarEstadosJugador("ConCamuflaje");
+		EstadoConCamuflaje->ConCamuflaje();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
+	if (VidasRestantes == 8)
+	{
+		InicializarEstadosJugador("Invensible");
+		EstadoInvensible->Invencible();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("%s"), *J_ObtenerEstadoActual()));
+	}
+	if (VidasRestantes <= 0)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Juego terminado"));
+			
+	}
 }
 
 
@@ -324,6 +352,9 @@ void AAdapterPatern1Pawn::InicializarEstadosJugador(FString _Estados)
 		EstadoConCamuflaje->EstablecerJugador(this);
 		EstablecerEstados(EstadoConCamuflaje);
 	}Estado->EstablecerJugador(this);
+	// Configurar el temporizador para restaurar el estado básico después de 10 segundos
+	
+
 }
 
 
@@ -334,26 +365,64 @@ void AAdapterPatern1Pawn::EstablecerEstados(IIEstados* _Estado)
 
 void AAdapterPatern1Pawn::JugadorBasico()
 {
+	
 	Estado->Basico();
 }
 
 void AAdapterPatern1Pawn::JugadorConArmasAdicionales()
 {
-	FActorSpawnParameters SpawnParams;
-	SpawnParams.Owner = this;
-	FVector SpawnLocation = GetActorLocation() + FVector(0.0f, 200.0f, 0.0f);
-	FRotator SpawnRotation = FRotator(0.0f, 0.0f, 0.0f);
-		for (int i = 0; i < 2; i++)
-		{
-			
-			ArmaAmiga = GetWorld()->SpawnActor<AArmaAmiga>(AArmaAmiga::StaticClass(), SpawnLocation, SpawnRotation, SpawnParams);
-			if (ArmaAmiga)
-			{
-				ArmaAmiga->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
-			}
-			SpawnLocation.Y += -500.0f;
-		}
+	//// Obtener la ubicación y rotación del pawn
+	FVector PawnLocation = GetActorLocation();
+	PawnLocation.Y += 200.0f;
+	FRotator PawnRotation = GetActorRotation();
 
+
+	ArmaIzquierda = GetWorld()->SpawnActor<AArmaAmiga>(PawnLocation, PawnRotation);
+	if (ArmaIzquierda)
+	{
+		// Anclar el arma al jugador con las reglas de anclaje deseadas
+		ArmaIzquierda->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
+
+		// Ajustar la ubicación del arma después de anclarla
+		FVector NewRelativeLocation = ArmaIzquierda->GetActorLocation();
+		NewRelativeLocation.Y += 0.0f;
+		ArmaIzquierda->SetActorLocation(NewRelativeLocation);
+	}
+		
+		
+}
+
+void AAdapterPatern1Pawn::restaurarEstadoBasico()
+{
+	if (Estado == EstadoConEscudos)
+	{
+		// Lógica para desactivar el estado de escudos
+		// Por ejemplo, eliminar el escudo
+		if (Escudo)
+		{
+			Escudo->Destroy();
+			Escudo = nullptr;
+		}
+	}
+	
+	else if (Estado == EstadoInvensible)
+	{
+		bIsInvincible = false;
+		// Change mesh back to normal mesh
+		InvencibleMesh->SetVisibility(false);
+		ShipMeshComponent->SetVisibility(true);
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Jugador invencible desactivado"));
+
+		
+	}
+	else if (Estado == EstadoConCamuflaje)
+	{
+		// Lógica para desactivar el estado de camuflaje
+	}
+
+	// Restablecer al estado básico
+	Estado = EstadoBasico;
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estado desactivado, regresando al estado básico"));
 }
 
 void AAdapterPatern1Pawn::JugadorConEscudos()
@@ -372,15 +441,19 @@ void AAdapterPatern1Pawn::JugadorConEscudos()
 				Escudo->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
 			}
 	}
+	GetWorldTimerManager().SetTimer(TimerHandle_RestaurarEstadoBasico, this, &AAdapterPatern1Pawn::restaurarEstadoBasico, 10.0f, false);
 }
 
 void AAdapterPatern1Pawn::JugadorInvensible()
 {
 
-	//if (DynamicMaterialInstance)
-	//{
-	//	DynamicMaterialInstance->SetVectorParameterValue("BaseColor", FLinearColor::Yellow); // Cambia "BaseColor" al nombre del parámetro correcto en tu material
-	//}
+	bIsInvincible = true;
+	
+	// Change mesh to invincible mesh
+	ShipMeshComponent->SetVisibility(false);
+	InvencibleMesh->SetVisibility(true);
+
+	GetWorldTimerManager().SetTimer(TimerHandle_RestaurarEstadoBasico, this, &AAdapterPatern1Pawn::restaurarEstadoBasico, 10.0f, false);
 }
 
 void AAdapterPatern1Pawn::JugadorConCamuflaje()
@@ -390,6 +463,24 @@ void AAdapterPatern1Pawn::JugadorConCamuflaje()
 }
 
 
+
+void AAdapterPatern1Pawn::NotifyActorBeginOverlap(AActor* OtherActor)
+{
+	Super::NotifyActorBeginOverlap(OtherActor);
+
+	if (bIsInvincible && OtherActor)
+	{
+		if (OtherActor->IsA(ANaveEnemigaCaza::StaticClass()) ||
+			OtherActor->IsA(ANaveEnemigaEspia::StaticClass()) ||
+			OtherActor->IsA(ANaveEnemigaNodriza::StaticClass()) ||
+			OtherActor->IsA(ANaveEnemigaTransporte::StaticClass()))
+		{
+			// La nave enemiga está dentro del rango de destrucción
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Nave enemiga destruida"));
+			OtherActor->Destroy();
+		}
+	}
+}
 
 IIEstados* AAdapterPatern1Pawn::J_ObtenerEstado()
 {
@@ -538,15 +629,10 @@ void AAdapterPatern1Pawn::EstRecuperacion()
 
 void AAdapterPatern1Pawn::EstAtaque1()
 {
-	
-	
 	    EstrategiaExplosiva = GetWorld()->SpawnActor<AEstrategiaExplosiva>(AEstrategiaExplosiva::StaticClass());
 		AlternarEstrategias(EstrategiaExplosiva);
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Explosiva"));
 		EjecutarEstrategia();
-
-
-	
 }
 
 void AAdapterPatern1Pawn::EstAtaque2()
@@ -555,6 +641,23 @@ void AAdapterPatern1Pawn::EstAtaque2()
 	AlternarEstrategias(EstrategiaAtaqueFinal);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("Estrategia Ataque Final"));
 	EjecutarEstrategia();
+}
+
+void AAdapterPatern1Pawn::AgregarPuntos(int32 Puntos)
+{
+	PuntosJugador += Puntos;
+	if (PuntosJugador >= 1000)
+	{
+		PuntosJugador = 0; // Resetear puntos a 0
+		VidasRestantes = MaxVidas; // Restablecer vida al máximo
+		EnergiaRestante = MaxEnergia; // Restablecer energía al máximo
+		ProyectilesRestantes = MaxProyectiles; // Restablecer proyectiles al máximo
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("¡Vida y proyectiles restablecidos!"));
+	}
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("Puntos: %d"), PuntosJugador));
+	//AGREGAR EL MEMENTO PARA GUARDAR PARTIDA
+	//MEJOARAR ESATRTEGIAS
+	//AGREGAR LOGICA A CADA NAVE
 }
 
 

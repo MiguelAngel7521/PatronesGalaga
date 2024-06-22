@@ -18,7 +18,6 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
-	ENGINE_API UClass* Z_Construct_UClass_UStaticMesh_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -27,8 +26,53 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UIBounceBall_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(AAdapterPatern1Pawn::execAgregarPuntos)
+	{
+		P_GET_PROPERTY(FIntProperty,Z_Param_Puntos);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->AgregarPuntos(Z_Param_Puntos);
+		P_NATIVE_END;
+	}
 	void AAdapterPatern1Pawn::StaticRegisterNativesAAdapterPatern1Pawn()
 	{
+		UClass* Class = AAdapterPatern1Pawn::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "AgregarPuntos", &AAdapterPatern1Pawn::execAgregarPuntos },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics
+	{
+		struct AdapterPatern1Pawn_eventAgregarPuntos_Parms
+		{
+			int32 Puntos;
+		};
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_Puntos;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::NewProp_Puntos = { "Puntos", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AdapterPatern1Pawn_eventAgregarPuntos_Parms, Puntos), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::NewProp_Puntos,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "AdapterPatern1Pawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AAdapterPatern1Pawn, nullptr, "AgregarPuntos", nullptr, nullptr, sizeof(AdapterPatern1Pawn_eventAgregarPuntos_Parms), Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_AAdapterPatern1Pawn_NoRegister()
 	{
@@ -37,6 +81,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	struct Z_Construct_UClass_AAdapterPatern1Pawn_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -45,9 +90,9 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ShipMeshComponent;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CamuflajeMesh_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_InvencibleMesh_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CamuflajeMesh;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_InvencibleMesh;
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraComponent_MetaData[];
 #endif
@@ -80,6 +125,10 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BaseMaterial_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BaseMaterial;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_PuntosJugador_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_PuntosJugador;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const UE4CodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
@@ -88,6 +137,9 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	UObject* (*const Z_Construct_UClass_AAdapterPatern1Pawn_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_APawn,
 		(UObject* (*)())Z_Construct_UPackage__Script_AdapterPatern1,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_AAdapterPatern1Pawn_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AAdapterPatern1Pawn_AgregarPuntos, "AgregarPuntos" }, // 3750456359
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::Class_MetaDataParams[] = {
@@ -110,15 +162,14 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent = { "ShipMeshComponent", nullptr, (EPropertyFlags)0x00400000000b001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, ShipMeshComponent), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData[] = {
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_InvencibleMesh_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Mesh" },
-		{ "Comment", "//Malla 2\n" },
+		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "AdapterPatern1Pawn.h" },
-		{ "ToolTip", "Malla 2" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh = { "CamuflajeMesh", nullptr, (EPropertyFlags)0x0040000000030015, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, CamuflajeMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_InvencibleMesh = { "InvencibleMesh", nullptr, (EPropertyFlags)0x00400000000b001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, InvencibleMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_InvencibleMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_InvencibleMesh_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraComponent_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -192,9 +243,16 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_BaseMaterial = { "BaseMaterial", nullptr, (EPropertyFlags)0x0040000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, BaseMaterial), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_BaseMaterial_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_BaseMaterial_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_PuntosJugador_MetaData[] = {
+		{ "Category", "Puntos" },
+		{ "ModuleRelativePath", "AdapterPatern1Pawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_PuntosJugador = { "PuntosJugador", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAdapterPatern1Pawn, PuntosJugador), METADATA_PARAMS(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_PuntosJugador_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_PuntosJugador_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AAdapterPatern1Pawn_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_ShipMeshComponent,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CamuflajeMesh,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_InvencibleMesh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_CameraBoom,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_GunOffset,
@@ -203,6 +261,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_FireSound,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_DynamicMaterialInstance,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_BaseMaterial,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AAdapterPatern1Pawn_Statics::NewProp_PuntosJugador,
 	};
 		const UE4CodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_AAdapterPatern1Pawn_Statics::InterfaceParams[] = {
 			{ Z_Construct_UClass_UIBounceBall_NoRegister, (int32)VTABLE_OFFSET(AAdapterPatern1Pawn, IIBounceBall), false },
@@ -215,11 +274,11 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_AAdapterPatern1Pawn_Statics::PropPointers,
 		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AAdapterPatern1Pawn_Statics::PropPointers),
 		UE_ARRAY_COUNT(InterfaceParams),
 		0x008000A4u,
@@ -234,7 +293,7 @@ void EmptyLinkFunctionForGeneratedCodeAdapterPatern1Pawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAdapterPatern1Pawn, 2337390199);
+	IMPLEMENT_CLASS(AAdapterPatern1Pawn, 982259770);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AAdapterPatern1Pawn>()
 	{
 		return AAdapterPatern1Pawn::StaticClass();

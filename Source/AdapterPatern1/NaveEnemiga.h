@@ -33,8 +33,7 @@ protected:
 	float Angulo; // Ángulo inicial
 	float Speed; // Velocidad de rotación
 
-	int Score;
-	int ScorePorEnemigo;
+	float Puntos;
 
 	/*UAComponenteMovimiento* MovimientoNavesComponent;*/
 
@@ -81,18 +80,6 @@ protected:
 	virtual void FireProjectile();
 	float FireRate;
 	FTimerHandle FireTimerHandle;
-
-
-
-	int GetScore() const { return Score; }
-
-	void AumentarPoints()
-	{
-		if (Score <= 0)
-
-			Score += 50;
-
-	}
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -132,9 +119,13 @@ public:
 	public:
 
 	int Vida = 3;
+	UFUNCTION(BlueprintCallable)
 	virtual void RecibirDanio() ;
+	class AAdapterPatern1Pawn* Jugador;
+
 	//Patron Visitor
 	virtual void Accept(IINaveEnemigaVisitor* Visitor) ;
+
 
 
 };

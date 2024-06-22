@@ -22,7 +22,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-private:
+public	:
 	class AConstruirNaveEnemiga* construirNaveEnemiga;
 	int navesEnemigasRestantes;
 public:
@@ -30,4 +30,10 @@ public:
 	void BuildComponentesArmas(FVector PosicionBase, int w) override;
 	void BuildComponentesEscudos(FVector PosicionBase, int x) override;
 	void NaveDestruida();
+	//Partron Singleton
+public:
+	// Sets default values for this actor's properties
+	static AProxyNaveCompuesta* GetInstance(UWorld* World);
+	static AProxyNaveCompuesta* Instance;
+	bool bNaveCompuestaCreada;
 };

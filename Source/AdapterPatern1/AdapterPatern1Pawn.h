@@ -18,9 +18,9 @@ class AAdapterPatern1Pawn : public APawn, public IIBounceBall
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* ShipMeshComponent;
 
-	//Malla 2
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UStaticMesh* CamuflajeMesh;
+	class UStaticMeshComponent* InvencibleMesh;
+
 
 	/** The camera */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
@@ -29,7 +29,9 @@ class AAdapterPatern1Pawn : public APawn, public IIBounceBall
 	/** Camera boom positioning the camera above the character */
 	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
-
+	protected:
+		// Called when the game starts or when spawned
+		virtual void BeginPlay();
 public:
 	AAdapterPatern1Pawn();
 
@@ -89,10 +91,8 @@ public:
 	void SetBounceBall(AActor* _Adaptador);
 
 	// Variables para las vidas y la energía del jugador
-	int32 VidasJugador = 3;
 
-	// Funciones para manejar el daño del enemigo y la energía del jugador
-	void RecibirDanio(int32 CantidadDanio);
+
 
 	void ReducirEnergia1();
 
@@ -103,14 +103,15 @@ private:
 	TSubclassOf<class ABomba> BombaClass;
 
 
-protected:
-	int ContImpacto;
 
 public:
-	void recibirImpacto();
 
-	int VidasRestantes = 5;
-	int EnergiaRestante = 200.0f;
+	int MaxVidas;
+	int VidasRestantes;
+	int EnergiaRestante;
+	int32 MaxProyectiles;
+	int32 ProyectilesRestantes;
+	int32 MaxEnergia;
 
 
 	int GetVidasRestantes() const { return VidasRestantes; }
@@ -131,6 +132,7 @@ public:
 	{
 		MoveSpeed += 800;
 	}
+	int ObtenerProyectilesRestantes() const { return ProyectilesRestantes; }
 
 	FVector posicionInicial;
 	FTimerHandle TimerHandle_Energia;
@@ -141,7 +143,11 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Materials")
 	UMaterialInterface* BaseMaterial;
+private:
+		FTimerHandle TimerHandle_RestaurarEstadoBasico;
+			bool bIsInvincible;
 public:
+
 
 	//Inicializamos los estados del jugador
 	void InicializarEstadosJugador(FString _Estados);
@@ -155,7 +161,7 @@ public:
 	IIEstados* EstadoConCamuflaje;
 	IIEstados* Estado;
 	class AComponenteEscudo* Escudo;
-	class AArmaAmiga* ArmaAmiga;
+	class AArmaAmiga* ArmaIzquierda;
 	//Funciones para cambiar de estado
 	FORCEINLINE void EstablecerEstados(IIEstados* _Estado);
 
@@ -164,6 +170,8 @@ public:
 	void JugadorConEscudos();
 	void JugadorInvensible();
 	void JugadorConCamuflaje();
+	void restaurarEstadoBasico();
+	void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 	//Funciones para obtener los estados
 	FORCEINLINE IIEstados* J_ObtenerEstado();
@@ -205,6 +213,12 @@ public:
 	bool bIsEstrategiaCamaraLentaActive;
 	bool bIsEstrategiaRecuperacionActive;
 	bool bIsEstrategiaExplosivaActive;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Puntos")
+	int32 PuntosJugador;
+
+	UFUNCTION(BlueprintCallable)
+	void AgregarPuntos(int32 Puntos);
 
 };
 

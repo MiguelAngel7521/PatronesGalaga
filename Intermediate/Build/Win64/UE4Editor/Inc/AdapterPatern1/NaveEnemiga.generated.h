@@ -14,8 +14,16 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define ADAPTERPATERN1_NaveEnemiga_generated_h
 
 #define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_SPARSE_DATA
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_RPC_WRAPPERS
-#define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execRecibirDanio);
+
+
+#define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execRecibirDanio);
+
+
 #define AdapterPatern1_Source_AdapterPatern1_NaveEnemiga_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesANaveEnemiga(); \

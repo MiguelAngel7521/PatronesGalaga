@@ -12,5 +12,17 @@
 				"Engine"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "DungeonGeneratorPlugin",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/3ef6cc9c5400434784446008160cb5c7"
+		},
+		{
+			"Name": "MazeDungeonGeneratorPlugin",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher: //ue/marketplace/product/25422cd628e74ba19a1e4296fe133311"
+		}
 	]
 }

@@ -70,6 +70,7 @@ private:
 	class AEstrategiaExplosiva* EstrategiaExplosiva;
 	class AEstrategiaCamaraLenta* EstrategiaCamaraLenta;
 	class AEstrategiaAtaqueFinal* EstrategiaAtaqueFinal;
+	class AArmaAmiga* ArmaIzquierda;
 
 	
 };

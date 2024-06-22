@@ -26,7 +26,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	int Vida = 3;
+	int Vida = 1;
 	virtual void RecibirDanio();
 
 	// Lista de coordenadas de destino

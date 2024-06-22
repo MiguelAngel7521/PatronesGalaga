@@ -31,7 +31,7 @@ void AEstrategiaAtaqueSierra::Tick(float DeltaTime)
 
 void AEstrategiaAtaqueSierra::Disparar(AArmaAmiga* Arma)
 {
-    if (Arma)
+    if ( Arma)
     {
         // Ataque Explosivo
         TArray<AActor*> EnemigosCercanos;
@@ -56,7 +56,7 @@ void AEstrategiaAtaqueSierra::MoverArma(AArmaAmiga* Arma, float DeltaTime)
 {
     if (Arma)
     {
-        AAdapterPatern1Pawn* Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+        Jugador = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
         FVector PosicionActual = Arma->GetActorLocation();
         if (Jugador)
         {

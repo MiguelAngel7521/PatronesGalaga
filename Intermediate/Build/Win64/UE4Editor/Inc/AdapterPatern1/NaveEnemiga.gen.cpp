@@ -21,8 +21,42 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemiga() {}
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_UISuscriptor_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(ANaveEnemiga::execRecibirDanio)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->RecibirDanio();
+		P_NATIVE_END;
+	}
 	void ANaveEnemiga::StaticRegisterNativesANaveEnemiga()
 	{
+		UClass* Class = ANaveEnemiga::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "RecibirDanio", &ANaveEnemiga::execRecibirDanio },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics
+	{
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "NaveEnemiga.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ANaveEnemiga, nullptr, "RecibirDanio", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020400, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ANaveEnemiga_RecibirDanio()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_ANaveEnemiga_RecibirDanio_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_ANaveEnemiga_NoRegister()
 	{
@@ -31,6 +65,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemiga() {}
 	struct Z_Construct_UClass_ANaveEnemiga_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -50,6 +85,9 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemiga() {}
 	UObject* (*const Z_Construct_UClass_ANaveEnemiga_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_AActor,
 		(UObject* (*)())Z_Construct_UPackage__Script_AdapterPatern1,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_ANaveEnemiga_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ANaveEnemiga_RecibirDanio, "RecibirDanio" }, // 737304142
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ANaveEnemiga_Statics::Class_MetaDataParams[] = {
@@ -90,11 +128,11 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemiga() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_ANaveEnemiga_Statics::PropPointers,
 		InterfaceParams,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_ANaveEnemiga_Statics::PropPointers),
 		UE_ARRAY_COUNT(InterfaceParams),
 		0x009000A4u,
@@ -109,7 +147,7 @@ void EmptyLinkFunctionForGeneratedCodeNaveEnemiga() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANaveEnemiga, 3480127522);
+	IMPLEMENT_CLASS(ANaveEnemiga, 4086544908);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<ANaveEnemiga>()
 	{
 		return ANaveEnemiga::StaticClass();

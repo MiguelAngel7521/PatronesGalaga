@@ -20,6 +20,7 @@
 #include "FabricaCapsulas.h"
 #include "FabricaObstaculos.h"	
 #include "Obstaculo.h"
+#include "ProxyNaveCompuesta.h"
 // Sets default values
 ACapsulasTipoFacade::ACapsulasTipoFacade()
 {
@@ -106,12 +107,22 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 	FVector ubicacionInicioNavesEnemigasEspia = FVector(1310.0f, 800.0f, 200.0f);
 
 
+	FVector ubicacionDungeon = FVector(8430.0f, -60.0f, 200.0f);
+	FVector ubicacionDungeon2 = FVector(6430.0f, -600.0f, 200.0f);
+
+
+	/*Proxy=Cast<AProxyNaveCompuesta>((AProxyNaveCompuesta::StaticClass()));*/
+
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-		AFabricaNaveEnemigas::FabricarNave("Caza", 10, 5, ubicacionInicialNavesEnemigasCaza, World);
-		AFabricaNaveEnemigas::FabricarNave("Transporte", 10, 5, ubicacionInicialNavesEnemigasTransporte, World);
-		AFabricaNaveEnemigas::FabricarNave("Espia", 10, 5, ubicacionInicioNavesEnemigasEspia, World);
+		AFabricaNaveEnemigas::FabricarNave("Caza", 5, 2, ubicacionInicialNavesEnemigasCaza, World);
+		AFabricaNaveEnemigas::FabricarNave("Transporte", 5, 2, ubicacionInicialNavesEnemigasTransporte, World);
+		AFabricaNaveEnemigas::FabricarNave("Espia", 5, 2, ubicacionInicioNavesEnemigasEspia, World);
+		/*if (Proxy->navesEnemigasRestantes == 0) {
+			AFabricaNaveEnemigas::FabricarNave("Nodriza", 15, 2, ubicacionDungeon, World);
+			AFabricaNaveEnemigas::FabricarNave("Nodriza", 5, 2, ubicacionDungeon2, World);
+		}*/
 	}
 
 }
@@ -121,7 +132,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 	FVector ubicacionInicialNavesEnemigasCaza = FVector(1310.0f, -1190.0f, 240);
 	FVector ubicacionInicialNavesEnemigasTransporte = FVector(150.0f, -450.0f, 240);
 
-	FVector ubicacionInicioNavesEnemigasEspia = FVector(1310.0f, 800.0f, 200.0f);
+	FVector ubicacionInicioNavesEnemigasEspia = FVector(1310.0f, 400.0f, 200.0f);
 	FVector ubicacionInicioNavesEnemigasNodriza = FVector(150.0f, 1000.0f, 200.0f);
 
 	
@@ -129,10 +140,10 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
 	{
-		AFabricaNaveEnemigas::FabricarNave("Caza", 15, 5, ubicacionInicialNavesEnemigasCaza, World);
-		AFabricaNaveEnemigas::FabricarNave("Transporte", 15, 5, ubicacionInicialNavesEnemigasTransporte, World);
-		AFabricaNaveEnemigas::FabricarNave("Espia", 15, 5, ubicacionInicioNavesEnemigasEspia, World);
-		AFabricaNaveEnemigas::FabricarNave("Nodriza", 15, 5, ubicacionInicioNavesEnemigasNodriza, World);
+		AFabricaNaveEnemigas::FabricarNave("Caza", 5, 2, ubicacionInicialNavesEnemigasCaza, World);
+		AFabricaNaveEnemigas::FabricarNave("Transporte", 5, 2, ubicacionInicialNavesEnemigasTransporte, World);
+		AFabricaNaveEnemigas::FabricarNave("Espia", 5, 2, ubicacionInicioNavesEnemigasEspia, World);
+		AFabricaNaveEnemigas::FabricarNave("Nodriza", 5, 2, ubicacionInicioNavesEnemigasNodriza, World);
 
 	}
 }
@@ -140,7 +151,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 void ACapsulasTipoFacade::CrearObstaculos()
 {
   AFabricaObstaculos* FabricaObstaculos = GetWorld()->SpawnActor<AFabricaObstaculos>(AFabricaObstaculos::StaticClass());
-  FabricaObstaculos->GenerarObstaculos(3, FVector(-1000.0f, -1000.0f, 200.0f), FVector(1000.0f, 1000.0f, 200.0f), 100.0f, 200.0f);
+  FabricaObstaculos->GenerarObstaculos(3, FVector(-50.0f, -700.0f, 200.0f), FVector(50.0f, 700.0f, 200.0f), 100.0f, 200.0f);
   GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Creando obstaculos")));
 }
 

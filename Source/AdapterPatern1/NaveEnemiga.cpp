@@ -16,6 +16,7 @@
 #include "NaveEnemigaCaza.h"
 //Patron Proxy
 #include "ProxyNaveCompuesta.h"
+#include "AdapterPatern1Pawn.h"
 
 
 // Sets default values
@@ -51,6 +52,7 @@ ANaveEnemiga::ANaveEnemiga()
 	Tags.Add(FName("Radar"));
 	Energia = 200.0f;
 	bReabasteciendo = false;
+	Puntos=0;
 	
 
 }
@@ -231,6 +233,14 @@ void ANaveEnemiga::RecibirDanio()
 	Vida -= 1;
 	if (Vida <= 0)
 	{
+		if (Jugador)
+		{
+			AAdapterPatern1Pawn* MiJugador = Cast<AAdapterPatern1Pawn>(Jugador);
+			if (MiJugador)
+			{
+				MiJugador->AgregarPuntos(Puntos);
+			}
+		}
 		Destroy();
 		// Notify the proxy about the destruction
 		for (TActorIterator<AProxyNaveCompuesta> It(GetWorld()); It; ++It)
@@ -244,6 +254,8 @@ void ANaveEnemiga::RecibirDanio()
 		}
 	}
 }
+
+
 
 void ANaveEnemiga::Accept(IINaveEnemigaVisitor* Visitor)
 {
