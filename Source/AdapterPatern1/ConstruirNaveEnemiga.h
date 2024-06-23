@@ -36,7 +36,7 @@ public:
 	virtual void BuildNuevaNave(FVector PosicionNave, int z) override;
 	void BuildComponentesArmas(FVector PosicionBase, int w) override;
 	void BuildComponentesEscudos(FVector PosicionBase, int x) override;
-	void BuildComponentesProjectile(int v);
+	void BuildComponentesProjectile(int v) override;
 	void ConstruirNaveCompleta(FVector PosicionBase, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo) ;
 	
 

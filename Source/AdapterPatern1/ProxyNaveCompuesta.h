@@ -29,6 +29,7 @@ public:
 	virtual void BuildNuevaNave(FVector PosicionNave, int z) override;
 	void BuildComponentesArmas(FVector PosicionBase, int w) override;
 	void BuildComponentesEscudos(FVector PosicionBase, int x) override;
+	void BuildComponentesProjectile(int v) override;
 	void NaveDestruida();
 	//Partron Singleton
 public:

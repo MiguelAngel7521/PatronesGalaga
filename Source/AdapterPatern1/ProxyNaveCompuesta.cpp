@@ -10,6 +10,7 @@
 #include "NaveEnemiga.h"
 #include "ComponenteArmas.h"
 #include "ComponenteEscudo.h"
+#include "FabricaNaveEnemigas.h"
 // Initialize static member
 AProxyNaveCompuesta* AProxyNaveCompuesta::Instance = nullptr;
 // Sets default values
@@ -70,9 +71,19 @@ void AProxyNaveCompuesta::BuildComponentesEscudos(FVector PosicionBase, int x)
 	construirNaveEnemiga->BuildComponentesEscudos(PosicionBase, x);
 }
 
+void AProxyNaveCompuesta::BuildComponentesProjectile(int v)
+{
+	if (construirNaveEnemiga == nullptr)
+	{
+		construirNaveEnemiga = GetWorld()->SpawnActor<AConstruirNaveEnemiga>(AConstruirNaveEnemiga::StaticClass());
+	}
+	construirNaveEnemiga->BuildComponentesProjectile(v);
+}
+
 void AProxyNaveCompuesta::NaveDestruida()
 {
 	navesEnemigasRestantes--;
+	UWorld* World = GetWorld();
 
 	if (navesEnemigasRestantes <= 0 && !bNaveCompuestaCreada) // Check if the composite ship hasn't been created yet
 	{
@@ -83,6 +94,11 @@ void AProxyNaveCompuesta::NaveDestruida()
 		BuildNuevaNave(PosicionNaveCompuesta, 1);  // Asume que 1 es el código para la nave compuesta
 		BuildComponentesArmas(PosicionNaveCompuesta, 3);  // Configura con los componentes deseados
 		BuildComponentesEscudos(PosicionNaveCompuesta, 2);  // Configura con los componentes deseados
+		BuildComponentesProjectile(1);  // Configura con los componentes deseados
+		FVector ubicacionDungeon = FVector(8430.0f, -60.0f, 200.0f);
+		FVector ubicacionDungeon2 = FVector(6430.0f, -600.0f, 200.0f);
+		AFabricaNaveEnemigas::FabricarNave("Nodriza", 15, 2, ubicacionDungeon, World);
+		AFabricaNaveEnemigas::FabricarNave("Nodriza", 5, 2, ubicacionDungeon2, World);
 		
 	}
 }

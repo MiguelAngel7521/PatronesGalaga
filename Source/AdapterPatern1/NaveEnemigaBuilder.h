@@ -27,5 +27,6 @@ public:
 	virtual void BuildNuevaNave(FVector PosicionNave, int z) = 0;
 	virtual void BuildComponentesArmas(FVector PosicionBase, int w) = 0;
 	virtual void BuildComponentesEscudos(FVector PosicionBase, int x) = 0;
+	virtual void BuildComponentesProjectile(int v) = 0;
 public:
 };

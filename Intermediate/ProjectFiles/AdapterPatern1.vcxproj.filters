@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <None Include="..\..\AdapterPatern1.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{12C3C594-4746-4B51-B847-D5C91AA5E497}</UniqueIdentifier>
+      <UniqueIdentifier>{1FF03733-AEA7-4EFD-A235-B601D6D26822}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1.Target.cs">
       <Filter>Source</Filter>
@@ -13,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{23DA8EFB-233E-4D22-AD42-777E39E969A1}</UniqueIdentifier>
+      <UniqueIdentifier>{613E75AF-BBDA-449F-88FA-418AB29CC18A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -31,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\AdapterPatern1">
-      <UniqueIdentifier>{15E86A8F-225F-4BB1-8F9A-9CE00C9B1E61}</UniqueIdentifier>
+      <UniqueIdentifier>{339B59B8-D464-49D6-9FC9-E3C9F27947E5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\AdapterPatern1\AdapterPatern1.Build.cs">
       <Filter>Source\AdapterPatern1</Filter>
@@ -366,6 +367,12 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\ProjectileEnemigo.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\AdapterPatern1\ProjectileLazer.cpp">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\AdapterPatern1\ProjectileLazer.h">
+      <Filter>Source\AdapterPatern1</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\AdapterPatern1\ProxyNaveCompuesta.cpp">
       <Filter>Source\AdapterPatern1</Filter>
     </ClCompile>
@@ -408,10 +415,5 @@
     <ClInclude Include="..\..\Source\AdapterPatern1\SistemaPuntuacionComponente.h">
       <Filter>Source\AdapterPatern1</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\AdapterPatern1.uproject">
-      <Filter>Source\AdapterPatern1</Filter>
-    </None>
   </ItemGroup>
 </Project>

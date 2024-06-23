@@ -262,13 +262,20 @@ void AAdapterPatern1Pawn::Lanzar()
 	BounceBall->Lanzar();
 }
 
-void AAdapterPatern1Pawn::SetBounceBall(AActor* _Adaptador)
+void AAdapterPatern1Pawn::SetBounceBall(AActor* _Adaptador)	
 {
-	BounceBall = Cast<IIBounceBall>(_Adaptador);
-		if (!BounceBall) {
-			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, FString::Printf(TEXT("No se pudo instanciar")));
-		}
+	if (!_Adaptador)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Adaptador is null"));
 		return;
+	}
+
+	BounceBall = Cast<IIBounceBall>(_Adaptador);
+	if (!BounceBall)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, TEXT("No se pudo instanciar"));
+		return;
+	}
 }
 
 
@@ -656,8 +663,13 @@ void AAdapterPatern1Pawn::AgregarPuntos(int32 Puntos)
 	}
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("Puntos: %d"), PuntosJugador));
 	//AGREGAR EL MEMENTO PARA GUARDAR PARTIDA
-	//MEJOARAR ESATRTEGIAS
+	//MEJOARAR ESATRTEGIAS pa descativa y activar 
 	//AGREGAR LOGICA A CADA NAVE
+	//mEJORAR OBSERVER
+	//AGREGAR PUAS
+	//ELIMINAR SISTEMA DE PUNTUACION 
+	//OPTIMIZAR JUEGO
+	//HACER QUE LOS OBTACULOS APAREZACAN ENFRENTE DEL APWN
 }
 
 

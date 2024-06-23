@@ -6,6 +6,7 @@
 #include "ComponenteArmas.h"
 #include "ComponenteEscudo.h"
 #include "ProjectileEnemigo.h"
+#include "ProjectileLazer.h"
 
 
 // Sets default values
@@ -142,53 +143,51 @@ void AConstruirNaveEnemiga::BuildComponentesEscudos(FVector PosicionBase, int x)
 
 void AConstruirNaveEnemiga::BuildComponentesProjectile(int v)
 {
-	/*J = v;
+	J = v;
 
-	FVector PosProyectil = FVector(-200.0f, 430.0f, 300.0f);
+	if (!NaveEnemiga)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("NaveEnemiga no está inicializada."));
+		return;
+	}
+
+	FVector PosNaveEnemiga = NaveEnemiga->GetActorLocation();
+	FVector PosProyectil = PosNaveEnemiga + FVector(-200.0f, 0.0f, 0.0f); // Siempre en X = 200 respecto a la nave
 	FRotator RotProyectil = FRotator(0.0f, 180.0f, 0.0f);
-	FVector PosProyectil1 = FVector(-200.0f, 430.0f, 300.0f);
 
 	switch (v)
 	{
 	case 1:
-
-		
-
 		for (int i = 0; i < 2; i++)
 		{
-			Proyectil = GetWorld()->SpawnActor<AProjectileEnemigo>(AProjectileEnemigo::StaticClass());
-			Proyectil->SetActorLocation(PosProyectil);
-			Proyectil->SetActorRotation(RotProyectil);
-			PosProyectil.Y = PosProyectil.Y + 200.0f;
+			AProjectileLazer* Proyectil2  = GetWorld()->SpawnActor<AProjectileLazer>(AProjectileLazer::StaticClass());
+			Proyectil2->SetActorLocation(PosProyectil);
+			Proyectil2->SetActorRotation(RotProyectil);
+			PosProyectil.Y += 200.0f;
 		}
-
 		break;
 	case 2:
-
+		// Aquí podrías manejar otro tipo de proyectil si fuera necesario
 		break;
 	case 3:
-
-		
-
 		for (int i = 0; i < 4; i++)
 		{
-			Proyectil = GetWorld()->SpawnActor<AProjectileEnemigo>(AProjectileEnemigo::StaticClass());
-			Proyectil->SetActorLocation(PosProyectil1);
-			Proyectil->SetActorRotation(RotProyectil);
+			AProjectileLazer* Proyectil1 = GetWorld()->SpawnActor<AProjectileLazer>(AProjectileLazer::StaticClass());
+			Proyectil1->SetActorLocation(PosProyectil);
+			Proyectil1->SetActorRotation(RotProyectil);
 			if (i == 1)
 			{
-				PosProyectil1.Y = PosProyectil1.Y + 220.0f;
+				PosProyectil.Y += 220.0f;
 			}
 			else
 			{
-				PosProyectil1.Y = PosProyectil1.Y + 110.0f;
+				PosProyectil.Y += 110.0f;
 			}
 		}
-
 		break;
 	default:
 		break;
-	}*/
+	}
 }
 
 void AConstruirNaveEnemiga::ConstruirNaveCompleta(FVector PosicionBase, int naveTipo, int armasTipo, int escudosTipo, int proyectilesTipo)
