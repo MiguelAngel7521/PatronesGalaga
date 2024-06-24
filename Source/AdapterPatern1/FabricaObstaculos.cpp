@@ -11,18 +11,18 @@ AFabricaObstaculos::AFabricaObstaculos()
 
 }
 
-void AFabricaObstaculos::GenerarObstaculos(int32 CantidadObstaculos, FVector MinSpawnLocation, FVector MaxSpawnLocation, float MinMoveSpeed, float MaxMoveSpeed)
+void AFabricaObstaculos::GenerarObstaculos(int32 CantidadObstaculos, FVector MinSpawnLocation, FVector MaxSpawnLocation, float MinMoveSpeed, float MaxMoveSpeed, APawn* Pawn)
 {
     if (GetWorld())
     {
         for (int32 i = 0; i < CantidadObstaculos; ++i)
         {
-            FVector SpawnLocation = GetRandomSpawnLocation(MinSpawnLocation, MaxSpawnLocation);
+            FVector SpawnLocation = GetRandomSpawnLocation(MinSpawnLocation, MaxSpawnLocation, Pawn, i);
             float MoveSpeed = GetRandomMoveSpeed(MinMoveSpeed, MaxMoveSpeed);
-           AObstaculo* Obstaculo = GetWorld()->SpawnActor<AObstaculo>(SpawnLocation, FRotator::ZeroRotator);
+            AObstaculo* Obstaculo = GetWorld()->SpawnActor<AObstaculo>(SpawnLocation, FRotator::ZeroRotator);
             if (Obstaculo)
             {
-               /* Obstaculo->SetMoveSpeed(MoveSpeed);*/
+                // Obstaculo->SetMoveSpeed(MoveSpeed);
                 Obstaculos.Add(Obstaculo);
             }
         }
@@ -46,11 +46,13 @@ void AFabricaObstaculos::Tick(float DeltaTime)
 
 
 
-FVector AFabricaObstaculos::GetRandomSpawnLocation(FVector MinSpawnLocation, FVector MaxSpawnLocation)
+FVector AFabricaObstaculos::GetRandomSpawnLocation(FVector MinSpawnLocation, FVector MaxSpawnLocation, APawn* Pawn, int32 Index)
 {
-    float X = FMath::RandRange(MinSpawnLocation.X, MaxSpawnLocation.X);
+    FVector PawnLocation = Pawn->GetActorLocation();
+    float OffsetX = 200.0f * Index;  // 200 units separation in X axis for each obstacle
+    float X = PawnLocation.X + OffsetX;
     float Y = FMath::RandRange(MinSpawnLocation.Y, MaxSpawnLocation.Y);
-    float Z = 200; // Spawn desde el suelo
+    float Z = 200.0f; // Spawn desde el suelo
     return FVector(X, Y, Z);
 }
 

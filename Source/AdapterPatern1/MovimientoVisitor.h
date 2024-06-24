@@ -33,6 +33,12 @@ public:
 	void MoivientoNaveEnemiga2(AActor* Nave, float DeltaTime);
 	void MoivientoNaveEnemiga3(AActor* Nave, float DeltaTime);
 	void MoivientoNaveEnemiga4(AActor* Nave, float DeltaTime);
+	void MoverBomba(AActor* Bomba, float DeltaTime);
+     float tmpSuelto = 3;
+	 float tmpBomb = 0;
+	 bool soltar = false;
+	 int AleX;
+	 int AleY;
 	// Variables para el movimiento por coordenadas
 	TArray<FVector> targetLocations;
 	TArray<FVector> targetLocations1;

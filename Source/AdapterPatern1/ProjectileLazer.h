@@ -14,8 +14,10 @@ class ADAPTERPATERN1_API AProjectileLazer : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AProjectileLazer();
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Projectile, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	UStaticMeshComponent* lasermalla;
+
+	// Projectile movement component
 
 
 protected:

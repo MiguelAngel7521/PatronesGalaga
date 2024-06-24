@@ -19,7 +19,7 @@ public:
 	TSubclassOf<AObstaculo> ObstaculoClass;
 
 	UFUNCTION(BlueprintCallable)
-	void GenerarObstaculos(int32 CantidadObstaculos, FVector MinSpawnLocation, FVector MaxSpawnLocation, float MinMoveSpeed, float MaxMoveSpeed);
+	void GenerarObstaculos(int32 CantidadObstaculos, FVector MinSpawnLocation, FVector MaxSpawnLocation, float MinMoveSpeed, float MaxMoveSpeed, APawn* Pawn);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,7 +31,7 @@ private:
 	TArray<AObstaculo*> Obstaculos;
 	FTimerHandle TimerHandle;
 
-	FVector GetRandomSpawnLocation(FVector MinSpawnLocation, FVector MaxSpawnLocation);
+	FVector GetRandomSpawnLocation(FVector MinSpawnLocation, FVector MaxSpawnLocation, APawn* Pawn, int32 Index);
 	float GetRandomMoveSpeed(float MinMoveSpeed, float MaxMoveSpeed);
 	void DestroyObstaculos();
 

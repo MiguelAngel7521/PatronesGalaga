@@ -52,8 +52,7 @@ void EmptyLinkFunctionForGeneratedCodeProjectileLazer() {}
 #endif
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AProjectileLazer_Statics::NewProp_lasermalla_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Projectile" },
+		{ "Category", "Components" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "ProjectileLazer.h" },
 	};
@@ -89,7 +88,7 @@ void EmptyLinkFunctionForGeneratedCodeProjectileLazer() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AProjectileLazer, 1076635578);
+	IMPLEMENT_CLASS(AProjectileLazer, 2877679114);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AProjectileLazer>()
 	{
 		return AProjectileLazer::StaticClass();

@@ -8,6 +8,11 @@
 #include "NaveEnemigaTransporte.h"
 #include "ComponenteEscudo.h"
 #include "ComponenteArmas.h"
+#include "AdapterPatern1Pawn.h"
+#include "Engine/World.h"
+#include "Engine/Engine.h"
+#include "Kismet/GameplayStatics.h"
+#include "Bomba.h"
 
 
 // Sets default values
@@ -206,9 +211,7 @@ void AMovimientoVisitor::VisitNaveEnemigaNodriza(ANaveEnemigaNodriza* Nave)
 }
 
 void AMovimientoVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave)
-{/*
-	MoivientoNaveEnemigaI2(Nave, Nave->GetWorld()->GetDeltaSeconds());*/
-	//Movimiento cada 10 s
+{
 	float DeltaTime = Nave->GetWorld()->GetDeltaSeconds();
 
 	// Incrementar el tiempo transcurrido desde el último cambio de movimiento
@@ -221,7 +224,7 @@ void AMovimientoVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave
 	switch (TipoMovimiento)
 	{
 	case 0:
-		MoivientoNaveEnemiga(Nave, DeltaTime);
+		MoverBomba(Nave, DeltaTime);
 		break;
 	case 1:
 		MoivientoNaveEnemiga1(Nave, DeltaTime);
@@ -230,7 +233,7 @@ void AMovimientoVisitor::VisitNaveEnemigaTransporte(ANaveEnemigaTransporte* Nave
 		MoivientoNaveEnemiga1(Nave, DeltaTime);
 		break;
 	case 3:
-		MoivientoNaveEnemiga3(Nave, DeltaTime);
+		MoverBomba(Nave, DeltaTime);
 		break;
 	case 4:
 		MoivientoNaveEnemiga3(Nave, DeltaTime);
@@ -424,6 +427,70 @@ void AMovimientoVisitor::MoivientoNaveEnemiga4(AActor* Nave, float DeltaTime)
 	{
 		// Mover a la siguiente ubicación de destino
 		currentTargetIndex = (currentTargetIndex + 1) % targetLocations2.Num();
+	}
+}
+
+void AMovimientoVisitor::MoverBomba(AActor* Bomba, float DeltaTime)
+{
+	// Mover la nave en el eje Z
+	 // Obtener la posición actual de la nave
+	FVector CurrentLocation = Bomba->GetActorLocation();
+
+	// Mover la nave en el eje Z hasta que alcance la altitud de 700
+	if (CurrentLocation.Z < 700.0f)
+	{
+		CurrentLocation.Z += coordinateSpeed * DeltaTime;
+		if (CurrentLocation.Z > 700.0f) // Asegurarse de no pasar de 700
+		{
+			CurrentLocation.Z = 700.0f;
+		}
+		Bomba->SetActorLocation(CurrentLocation);
+	}
+	// Ensure AleX and AleY have initial random values if not set
+	if (AleX == 0 && AleY == 0)
+	{
+		AleX = FMath::RandRange(-1800, 1800);
+		AleY = FMath::RandRange(-1800, 1800);
+	}
+
+	FVector NaveLocation = Bomba->GetActorLocation();
+
+	if (NaveLocation.X <= AleX + 50 && NaveLocation.X >= AleX - 50 && NaveLocation.Y <= AleY + 50 && NaveLocation.Y >= AleY - 50)
+	{
+		AleX = FMath::RandRange(-1800, 1800);
+		AleY = FMath::RandRange(-1800, 1800);
+
+		UWorld* const World = GetWorld();
+		if (World)
+		{
+			FVector BombPosition = NaveLocation + FVector(-50, 0, -50);
+			FRotator BombRotation = FRotator(0, 0, 0);
+
+			// Spawn the bomb
+			World->SpawnActor<ABomba>(BombPosition, BombRotation);
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Creando bomba")));
+
+			tmpBomb = 0;
+			tmpSuelto = FMath::RandRange(3, 6); // Random time between 3 to 6 seconds
+		}
+	}
+	else
+	{
+		FVector Direction = FVector::ZeroVector;
+
+		if (NaveLocation.X > AleX)
+			Direction.X = -1;
+		else if (NaveLocation.X < AleX)
+			Direction.X = 1;
+
+		if (NaveLocation.Y > AleY)
+			Direction.Y = -1;
+		else if (NaveLocation.Y < AleY)
+			Direction.Y = 1;
+
+		Direction.Normalize();
+		FVector NewLocation = NaveLocation + Direction * 400 * DeltaTime;
+		Bomba->SetActorLocation(NewLocation);
 	}
 }
 

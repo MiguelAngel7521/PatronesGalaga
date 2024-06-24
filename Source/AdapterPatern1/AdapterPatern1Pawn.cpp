@@ -653,7 +653,7 @@ void AAdapterPatern1Pawn::EstAtaque2()
 void AAdapterPatern1Pawn::AgregarPuntos(int32 Puntos)
 {
 	PuntosJugador += Puntos;
-	if (PuntosJugador >= 1000)
+	if (PuntosJugador >= 1200)
 	{
 		PuntosJugador = 0; // Resetear puntos a 0
 		VidasRestantes = MaxVidas; // Restablecer vida al máximo
@@ -664,12 +664,11 @@ void AAdapterPatern1Pawn::AgregarPuntos(int32 Puntos)
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("Puntos: %d"), PuntosJugador));
 	//AGREGAR EL MEMENTO PARA GUARDAR PARTIDA
 	//MEJOARAR ESATRTEGIAS pa descativa y activar 
-	//AGREGAR LOGICA A CADA NAVE
 	//mEJORAR OBSERVER
 	//AGREGAR PUAS
 	//ELIMINAR SISTEMA DE PUNTUACION 
 	//OPTIMIZAR JUEGO
-	//HACER QUE LOS OBTACULOS APAREZACAN ENFRENTE DEL APWN
+	//Mejorar Spawn de Bombas
 }
 
 

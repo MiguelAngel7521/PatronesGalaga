@@ -9,6 +9,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 struct FVector;
+class APawn;
 #ifdef ADAPTERPATERN1_FabricaObstaculos_generated_h
 #error "FabricaObstaculos.generated.h already included, missing '#pragma once' in FabricaObstaculos.h"
 #endif

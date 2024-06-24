@@ -18,6 +18,7 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_AdapterPatern1();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API UClass* Z_Construct_UClass_APawn_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	ADAPTERPATERN1_API UClass* Z_Construct_UClass_AObstaculo_NoRegister();
 // End Cross Module References
@@ -28,9 +29,10 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 		P_GET_STRUCT(FVector,Z_Param_MaxSpawnLocation);
 		P_GET_PROPERTY(FFloatProperty,Z_Param_MinMoveSpeed);
 		P_GET_PROPERTY(FFloatProperty,Z_Param_MaxMoveSpeed);
+		P_GET_OBJECT(APawn,Z_Param_Pawn);
 		P_FINISH;
 		P_NATIVE_BEGIN;
-		P_THIS->GenerarObstaculos(Z_Param_CantidadObstaculos,Z_Param_MinSpawnLocation,Z_Param_MaxSpawnLocation,Z_Param_MinMoveSpeed,Z_Param_MaxMoveSpeed);
+		P_THIS->GenerarObstaculos(Z_Param_CantidadObstaculos,Z_Param_MinSpawnLocation,Z_Param_MaxSpawnLocation,Z_Param_MinMoveSpeed,Z_Param_MaxMoveSpeed,Z_Param_Pawn);
 		P_NATIVE_END;
 	}
 	void AFabricaObstaculos::StaticRegisterNativesAFabricaObstaculos()
@@ -50,12 +52,14 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 			FVector MaxSpawnLocation;
 			float MinMoveSpeed;
 			float MaxMoveSpeed;
+			APawn* Pawn;
 		};
 		static const UE4CodeGen_Private::FIntPropertyParams NewProp_CantidadObstaculos;
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MinSpawnLocation;
 		static const UE4CodeGen_Private::FStructPropertyParams NewProp_MaxSpawnLocation;
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_MinMoveSpeed;
 		static const UE4CodeGen_Private::FFloatPropertyParams NewProp_MaxMoveSpeed;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Pawn;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
@@ -67,12 +71,14 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MaxSpawnLocation = { "MaxSpawnLocation", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FabricaObstaculos_eventGenerarObstaculos_Parms, MaxSpawnLocation), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MinMoveSpeed = { "MinMoveSpeed", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FabricaObstaculos_eventGenerarObstaculos_Parms, MinMoveSpeed), METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MaxMoveSpeed = { "MaxMoveSpeed", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FabricaObstaculos_eventGenerarObstaculos_Parms, MaxMoveSpeed), METADATA_PARAMS(nullptr, 0) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_Pawn = { "Pawn", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(FabricaObstaculos_eventGenerarObstaculos_Parms, Pawn), Z_Construct_UClass_APawn_NoRegister, METADATA_PARAMS(nullptr, 0) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_CantidadObstaculos,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MinSpawnLocation,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MaxSpawnLocation,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MinMoveSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_MaxMoveSpeed,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::NewProp_Pawn,
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos_Statics::Function_MetaDataParams[] = {
@@ -113,7 +119,7 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_AdapterPatern1,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_AFabricaObstaculos_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos, "GenerarObstaculos" }, // 2173681973
+		{ &Z_Construct_UFunction_AFabricaObstaculos_GenerarObstaculos, "GenerarObstaculos" }, // 3733250163
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFabricaObstaculos_Statics::Class_MetaDataParams[] = {
@@ -158,7 +164,7 @@ void EmptyLinkFunctionForGeneratedCodeFabricaObstaculos() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFabricaObstaculos, 3735671244);
+	IMPLEMENT_CLASS(AFabricaObstaculos, 751365909);
 	template<> ADAPTERPATERN1_API UClass* StaticClass<AFabricaObstaculos>()
 	{
 		return AFabricaObstaculos::StaticClass();

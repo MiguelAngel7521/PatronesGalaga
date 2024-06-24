@@ -21,6 +21,11 @@
 #include "FabricaObstaculos.h"	
 #include "Obstaculo.h"
 #include "ProxyNaveCompuesta.h"
+#include "AdapterPatern1Pawn.h"
+#include "Engine/World.h"
+#include "Engine/Engine.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 ACapsulasTipoFacade::ACapsulasTipoFacade()
 {
@@ -102,7 +107,7 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos1()
 void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 {
 	FVector ubicacionInicialNavesEnemigasCaza = FVector(1310.0f, -1190.0f, 240);
-	FVector ubicacionInicialNavesEnemigasTransporte = FVector(150.0f, -450.0f, 240);
+	FVector ubicacionInicialNavesEnemigasTransporte = FVector(150.0f, -450.0f, 1000);
 
 	FVector ubicacionInicioNavesEnemigasEspia = FVector(1310.0f, 800.0f, 200.0f);
 
@@ -150,9 +155,10 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos3()
 
 void ACapsulasTipoFacade::CrearObstaculos()
 {
-  AFabricaObstaculos* FabricaObstaculos = GetWorld()->SpawnActor<AFabricaObstaculos>(AFabricaObstaculos::StaticClass());
-  FabricaObstaculos->GenerarObstaculos(3, FVector(-50.0f, -700.0f, 200.0f), FVector(50.0f, 700.0f, 200.0f), 100.0f, 200.0f);
-  GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Creando obstaculos")));
+	AFabricaObstaculos* FabricaObstaculos = GetWorld()->SpawnActor<AFabricaObstaculos>(AFabricaObstaculos::StaticClass());
+	AAdapterPatern1Pawn* PlayerPawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)); // Assuming the player pawn is at index 0
+	FabricaObstaculos->GenerarObstaculos(3, FVector(-50.0f, -700.0f, 200.0f), FVector(50.0f, 700.0f, 200.0f), 100.0f, 200.0f, PlayerPawn);
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Creando obstaculos")));
 }
 
 void ACapsulasTipoFacade::RecibirOrden(const TArray<FString>& _Orden)
