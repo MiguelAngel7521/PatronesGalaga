@@ -22,6 +22,7 @@ AObstaculo::AObstaculo()
 	}
 	Vida = 100.0f;
 	Dano = 10.0f;
+	bIsMoving = false;
 }
 
 // Called when the game starts or when spawned
@@ -36,7 +37,18 @@ void AObstaculo::BeginPlay()
 void AObstaculo::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (bIsMoving)
+	{
+		FVector CurrentLocation = GetActorLocation();
+		FVector NewLocation = FMath::VInterpTo(CurrentLocation, TargetLocation, DeltaTime, 2.0f);
 
+		SetActorLocation(NewLocation);
+
+		if (FVector::Dist(CurrentLocation, TargetLocation) < 1.0f)
+		{
+			bIsMoving = false;
+		}
+	}
 }
 
 void AObstaculo::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -60,8 +72,8 @@ void AObstaculo::RecibirDano()
 
 void AObstaculo::MovimientoAparicion()
 {
-	FVector NewLocation = GetActorLocation();
-	NewLocation.Z += 200.0f;
-	SetActorLocation(NewLocation);
+	TargetLocation = GetActorLocation();
+	TargetLocation.Z += 200.0f;
+	bIsMoving = true;
 }
 

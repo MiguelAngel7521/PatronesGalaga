@@ -52,7 +52,7 @@ FVector AFabricaObstaculos::GetRandomSpawnLocation(FVector MinSpawnLocation, FVe
     float OffsetX = 200.0f * Index;  // 200 units separation in X axis for each obstacle
     float X = PawnLocation.X + OffsetX;
     float Y = FMath::RandRange(MinSpawnLocation.Y, MaxSpawnLocation.Y);
-    float Z = 200.0f; // Spawn desde el suelo
+    float Z = 0.0f; // Spawn desde el suelo
     return FVector(X, Y, Z);
 }
 

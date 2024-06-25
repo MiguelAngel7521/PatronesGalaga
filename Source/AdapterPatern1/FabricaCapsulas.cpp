@@ -19,11 +19,11 @@ void AFabricaCapsulas::BeginPlay()
 {
 	Super::BeginPlay();
     // Establece el rango de ubicaciones de spawn
-    RangoSpawnX = 200.0f; // Ajusta esto según tu rango deseado en el eje X
+    RangoSpawnX = 300.0f; // Ajusta esto según tu rango deseado en el eje X
     RangoSpawnY = 1000.0f; // Ajusta esto según tu rango deseado en el eje Y
 
     // Inicia el temporizador para generar cápsulas
-    GetWorldTimerManager().SetTimer(TimerHandle, this, &AFabricaCapsulas::GenerarCapsula, 6.0f, true);
+   /* GetWorldTimerManager().SetTimer(TimerHandle, this, &AFabricaCapsulas::GenerarCapsula, 6.0f, true);*/
 }
 
 // Called every frame
@@ -33,32 +33,30 @@ void AFabricaCapsulas::Tick(float DeltaTime)
 
 }
 
-void AFabricaCapsulas::GenerarCapsula()
+void AFabricaCapsulas::GenerarCapsula(APawn* Pawn, TSubclassOf<ACapsula> CapsulaClass)
 {
-    FVector SpawnLocation = GetRandomSpawnLocation();
+     FVector SpawnLocation = GetRandomSpawnLocation(Pawn);
     FRotator SpawnRotation = FRotator::ZeroRotator;
-    FActorSpawnParameters SpawnParams;  
+    FActorSpawnParameters SpawnParams;
 
-    // Elige un tipo de cápsula al azar
-    TSubclassOf<ACapsula> ClasCapsulaaGenerar = ObtenerClaseCapsula();
-
-    if (ClasCapsulaaGenerar)
+    if (CapsulaClass)
     {
-        ACapsula* NuevaCapsulasulaCricion = GetWorld()->SpawnActor<ACapsula>(ClasCapsulaaGenerar, SpawnLocation, SpawnRotation, SpawnParams);
+        ACapsula* NuevaCapsula = GetWorld()->SpawnActor<ACapsula>(CapsulaClass, SpawnLocation, SpawnRotation, SpawnParams);
 
-        if (NuevaCapsulasulaCricion)
+        if (NuevaCapsula)
         {
-            // Establece el tiempo de vida de la cápsula a 10 segundos
-            GetWorldTimerManager().SetTimer(NuevaCapsulasulaCricion->TimerHandle, NuevaCapsulasulaCricion, &ACapsula::DestruirCapsula, 5.0f, false);
+            // Establece el tiempo de vida de la cápsula a 5 segundos
+            GetWorldTimerManager().SetTimer(NuevaCapsula->TimerHandle, NuevaCapsula, &ACapsula::DestruirCapsula, 2.0f, false);
         }
     }
 }
 
-FVector AFabricaCapsulas::GetRandomSpawnLocation()
+FVector AFabricaCapsulas::GetRandomSpawnLocation(APawn* Pawn)
 {
+    FVector PawnLocation = Pawn->GetActorLocation();
     float RandX = FMath::RandRange(-RangoSpawnX, RangoSpawnX);
     float RandY = FMath::RandRange(-RangoSpawnY, RangoSpawnY);
-    FVector SpawnLocation = GetActorLocation() + FVector(RandX, RandY, 200.0f); // Ajusta la altura de spawn según sea necesario
+    FVector SpawnLocation = PawnLocation + FVector(RandX, RandY, 0.0f); // Ajusta la altura de spawn según sea necesario
 
     return SpawnLocation;
 }

@@ -16,7 +16,7 @@ AProjectileLazer::AProjectileLazer()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-    static ConstructorHelpers::FObjectFinder<UStaticMesh> BallMesh(TEXT("StaticMesh'/Game/Meshes/BulletLevel2.BulletLevel2'"));
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> BallMesh(TEXT("StaticMesh'/Game/Meshes/Missile.Missile'"));
     lasermalla = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("LaserMesh"));
     if (BallMesh.Succeeded())
     {

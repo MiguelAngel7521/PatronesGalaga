@@ -668,7 +668,7 @@ void AAdapterPatern1Pawn::AgregarPuntos(int32 Puntos)
 	//AGREGAR PUAS
 	//ELIMINAR SISTEMA DE PUNTUACION 
 	//OPTIMIZAR JUEGO
-	//Mejorar Spawn de Bombas
+
 }
 
 

@@ -31,57 +31,39 @@ ACapsulasTipoFacade::ACapsulasTipoFacade()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
 }
 
 // Called when the game starts or when spawned
 void ACapsulasTipoFacade::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACapsulasTipoFacade::CrearObstaculos, 20.0f, false);
+	IniciarCreacionCapsulas();
 	
 }
 
 void ACapsulasTipoFacade::CrearCapsulaDeVida()
 {
 	AFabricaCapsulas* FabricaCapsulas = GetWorld()->SpawnActor<AFabricaCapsulas>(AFabricaCapsulas::StaticClass());
-	FabricaCapsulas->GenerarCapsula();
-	/*FVector PosicionCapsulaVida = FVector(-990.0f, -160.0f, 250.0f);
-	FRotator RotacionCapsulaVida = FRotator(0.0f, 0.0f, 0.0f);
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);  // Assuming the player pawn is at index 0
+	FabricaCapsulas->GenerarCapsula(PlayerPawn, ACapsulaVida::StaticClass());
 
-	CapsulaDeVida = GetWorld()->SpawnActor<ACapsulaVida>(ACapsulaVida::StaticClass());
-	CapsulaDeVida->SetActorLocation(PosicionCapsulaVida);
-	CapsulaDeVida->SetActorRotation(RotacionCapsulaVida);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Creando capsula de vida")));*/
 
 }
 
 void ACapsulasTipoFacade::CrearCapsulaDeEnergia()
 {
 	AFabricaCapsulas* FabricaCapsulas = GetWorld()->SpawnActor<AFabricaCapsulas>(AFabricaCapsulas::StaticClass());
-	FabricaCapsulas->GenerarCapsula();
-	//FVector PosicionCapsulaEnergia = FVector(-990.0f, -260.0f, 250.0f);
-	//FRotator RotacionCapsulaEnergia = FRotator(0.0f, 0.0f, 0.0f);
-
-	//CapsulaDeEnergia = GetWorld()->SpawnActor<ACapsulaEnergia>(ACapsulaEnergia::StaticClass());
-	//CapsulaDeEnergia->SetActorLocation(PosicionCapsulaEnergia);
-	//CapsulaDeEnergia->SetActorRotation(RotacionCapsulaEnergia);
-
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("Creando capsula de Energia")));
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	FabricaCapsulas->GenerarCapsula(PlayerPawn, ACapsulaEnergia::StaticClass());
 }
 
 void ACapsulasTipoFacade::CrearCapsulaDeVelocidad()
 {
 	AFabricaCapsulas* FabricaCapsulas = GetWorld()->SpawnActor<AFabricaCapsulas>(AFabricaCapsulas::StaticClass());
-	FabricaCapsulas->GenerarCapsula();
-	/*FVector PosicionCapsulaVelocidad = FVector(-990.0f, -360.0f, 250.0f);
-	FRotator RotacionCapsulaVelocidad = FRotator(0.0f, 0.0f, 0.0f);
-
-	CapsulaDeVelocidad = GetWorld()->SpawnActor<ACapsulaVelocidad>(ACapsulaVelocidad::StaticClass());
-	CapsulaDeVelocidad->SetActorLocation(PosicionCapsulaVelocidad);
-	CapsulaDeVelocidad->SetActorRotation(RotacionCapsulaVelocidad);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, FString::Printf(TEXT("Creando capsula de velocidad")));*/
+	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	FabricaCapsulas->GenerarCapsula(PlayerPawn, ACapsulaVelocidad::StaticClass());
+	
 }
 
 void ACapsulasTipoFacade::BloquearCapsula()
@@ -116,7 +98,6 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 	FVector ubicacionDungeon2 = FVector(6430.0f, -600.0f, 200.0f);
 
 
-	/*Proxy=Cast<AProxyNaveCompuesta>((AProxyNaveCompuesta::StaticClass()));*/
 
 	UWorld* const World = GetWorld();
 	if (World != nullptr)
@@ -124,10 +105,6 @@ void ACapsulasTipoFacade::CrearEscuadronEnemigos2()
 		AFabricaNaveEnemigas::FabricarNave("Caza", 5, 2, ubicacionInicialNavesEnemigasCaza, World);
 		AFabricaNaveEnemigas::FabricarNave("Transporte", 5, 2, ubicacionInicialNavesEnemigasTransporte, World);
 		AFabricaNaveEnemigas::FabricarNave("Espia", 5, 2, ubicacionInicioNavesEnemigasEspia, World);
-		/*if (Proxy->navesEnemigasRestantes == 0) {
-			AFabricaNaveEnemigas::FabricarNave("Nodriza", 15, 2, ubicacionDungeon, World);
-			AFabricaNaveEnemigas::FabricarNave("Nodriza", 5, 2, ubicacionDungeon2, World);
-		}*/
 	}
 
 }
@@ -159,6 +136,16 @@ void ACapsulasTipoFacade::CrearObstaculos()
 	AAdapterPatern1Pawn* PlayerPawn = Cast<AAdapterPatern1Pawn>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0)); // Assuming the player pawn is at index 0
 	FabricaObstaculos->GenerarObstaculos(3, FVector(-50.0f, -700.0f, 200.0f), FVector(50.0f, 700.0f, 200.0f), 100.0f, 200.0f, PlayerPawn);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Creando obstaculos")));
+}
+
+void ACapsulasTipoFacade::IniciarCreacionCapsulas()
+{
+	
+	GetWorld()->GetTimerManager().SetTimer(TimerHandleCapsulaVida, this, &ACapsulasTipoFacade::CrearCapsulaDeVida, 15.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandleCapsulaEnergia, this, &ACapsulasTipoFacade::CrearCapsulaDeEnergia, 35.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandleCapsulaVelocidad, this, &ACapsulasTipoFacade::CrearCapsulaDeVelocidad, 40.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &ACapsulasTipoFacade::CrearObstaculos, 30.0f, true);
+
 }
 
 void ACapsulasTipoFacade::RecibirOrden(const TArray<FString>& _Orden)
@@ -214,6 +201,7 @@ void ACapsulasTipoFacade::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
+
 }
 
 

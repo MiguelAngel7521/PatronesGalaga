@@ -15,6 +15,7 @@
 #include "ConstruirNaveEnemiga.h"
 //Patron Facade
 #include "CapsulasFacade.h"
+#include "CapsulasTipoFacade.h"
 //Patron Observer
 #include "RadarEnemigo.h"
 #include "ArmaAmiga.h"
@@ -86,7 +87,7 @@ void AAdapterPatern1GameMode::BeginPlay()
 
 
 	//Patron Facade de capsulas
-
+	ACapsulasTipoFacade* Facade1 = GetWorld()->SpawnActor<ACapsulasTipoFacade>(ACapsulasTipoFacade::StaticClass());
 	Facade = GetWorld()->SpawnActor<ACapsulasFacade>(ACapsulasFacade::StaticClass());
 	Facade->NivelMedio();
 

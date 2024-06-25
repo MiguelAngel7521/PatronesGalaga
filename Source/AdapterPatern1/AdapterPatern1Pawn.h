@@ -126,7 +126,7 @@ public:
 	void AumentarEnergia()
 	{
 		if (EnergiaRestante > 0)
-			EnergiaRestante = EnergiaRestante + 20;
+			EnergiaRestante = EnergiaRestante + 50;
 	}
 	void AumentarVelocidad()
 	{

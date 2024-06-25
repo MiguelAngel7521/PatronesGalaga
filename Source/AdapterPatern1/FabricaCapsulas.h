@@ -22,8 +22,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	void GenerarCapsula();
-	FVector GetRandomSpawnLocation();
+	void GenerarCapsula(APawn* Pawn, TSubclassOf<ACapsula> CapsulaClass);
+	FVector GetRandomSpawnLocation(APawn* Pawn);
 	TSubclassOf<ACapsula> ObtenerClaseCapsula();
 
 	UPROPERTY(EditAnywhere, Category = "Spawn Range")

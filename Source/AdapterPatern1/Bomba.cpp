@@ -30,7 +30,7 @@ ABomba::ABomba()
 	ProjectileMovement->MaxSpeed = 0.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
 	ProjectileMovement->bShouldBounce = false;
-	ProjectileMovement->ProjectileGravityScale = 3.f;
+	ProjectileMovement->ProjectileGravityScale = 1.f;
 
 }
 
@@ -48,11 +48,7 @@ void ABomba::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveC
 	TArray<AActor*> ActorsToDestroy;
 	FVector BombLocation = GetActorLocation();
 	float ExplosionRadius = 400.0f; // Adjust this value as needed
-	/*OtherActor = Cast<AGalaga_USFX_L01Pawn>(OtherActor);
-	if (OtherActor) {
-		OtherActor->Destroy();
-	}*/
-
+	
 	// Get all actors within the explosion radius
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AActor::StaticClass(), ActorsToDestroy);
 
@@ -106,7 +102,7 @@ void ABomba::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-    SetActorLocation(GetActorLocation() + FVector(0, 0, -800 * DeltaTime));
+  /*  SetActorLocation(GetActorLocation() + FVector(0, 0, -800 * DeltaTime));*/
 	
 }
 

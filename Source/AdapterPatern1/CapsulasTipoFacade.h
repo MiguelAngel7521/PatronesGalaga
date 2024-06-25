@@ -28,7 +28,6 @@ protected:
 	virtual void BeginPlay() override;
 
 	void CrearCapsulaDeVida(); //Vida
-	//void CrearCapsulaDeMunicion(); //Potencia
 	void CrearCapsulaDeEnergia(); //Potencia
 	void CrearCapsulaDeVelocidad(); //Velocidad
 	void BloquearCapsula(); //Bloquear
@@ -39,6 +38,10 @@ protected:
 
 	void CrearObstaculos(); //Obstaculo1
 	FTimerHandle TimerHandle;
+	FTimerHandle TimerHandleCapsulaVida;
+	FTimerHandle TimerHandleCapsulaEnergia;
+	FTimerHandle TimerHandleCapsulaVelocidad;
+	void IniciarCreacionCapsulas();
 	
 
 public:

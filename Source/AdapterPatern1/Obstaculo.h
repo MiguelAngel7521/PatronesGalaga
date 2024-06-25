@@ -30,5 +30,6 @@ public:
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	void RecibirDano();
 	void MovimientoAparicion();
-
+	FVector TargetLocation;
+	bool bIsMoving;
 };
